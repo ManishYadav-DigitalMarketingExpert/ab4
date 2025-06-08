@@ -797,7 +797,7 @@
             box-shadow: var(--shadow-3d);
         }
 
-        /* Footer with Contact Form */
+        /* Footer with Subscribe Form */
         .footer {
             background: var(--light-gradient);
             padding: 6rem 0 3rem;
@@ -806,8 +806,8 @@
 
         .footer-container {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 6rem;
+            grid-template-columns: 3fr 1fr;
+            gap: 4rem;
             margin-bottom: 4rem;
         }
 
@@ -837,50 +837,63 @@
             transform: translateX(5px);
         }
 
-        .contact-form {
+        .subscribe-form {
             background: white;
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 25px;
             box-shadow: var(--shadow-3d);
             border: 1px solid var(--border-light);
         }
 
-        .contact-form h3 {
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
+        .subscribe-form h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
             text-align: center;
         }
 
-        .form-group {
-            margin-bottom: 2rem;
+        .subscribe-input {
+            display: flex;
+            margin-bottom: 1rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
+        .subscribe-input input {
+            flex: 1;
             padding: 1rem;
             border: 2px solid var(--border-light);
-            border-radius: 10px;
+            border-radius: 10px 0 0 10px;
             font-size: 1rem;
             transition: all 0.3s ease;
             background: var(--light-bg);
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .subscribe-input input:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
             background: white;
+        }
+
+        .subscribe-input button {
+            padding: 1rem 1.5rem;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 0 10px 10px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-input button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .subscribe-form p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
         }
 
         .footer-bottom {
@@ -1037,22 +1050,22 @@
         </div>
     </nav>
 
-    <!-- Amazing Hero Section -->
+    <!-- Amazing Hero Section with Digital Marketing Focus -->
     <section class="hero" id="home">
         <div class="hero-bg-animation"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-subtitle">Premium Digital Solutions</div>
-                <h1>Transform Your Digital Universe</h1>
-                <p>Experience the future of digital marketing with our cutting-edge strategies, immersive technologies, and data-driven insights that propel your brand into the digital stratosphere.</p>
+                <div class="hero-subtitle">Strategic Digital Marketing</div>
+                <h1>Elevate Your Digital Marketing Impact</h1>
+                <p>Unlock the full potential of your business with our results-driven digital marketing strategies. From SEO and social media to content marketing and PPC campaigns, we deliver measurable growth and ROI.</p>
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        Launch Project
-                    </a>
-                    <a href="#services" class="btn btn-secondary">
-                        <i class="fas fa-play"></i>
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-chart-line"></i>
                         Explore Services
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i>
+                        Get Started
                     </a>
                 </div>
             </div>
@@ -1060,24 +1073,24 @@
                 <div class="floating-3d-scene">
                     <div class="floating-3d-card">
                         <div class="card-icon">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-search"></i>
                         </div>
-                        <h4>Advanced Analytics</h4>
-                        <p>AI-powered insights and predictive modeling</p>
+                        <h4>SEO Excellence</h4>
+                        <p>Top search rankings & organic traffic</p>
                     </div>
                     <div class="floating-3d-card">
                         <div class="card-icon">
-                            <i class="fas fa-brain"></i>
+                            <i class="fas fa-bullhorn"></i>
                         </div>
-                        <h4>AI Marketing</h4>
-                        <p>Machine learning optimization</p>
+                        <h4>Social Media</h4>
+                        <p>Engaging campaigns & community growth</p>
                     </div>
                     <div class="floating-3d-card">
                         <div class="card-icon">
-                            <i class="fas fa-globe"></i>
+                            <i class="fas fa-ad"></i>
                         </div>
-                        <h4>Global Reach</h4>
-                        <p>Worldwide digital presence</p>
+                        <h4>PPC Mastery</h4>
+                        <p>Targeted ads & conversion optimization</p>
                     </div>
                 </div>
             </div>
@@ -1305,7 +1318,7 @@
         </div>
     </section>
 
-    <!-- Footer with Contact Form -->
+    <!-- Footer with Subscribe Form -->
     <footer class="footer" id="contact">
         <div class="container">
             <div class="footer-container">
@@ -1336,29 +1349,16 @@
                         <a href="#">Support</a>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Contact Us</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                <div class="subscribe-form">
+                    <h3>Subscribe to Updates</h3>
+                    <form id="subscribeForm">
+                        <div class="subscribe-input">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Contact Number</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
+                        <p>Get the latest digital marketing tips and trends</p>
                     </form>
                 </div>
             </div>
@@ -1454,21 +1454,26 @@
             });
         });
 
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Subscribe Form
+        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
             const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
+            const originalHTML = submitBtn.innerHTML;
             
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             submitBtn.disabled = true;
             
+            // Simulate sending to the specified email
             setTimeout(() => {
-                alert('Thank you for your message! We\'ll get back to you soon.');
+                alert(`Thank you for subscribing! Updates will be sent to ${email}\n\nYour subscription has been forwarded to manishyv0@gmail.com`);
                 this.reset();
-                submitBtn.innerHTML = originalText;
+                submitBtn.innerHTML = originalHTML;
                 submitBtn.disabled = false;
-            }, 2000);
+                
+                // In a real implementation, you would send this to your backend
+                console.log(`New subscription: ${email} - Will be managed by manishyv0@gmail.com`);
+            }, 1500);
         });
 
         // Scroll to Top
@@ -1548,7 +1553,7 @@
             }
         }, 3500);
 
-        console.log('DigitalPulse - Premium White Theme Loaded');
+        console.log('DigitalPulse - Premium Digital Marketing Website Loaded');
     </script>
 </body>
 </html>
