@@ -3,202 +3,1831 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Marketing Dashboard</title>
+    <title>DigitalPulse - Premium Digital Marketing Agency</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* WordPress Admin Theme CSS */
-        :root {
-            --wp-admin-blue: #2271b1;
-            --wp-admin-light: #f0f0f1;
-            --wp-admin-dark: #1d2327;
-        }
-        body {
+        * {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
-            background: var(--wp-admin-light);
+            padding: 0;
+            box-sizing: border-box;
         }
-        #wpadminbar {
-            background: var(--wp-admin-dark);
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --primary-light: #818cf8;
+            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            --secondary-gradient: linear-gradient(135deg, #f472b6 0%, #9333ea 100%);
+            --accent: #06b6d4;
+            --accent-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --white: #ffffff;
+            --light-bg: #f8fafc;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(79, 70, 229, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+        }
+
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            animation: float-particle 20s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Advanced Loading Screen */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: all 1s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        .loading-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
             color: white;
-            height: 32px;
-            padding: 0 20px;
+            margin-bottom: 2rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            width: 0%;
+            animation: loading-fill 3s ease-out forwards;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        @keyframes loading-fill {
+            to { width: 100%; }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(79, 70, 229, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Amazing Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             display: flex;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
         }
-        #wpcontent {
+
+        .hero-bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0.03;
+            animation: morph-bg 20s ease-in-out infinite;
+        }
+
+        @keyframes morph-bg {
+            0%, 100% { clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%); }
+            25% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%); }
+            50% { clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0% 85%); }
+            75% { clip-path: polygon(0% 0%, 100% 15%, 100% 85%, 0% 100%); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
             display: flex;
-            min-height: calc(100vh - 32px);
+            gap: 2rem;
+            animation: slideInLeft 1s ease-out 0.6s both;
         }
-        #adminmenu {
-            width: 160px;
-            background: var(--wp-admin-dark);
-            color: #f0f0f1;
-            padding: 20px 0;
-        }
-        #adminmenu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        #adminmenu li a {
-            color: #f0f0f1;
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
             text-decoration: none;
-            padding: 8px 12px;
-            display: block;
-            border-left: 4px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-        #adminmenu li a:hover {
-            background: #2c3338;
-            border-left-color: var(--wp-admin-blue);
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow);
         }
-        #adminmenu li.current a {
-            background: #1d2327;
-            border-left-color: var(--wp-admin-blue);
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
         }
-        #wpbody {
-            flex: 1;
-            padding: 20px;
-        }
-        .wp-admin-page {
-            display: none;
+
+        .btn-secondary {
             background: white;
-            padding: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            color: var(--text-primary);
+            border: 2px solid var(--border-light);
+            box-shadow: var(--shadow);
         }
-        .wp-admin-page.active {
-            display: block;
+
+        .btn-secondary:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-5px);
+            border-color: transparent;
         }
-        .services-grid {
+
+        /* 3D Floating Elements */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 1s ease-out;
+            perspective: 1000px;
+        }
+
+        .floating-3d-scene {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            transform-style: preserve-3d;
+            animation: rotate-3d 20s linear infinite;
+        }
+
+        @keyframes rotate-3d {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            25% { transform: rotateY(90deg) rotateX(10deg); }
+            50% { transform: rotateY(180deg) rotateX(0deg); }
+            75% { transform: rotateY(270deg) rotateX(-10deg); }
+            100% { transform: rotateY(360deg) rotateX(0deg); }
+        }
+
+        .floating-3d-card {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 2rem;
+            color: var(--text-primary);
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .floating-3d-card:hover {
+            transform: translateZ(50px) rotateY(15deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .floating-3d-card:nth-child(1) {
+            transform: translateZ(100px) rotateY(0deg) translateX(-100px);
+            animation: float-card-1 8s ease-in-out infinite;
+        }
+
+        .floating-3d-card:nth-child(2) {
+            transform: translateZ(50px) rotateY(120deg) translateX(-100px);
+            animation: float-card-2 8s ease-in-out infinite 2s;
+        }
+
+        .floating-3d-card:nth-child(3) {
+            transform: translateZ(0px) rotateY(240deg) translateX(-100px);
+            animation: float-card-3 8s ease-in-out infinite 4s;
+        }
+
+        @keyframes float-card-1 {
+            0%, 100% { transform: translateZ(100px) rotateY(0deg) translateX(-100px) translateY(0px); }
+            50% { transform: translateZ(150px) rotateY(15deg) translateX(-80px) translateY(-30px); }
+        }
+
+        @keyframes float-card-2 {
+            0%, 100% { transform: translateZ(50px) rotateY(120deg) translateX(-100px) translateY(0px); }
+            50% { transform: translateZ(100px) rotateY(135deg) translateX(-80px) translateY(-20px); }
+        }
+
+        @keyframes float-card-3 {
+            0%, 100% { transform: translateZ(0px) rotateY(240deg) translateX(-100px) translateY(0px); }
+            50% { transform: translateZ(50px) rotateY(255deg) translateX(-80px) translateY(-25px); }
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Us Section */
+        .about-us {
+            padding: 8rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+            background: var(--primary-gradient);
+        }
+
+        .about-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 2rem;
+            margin-top: 3rem;
         }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Industry Experience Section */
+        .industry {
+            padding: 8rem 0;
+            background: var(--light-bg);
+            position: relative;
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .industry-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+        }
+
+        .industry-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .industry-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .industry-item h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Services Section - 4 per line */
+        .services {
+            padding: 8rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 10px;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
         .service-card {
-            background: #f6f7f7;
-            padding: 20px;
-            border-left: 4px solid var(--wp-admin-blue);
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid var(--border-light);
         }
-        .clients-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
         }
-        .client-logo {
-            width: 120px;
-            height: 80px;
-            background: #eee;
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-gradient);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg) scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Marketing Points Section */
+        .marketing-points {
+            padding: 8rem 0;
+            background: var(--light-bg);
+            position: relative;
+        }
+
+        .marketing-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .marketing-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .marketing-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .marketing-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Creative Section */
+        .creative-section {
+            padding: 8rem 0;
+            background: white;
+            text-align: center;
+        }
+
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .creative-item {
+            background: var(--light-bg);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow);
+        }
+
+        .creative-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .creative-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .creative-item h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 8rem 0;
+            background: var(--light-bg);
+        }
+
+        .faq-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .faq-question h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .faq-question i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding: 0 0 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-question {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        /* Blog Section - 4 per line */
+        .blog {
+            padding: 8rem 0;
+            background: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            border: 1px solid var(--border-light);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: var(--primary-gradient);
+            position: relative;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 6rem 0;
+            background: white;
+            text-align: center;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            align-items: center;
+        }
+
+        .client-logo {
+            width: 120px;
+            height: 80px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .client-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-light);
+        }
+
+        /* Footer with Subscribe Form */
+        .footer {
+            background: var(--light-bg);
+            padding: 6rem 0 3rem;
+            position: relative;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-navigation {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 2.2;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .social-link:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .subscribe-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+        }
+
+        .subscribe-form h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .subscribe-input {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .subscribe-input input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--light-bg);
+        }
+
+        .subscribe-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .subscribe-input button {
+            padding: 1rem 1.5rem;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-input button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .subscribe-form p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1200px) {
+            .services-grid,
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .clients-grid,
+            .industry-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-container,
+            .about-container,
+            .marketing-container,
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .creative-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 3rem;
+            }
+
+            .about-content h2,
+            .marketing-content h2 {
+                font-size: 3rem;
+            }
+
+            .floating-3d-scene {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+
+            .mobile-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .mobile-menu ul {
+                list-style: none;
+            }
+
+            .mobile-menu ul li {
+                margin-bottom: 1rem;
+            }
+
+            .mobile-menu ul li a {
+                text-decoration: none;
+                color: var(--text-primary);
+                font-weight: 600;
+                font-size: 1.2rem;
+                display: block;
+                padding: 0.5rem 0;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .floating-3d-scene {
+                width: 300px;
+                height: 300px;
+            }
+
+            .services-grid,
+            .blog-grid,
+            .creative-grid,
+            .industry-grid,
+            .clients-grid,
+            .footer-navigation,
+            .faq-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cursor,
+            .cursor-follower {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-content h2,
+            .marketing-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .floating-3d-scene {
+                width: 250px;
+                height: 250px;
+            }
+
+            .floating-3d-card {
+                width: 150px;
+                height: 200px;
+                padding: 1.5rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- WordPress Admin Header -->
-    <div id="wpadminbar">
-        <span>Digital Marketing Dashboard</span>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Advanced Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-logo">DigitalPulse</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-text">Initializing Experience...</div>
     </div>
 
-    <!-- Main Container -->
-    <div id="wpcontent">
-        <!-- Left Admin Menu -->
-        <div id="adminmenu">
-            <ul>
-                <li class="current"><a href="#" data-page="dashboard">Dashboard</a></li>
-                <li>
-                    <a href="#" data-page="services">Services</a>
-                    <ul>
-                        <li><a href="#" data-page="seo">SEO</a></li>
-                        <li><a href="#" data-page="google-ads">Google Ads</a></li>
-                        <li><a href="#" data-page="social-media">Social Media</a></li>
-                        <li><a href="#" data-page="email-marketing">Email Marketing</a></li>
-                    </ul>
-                </li>
-                <li><a href="#" data-page="clients">Our Clients</a></li>
-                <li><a href="#" data-page="about">About Us</a></li>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">DigitalPulse</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#industry">Industries</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
+    </nav>
 
-        <!-- Content Area -->
-        <div id="wpbody">
-            <!-- Dashboard Page -->
-            <div class="wp-admin-page active" id="dashboard">
-                <h1>Welcome to Your Marketing Dashboard</h1>
-                <p>Select a menu option to get started.</p>
-            </div>
-
-            <!-- Services Page -->
-            <div class="wp-admin-page" id="services">
-                <h1>Our Services</h1>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>SEO</h3>
-                        <p>Search engine optimization to rank higher.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Google Ads</h3>
-                        <p>PPC campaigns that convert.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Social Media</h3>
-                        <p>Engagement-driven content strategies.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEO Subpage -->
-            <div class="wp-admin-page" id="seo">
-                <h1>SEO Services</h1>
-                <p>We offer comprehensive SEO solutions:</p>
-                <ul>
-                    <li>Keyword Research</li>
-                    <li>On-Page Optimization</li>
-                    <li>Technical SEO Audits</li>
-                </ul>
-            </div>
-
-            <!-- Clients Page -->
-            <div class="wp-admin-page" id="clients">
-                <h1>Our Clients</h1>
-                <div class="clients-grid">
-                    <div class="client-logo">Client 1 Logo</div>
-                    <div class="client-logo">Client 2 Logo</div>
-                    <div class="client-logo">Client 3 Logo</div>
-                    <!-- Add more as needed -->
-                </div>
-            </div>
-
-            <!-- About Page -->
-            <div class="wp-admin-page" id="about">
-                <h1>About Our Agency</h1>
-                <p>We're a digital marketing team with 10+ years of experience...</p>
-            </div>
-        </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#industry">Industries</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </div>
 
-    <script>
-        // WordPress-style navigation
-        document.querySelectorAll('#adminmenu a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
+    <!-- Amazing Hero Section with Digital Marketing Focus -->
+    <section class="hero" id="home">
+        <div class="hero-bg-animation"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-subtitle">Strategic Digital Marketing</div>
+                <h1>Elevate Your Digital Marketing Impact</h1>
+                <p>Unlock the full potential of your business with our results-driven digital marketing strategies. From SEO and social media to content marketing and PPC campaigns, we deliver measurable growth and ROI.</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-chart-line"></i>
+                        Explore Services
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i>
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-3d-scene">
+                    <div class="floating-3d-card">
+                        <div class="card-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>SEO Excellence</h4>
+                        <p>Top search rankings & organic traffic</p>
+                    </div>
+                    <div class="floating-3d-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h4>Social Media</h4>
+                        <p>Engaging campaigns & community growth</p>
+                    </div>
+                    <div class="floating-3d-card">
+                        <div class="card-icon">
+                            <i class="fas fa-ad"></i>
+                        </div>
+                        <h4>PPC Mastery</h4>
+                        <p>Targeted ads & conversion optimization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us scroll-animate" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image"></div>
+                <div class="about-content">
+                    <h2>About Us</h2>
+                    <p>We are a team of digital marketing experts passionate about helping businesses grow their online presence. With years of experience and a data-driven approach, we create customized strategies that deliver real results.</p>
+                    <p>Our mission is to empower businesses of all sizes with cutting-edge digital marketing solutions that drive growth, increase brand awareness, and maximize ROI.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h3>10+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>500+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>98%</h3>
+                            <p>Client Retention</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Experience Section -->
+    <section class="industry scroll-animate" id="industry">
+        <div class="container">
+            <div class="section-header">
+                <h2>Industry Experience</h2>
+                <p>We've successfully delivered digital marketing solutions across diverse industries</p>
+            </div>
+            <div class="industry-grid">
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>E-Waste Recycling</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Business Management</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturing</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-Commerce</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Travel</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>IoT</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3>Telecom</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Healthcare</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational</h3>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>News/Media</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section - 4 per line -->
+    <section class="services scroll-animate" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive digital marketing solutions tailored to elevate your brand and drive sustainable growth</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimization</h3>
+                    <p>Boost your search engine rankings with advanced SEO strategies and technical optimization.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Media Marketing</h3>
+                    <p>Engage your audience across all social platforms with strategic content and community management.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3>Google Ads</h3>
+                    <p>Maximize ROI with targeted Google Ads campaigns and optimized bidding strategies.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Website Design</h3>
+                    <p>Create stunning, responsive websites that convert visitors into customers.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube Optimization</h3>
+                    <p>Optimize your YouTube channel and videos for maximum reach and engagement.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Content Marketing</h3>
+                    <p>Create compelling content that tells your brand story and drives engagement.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-Commerce Marketing</h3>
+                    <p>Drive online sales with specialized e-commerce marketing strategies and optimization.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>Press Release</h3>
+                    <p>Amplify your brand message with professional press release distribution and media outreach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Points Section -->
+    <section class="marketing-points scroll-animate">
+        <div class="container">
+            <div class="marketing-container">
+                <div class="marketing-content">
+                    <h2>Digital Marketing Excellence</h2>
+                    <p>We deliver comprehensive digital marketing solutions that drive real results. Our data-driven approach combines creativity with analytics to maximize your online presence and accelerate business growth.</p>
+                    <p>From strategic planning to execution, we ensure every campaign delivers measurable ROI and sustainable success for your business.</p>
+                </div>
+                <div class="marketing-features">
+                    <div class="feature-item">
+                        <i class="fas fa-bullhorn"></i>
+                        <h4>Branding</h4>
+                        <p>Strategic brand development</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Marketing</h4>
+                        <p>Data-driven campaigns</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-ad"></i>
+                        <h4>Advertising</h4>
+                        <p>Targeted ad solutions</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-handshake"></i>
+                        <h4>Consulting</h4>
+                        <p>Expert guidance & strategy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creative Section -->
+    <section class="creative-section scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <h2>We're Here For</h2>
+                <p>Empowering businesses of all sizes with tailored digital marketing solutions</p>
+            </div>
+            <div class="creative-grid">
+                <div class="creative-item">
+                    <i class="fas fa-building"></i>
+                    <h3>Established Businesses</h3>
+                    <p>Scale your existing operations with advanced digital strategies</p>
+                </div>
+                <div class="creative-item">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Startups</h3>
+                    <p>Launch your business with innovative marketing approaches</p>
+                </div>
+                <div class="creative-item">
+                    <i class="fas fa-star"></i>
+                    <h3>Brands</h3>
+                    <p>Enhance brand visibility and customer engagement</p>
+                </div>
+                <div class="creative-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Consulting</h3>
+                    <p>Strategic guidance for digital transformation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to common questions about our digital marketing services</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How long does it take to see results from SEO?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>SEO is a long-term strategy that typically takes 3-6 months to show significant results. However, this timeline can vary based on your industry, competition, website history, and the specific strategies implemented. We provide monthly reports to track progress and make adjustments as needed.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What social media platforms should my business use?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The best social media platforms for your business depend on your target audience, industry, and marketing goals. We conduct thorough research to identify where your audience is most active and develop strategies specific to those platforms for maximum engagement and ROI.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How much should I budget for digital marketing?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Digital marketing budgets vary widely based on your business size, goals, and industry. We work with clients across various budget ranges and create customized strategies that maximize your ROI. We recommend starting with a clear goal and allowing us to develop a plan that fits your budget constraints.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you offer contracts or month-to-month services?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer both contract and month-to-month service options. While we recommend at least a 3-6 month commitment for most digital marketing strategies to show meaningful results, we understand the need for flexibility and can tailor our engagement models to suit your business needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section - 4 per line -->
+    <section class="blog scroll-animate" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Insights</h2>
+                <p>Stay updated with the latest digital marketing trends and strategies</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 8, 2024</span>
+                            <span><i class="fas fa-user"></i> Sarah Johnson</span>
+                        </div>
+                        <h3>Future of AI in Marketing</h3>
+                        <p>Explore how AI is revolutionizing digital marketing strategies.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 5, 2024</span>
+                            <span><i class="fas fa-user"></i> Mike Chen</span>
+                        </div>
+                        <h3>Social Media Trends 2025</h3>
+                        <p>Discover emerging social media trends for the upcoming year.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 2, 2024</span>
+                            <span><i class="fas fa-user"></i> Emma Davis</span>
+                        </div>
+                        <h3>SEO Best Practices</h3>
+                        <p>Learn the latest SEO techniques for better rankings.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> Nov 28, 2024</span>
+                            <span><i class="fas fa-user"></i> Alex Rodriguez</span>
+                        </div>
+                        <h3>E-commerce Growth</h3>
+                        <p>Strategies to boost your online store performance.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Clients & Partners</h2>
+                <p>Trusted by leading brands worldwide</p>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo">Logo 1</div>
+                <div class="client-logo">Logo 2</div>
+                <div class="client-logo">Logo 3</div>
+                <div class="client-logo">Logo 4</div>
+                <div class="client-logo">Logo 5</div>
+                <div class="client-logo">Logo 6</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Subscribe Form -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-navigation">
+                    <div class="footer-section">
+                        <h3>Services</h3>
+                        <a href="#">SEO Optimization</a>
+                        <a href="#">Social Media Marketing</a>
+                        <a href="#">Google Ads</a>
                 
-                // Remove current class from all
-                document.querySelectorAll('#adminmenu li').forEach(li => {
-                    li.classList.remove('current');
-                });
-                
-                // Add to parent li
-                let parentLi = this.closest('li');
-                if (parentLi) parentLi.classList.add('current');
-                
-                // Show selected page
-                const pageId = this.getAttribute('data-page');
-                document.querySelectorAll('.wp-admin-page').forEach(page => {
-                    page.classList.remove('active');
-                });
-                document.getElementById(pageId).classList.add('active');
-            });
-        });
-    </script>
-</body>
-</html>
