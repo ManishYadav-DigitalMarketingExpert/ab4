@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigitalPulse - Premium Digital Marketing Agency</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,16 +14,19 @@
         }
 
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --secondary-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            --accent-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --neon-gradient: linear-gradient(135deg, #00f5ff 0%, #ff00ff 50%, #ffff00 100%);
+            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2d2d2d 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
             --text-primary: #2c3e50;
             --text-secondary: #7f8c8d;
             --white: #ffffff;
             --light-bg: #f8fafc;
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 30px 80px rgba(0, 0, 0, 0.15);
+            --shadow-3d: 0 25px 80px rgba(0, 0, 0, 0.15);
+            --shadow-neon: 0 0 30px rgba(102, 126, 234, 0.5);
         }
 
         body {
@@ -31,47 +34,159 @@
             line-height: 1.6;
             color: var(--text-primary);
             overflow-x: hidden;
+            cursor: none;
         }
 
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
             background: var(--primary-gradient);
-            border-radius: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
         }
 
-        /* Navigation */
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+        }
+
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            animation: float-particle 20s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Advanced Loading Screen */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: all 1s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        .loading-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--neon-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: var(--neon-gradient);
+            border-radius: 10px;
+            width: 0%;
+            animation: loading-fill 3s ease-out forwards;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        @keyframes loading-fill {
+            to { width: 100%; }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8)); }
+            50% { filter: drop-shadow(0 0 40px rgba(240, 147, 251, 0.8)); }
+        }
+
+        /* Navigation with 3D Effects */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transform-style: preserve-3d;
         }
 
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-3d);
+            transform: translateZ(10px);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -80,242 +195,371 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--neon-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotateY(10deg);
+            filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8));
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-primary);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transform-style: preserve-3d;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-primary);
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
+        .nav-links a::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff08" points="0,1000 1000,0 1000,1000"/></svg>');
-            animation: float 20s ease-in-out infinite;
+            background: var(--primary-gradient);
+            border-radius: 25px;
+            opacity: 0;
+            transform: scale(0.8) rotateX(90deg);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+            transform: scale(1) rotateX(0deg);
+        }
+
+        .nav-links a:hover {
+            color: white;
+            transform: translateY(-3px) rotateX(10deg);
+        }
+
+        /* 3D Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--dark-gradient);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .hero-bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0.1;
+            animation: morph-bg 20s ease-in-out infinite;
+        }
+
+        @keyframes morph-bg {
+            0%, 100% { clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%); }
+            25% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%); }
+            50% { clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0% 85%); }
+            75% { clip-path: polygon(0% 0%, 100% 15%, 100% 85%, 0% 100%); }
         }
 
         .hero-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 6rem;
             align-items: center;
             position: relative;
             z-index: 2;
         }
 
+        .hero-content {
+            transform-style: preserve-3d;
+        }
+
         .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            background: var(--neon-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            line-height: 1.1;
             animation: slideInLeft 1s ease-out;
+            text-shadow: 0 0 50px rgba(102, 126, 234, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            animation: slideInLeft 1s ease-out 0.2s both;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            animation: slideInLeft 1s ease-out 0.2s both;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            animation: slideInLeft 1s ease-out 0.4s both;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
-            animation: slideInLeft 1s ease-out 0.4s both;
+            gap: 2rem;
+            animation: slideInLeft 1s ease-out 0.6s both;
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 1.5rem 3rem;
             border: none;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
+            gap: 1rem;
+            transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: white;
+            background: var(--neon-gradient);
             color: var(--text-primary);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-neon);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px) rotateX(10deg) scale(1.05);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid white;
+            border: 2px solid var(--neon-gradient);
+            position: relative;
         }
 
         .btn-secondary:hover {
-            background: white;
+            background: var(--neon-gradient);
             color: var(--text-primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px) rotateX(10deg) scale(1.05);
         }
 
+        /* 3D Floating Elements */
         .hero-visual {
             display: flex;
             justify-content: center;
             align-items: center;
             animation: slideInRight 1s ease-out;
+            perspective: 1000px;
         }
 
-        .floating-cards {
+        .floating-3d-scene {
             position: relative;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
+            transform-style: preserve-3d;
+            animation: rotate-3d 20s linear infinite;
         }
 
-        .floating-card {
+        @keyframes rotate-3d {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            25% { transform: rotateY(90deg) rotateX(10deg); }
+            50% { transform: rotateY(180deg) rotateX(0deg); }
+            75% { transform: rotateY(270deg) rotateX(-10deg); }
+            100% { transform: rotateY(360deg) rotateX(0deg); }
+        }
+
+        .floating-3d-card {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            width: 200px;
+            height: 250px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
             padding: 2rem;
             color: white;
-            animation: float 6s ease-in-out infinite;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
         }
 
-        .floating-card:nth-child(1) {
-            top: 0;
-            left: 0;
-            animation-delay: 0s;
+        .floating-3d-card:hover {
+            transform: translateZ(50px) rotateY(15deg);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.3);
         }
 
-        .floating-card:nth-child(2) {
-            top: 50px;
-            right: 0;
-            animation-delay: 2s;
+        .floating-3d-card:nth-child(1) {
+            transform: translateZ(100px) rotateY(0deg) translateX(-100px);
+            animation: float-card-1 8s ease-in-out infinite;
         }
 
-        .floating-card:nth-child(3) {
-            bottom: 0;
-            left: 50px;
-            animation-delay: 4s;
+        .floating-3d-card:nth-child(2) {
+            transform: translateZ(50px) rotateY(120deg) translateX(-100px);
+            animation: float-card-2 8s ease-in-out infinite 2s;
         }
 
-        /* Services Section */
-        .services {
-            padding: 6rem 0;
-            background: var(--light-bg);
+        .floating-3d-card:nth-child(3) {
+            transform: translateZ(0px) rotateY(240deg) translateX(-100px);
+            animation: float-card-3 8s ease-in-out infinite 4s;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        @keyframes float-card-1 {
+            0%, 100% { transform: translateZ(100px) rotateY(0deg) translateX(-100px) translateY(0px); }
+            50% { transform: translateZ(150px) rotateY(15deg) translateX(-80px) translateY(-30px); }
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+        @keyframes float-card-2 {
+            0%, 100% { transform: translateZ(50px) rotateY(120deg) translateX(-100px) translateY(0px); }
+            50% { transform: translateZ(100px) rotateY(135deg) translateX(-80px) translateY(-20px); }
         }
 
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
+        @keyframes float-card-3 {
+            0%, 100% { transform: translateZ(0px) rotateY(240deg) translateX(-100px) translateY(0px); }
+            50% { transform: translateZ(50px) rotateY(255deg) translateX(-80px) translateY(-25px); }
+        }
+
+        .card-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: var(--primary-gradient);
+            background: var(--neon-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
+        /* Advanced Services Section */
+        .services {
+            padding: 8rem 0;
+            background: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23667eea" opacity="0.1"/></svg>') repeat;
+            animation: pattern-move 30s linear infinite;
+        }
+
+        @keyframes pattern-move {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            transform-style: preserve-3d;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--neon-gradient);
+            border-radius: 10px;
+        }
+
+        .section-header p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
         }
 
         .service-card {
             background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            padding: 4rem 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-3d);
+            transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
+            cursor: pointer;
         }
 
         .service-card::before {
@@ -324,102 +568,188 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 6px;
             background: var(--primary-gradient);
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
         }
 
         .service-card:hover::before {
             transform: scaleX(1);
         }
 
+        .service-card:hover::after {
+            opacity: 0.05;
+        }
+
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 40px 100px rgba(102, 126, 234, 0.2);
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: var(--primary-gradient);
-            border-radius: 20px;
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: white;
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg) scale(1.1);
+            box-shadow: var(--shadow-neon);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
+            font-weight: 700;
         }
 
         .service-card p {
             color: var(--text-secondary);
             line-height: 1.8;
+            font-size: 1.1rem;
         }
 
-        /* Stats Section */
+        /* Interactive Stats with 3D Counters */
         .stats {
-            padding: 6rem 0;
+            padding: 8rem 0;
             background: var(--dark-gradient);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: stats-bg-move 20s linear infinite;
+        }
+
+        @keyframes stats-bg-move {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
             text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            padding: 3rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px) rotateX(10deg);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.3);
         }
 
         .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: var(--accent-gradient);
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--neon-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
         }
 
         .stat-item p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             opacity: 0.9;
+            font-weight: 500;
         }
 
-        /* Blog Section */
+        /* Advanced Blog Section */
         .blog {
-            padding: 6rem 0;
+            padding: 8rem 0;
             background: white;
+            position: relative;
         }
 
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
         .blog-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-3d);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .blog-card:hover::before {
+            opacity: 0.05;
         }
 
         .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-15px) rotateX(5deg) scale(1.02);
+            box-shadow: 0 40px 100px rgba(102, 126, 234, 0.2);
         }
 
         .blog-image {
-            height: 250px;
+            height: 300px;
             background: var(--primary-gradient);
             position: relative;
             overflow: hidden;
@@ -433,248 +763,338 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+            transition: all 0.5s ease;
+        }
+
+        .blog-card:hover .blog-image::after {
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.6), rgba(240, 147, 251, 0.6));
         }
 
         .blog-content {
-            padding: 2rem;
+            padding: 3rem;
+            position: relative;
+            z-index: 2;
         }
 
         .blog-meta {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
             color: var(--text-secondary);
         }
 
         .blog-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.4;
         }
 
         .blog-card p {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
         .read-more {
             color: #667eea;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .read-more:hover {
-            gap: 1rem;
+            gap: 1.5rem;
+            color: #764ba2;
         }
 
-        /* Contact Section */
+        /* Premium Contact Section */
         .contact {
-            padding: 6rem 0;
+            padding: 8rem 0;
             background: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0.05;
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
         }
 
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 6rem;
             align-items: start;
+            position: relative;
+            z-index: 2;
         }
 
         .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
             color: var(--text-primary);
+            font-weight: 800;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-3d);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
         }
 
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             background: var(--primary-gradient);
-            border-radius: 15px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: rotateY(180deg);
         }
 
         .contact-form {
             background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
+            padding: 4rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-3d);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--neon-gradient);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            margin-bottom: 1rem;
+            font-weight: 700;
             color: var(--text-primary);
+            font-size: 1.1rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 1rem;
+            padding: 1.5rem;
             border: 2px solid #e1e8ed;
-            border-radius: 10px;
-            font-size: 1rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            background: #f8fafc;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 5px rgba(102, 126, 234, 0.1);
+            background: white;
+            transform: translateY(-2px);
         }
 
-        /* Footer */
+        /* Premium Footer */
         .footer {
             background: var(--dark-gradient);
             color: white;
-            padding: 4rem 0 2rem;
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon fill="%23ffffff05" points="0,0 100,0 100,50 0,100"/></svg>');
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--neon-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .footer-section p,
         .footer-section a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            line-height: 2;
-            transition: color 0.3s ease;
+            line-height: 2.2;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .footer-section a:hover {
             color: white;
+            transform: translateX(5px);
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            width: 50px;
+            height: 50px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
         .social-link:hover {
             background: var(--primary-gradient);
-            transform: translateY(-3px);
+            transform: translateY(-5px) rotateY(15deg);
+            box-shadow: var(--shadow-neon);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Animations */
+        /* Advanced Animations */
         @keyframes slideInLeft {
             from {
                 opacity: 0;
-                transform: translateX(-50px);
+                transform: translateX(-100px) rotateY(-30deg);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateX(0) rotateY(0deg);
             }
         }
 
         @keyframes slideInRight {
             from {
                 opacity: 0;
-                transform: translateX(50px);
+                transform: translateX(100px) rotateY(30deg);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
+                transform: translateX(0) rotateY(0deg);
             }
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px) rotateX(-30deg);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) rotateX(0deg);
             }
         }
 
-        /* Responsive Design */
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px) rotateX(-15deg);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
-            .mobile-menu {
-                display: flex;
-            }
-
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
+                gap: 3rem;
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
             .contact-container {
                 grid-template-columns: 1fr;
             }
 
-            .floating-cards {
+            .floating-3d-scene {
                 width: 300px;
                 height: 300px;
             }
@@ -683,59 +1103,112 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .services-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cursor,
+            .cursor-follower {
+                display: none;
+            }
         }
 
-        /* Scroll Animations */
-        .scroll-animate {
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(100px);
         }
 
-        .scroll-animate.animate {
+        .scroll-top.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Loading Animation */
-        .loading {
+        .scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-neon);
+        }
+
+        /* Modal Styles */
+        .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--primary-gradient);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading.hidden {
+            z-index: 10000;
             opacity: 0;
-            pointer-events: none;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.8) rotateX(-30deg);
+            transition: all 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) rotateX(0deg);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-secondary);
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Advanced Loading Screen -->
     <div class="loading" id="loading">
-        <div class="spinner"></div>
+        <div class="loading-logo">DigitalPulse</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-text">Initializing Experience...</div>
     </div>
 
     <!-- Navigation -->
@@ -757,133 +1230,141 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- 3D Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-bg-animation"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Transform Your Digital Presence</h1>
-                <p>We craft innovative digital marketing strategies that drive growth, engagement, and measurable results for your business in the modern digital landscape.</p>
+                <div class="hero-subtitle">Premium Digital Solutions</div>
+                <h1>Transform Your Digital Universe</h1>
+                <p>Experience the future of digital marketing with our cutting-edge strategies, immersive technologies, and data-driven insights that propel your brand into the digital stratosphere.</p>
                 <div class="cta-buttons">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-rocket"></i>
-                        Get Started
+                        Launch Project
                     </a>
                     <a href="#services" class="btn btn-secondary">
                         <i class="fas fa-play"></i>
-                        Our Services
+                        Explore Services
                     </a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="floating-cards">
-                    <div class="floating-card">
-                        <i class="fas fa-chart-line" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <h4>Analytics</h4>
-                        <p>Data-driven insights</p>
+                <div class="floating-3d-scene">
+                    <div class="floating-3d-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Advanced Analytics</h4>
+                        <p>AI-powered insights and predictive modeling</p>
                     </div>
-                    <div class="floating-card">
-                        <i class="fas fa-bullhorn" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <h4>Marketing</h4>
-                        <p>Strategic campaigns</p>
+                    <div class="floating-3d-card">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>AI Marketing</h4>
+                        <p>Machine learning optimization</p>
                     </div>
-                    <div class="floating-card">
-                        <i class="fas fa-users" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <h4>Engagement</h4>
-                        <p>Community building</p>
+                    <div class="floating-3d-card">
+                        <div class="card-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4>Global Reach</h4>
+                        <p>Worldwide digital presence</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Advanced Services Section -->
     <section class="services scroll-animate" id="services">
         <div class="container">
             <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Comprehensive digital marketing solutions tailored to elevate your brand and drive sustainable growth in the digital ecosystem.</p>
+                <h2>Premium Services</h2>
+                <p>Cutting-edge digital marketing solutions powered by artificial intelligence, advanced analytics, and innovative technologies to transform your business presence.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-search"></i>
                     </div>
-                    <h3>SEO Optimization</h3>
-                    <p>Boost your search engine rankings with our advanced SEO strategies, keyword research, and technical optimization to increase organic traffic and visibility.</p>
+                    <h3>AI-Powered SEO</h3>
+                    <p>Revolutionary search engine optimization using machine learning algorithms, predictive analytics, and real-time content optimization to dominate search rankings.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-share-alt"></i>
                     </div>
-                    <h3>Social Media Marketing</h3>
-                    <p>Engage your audience across all social platforms with compelling content, strategic posting schedules, and community management that builds brand loyalty.</p>
+                    <h3>Social Media Automation</h3>
+                    <p>Intelligent social media management with automated posting, sentiment analysis, and engagement optimization across all major platforms.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-ad"></i>
                     </div>
-                    <h3>PPC Advertising</h3>
-                    <p>Maximize your ROI with targeted pay-per-click campaigns on Google Ads, Facebook, and other platforms with optimized bidding and conversion tracking.</p>
+                    <h3>Programmatic Advertising</h3>
+                    <p>Advanced programmatic ad buying with real-time bidding, audience targeting, and cross-platform campaign optimization for maximum ROI.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Email Marketing</h3>
-                    <p>Nurture leads and retain customers with personalized email campaigns, automated workflows, and detailed analytics to drive conversions.</p>
+                    <h3>Hyper-Personalized Email</h3>
+                    <p>AI-driven email marketing with behavioral triggers, dynamic content generation, and predictive send-time optimization.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-pen-fancy"></i>
+                        <i class="fas fa-video"></i>
                     </div>
-                    <h3>Content Creation</h3>
-                    <p>Captivate your audience with high-quality blog posts, videos, infographics, and social media content that tells your brand story effectively.</p>
+                    <h3>Immersive Content</h3>
+                    <p>Next-generation content creation including AR/VR experiences, interactive videos, and 3D product visualizations.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
-                    <h3>Analytics & Reporting</h3>
-                    <p>Make data-driven decisions with comprehensive analytics, performance tracking, and detailed reports that measure your marketing success.</p>
+                    <h3>Predictive Analytics</h3>
+                    <p>Advanced data science and machine learning models to predict customer behavior, market trends, and campaign performance.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Interactive Stats Section -->
     <section class="stats scroll-animate" id="about">
         <div class="container">
             <div class="section-header">
-                <h2 style="color: white;">Proven Results</h2>
-                <p style="color: rgba(255, 255, 255, 0.8);">Numbers that speak for our expertise and commitment to delivering exceptional digital marketing results.</p>
+                <h2 style="color: white;">Exceptional Results</h2>
+                <p style="color: rgba(255, 255, 255, 0.8);">Industry-leading performance metrics that demonstrate our commitment to delivering extraordinary digital marketing outcomes.</p>
             </div>
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3 class="counter" data-target="500">0</h3>
-                    <p>Happy Clients</p>
+                    <h3 class="counter" data-target="1500">0</h3>
+                    <p>Global Clients</p>
                 </div>
                 <div class="stat-item">
-                    <h3 class="counter" data-target="1200">0</h3>
-                    <p>Projects Completed</p>
+                    <h3 class="counter" data-target="5000">0</h3>
+                    <p>Projects Delivered</p>
                 </div>
                 <div class="stat-item">
-                    <h3 class="counter" data-target="98">0</h3>
+                    <h3 class="counter" data-target="99">0</h3>
                     <p>Success Rate %</p>
                 </div>
                 <div class="stat-item">
-                    <h3 class="counter" data-target="5">0</h3>
-                    <p>Years Experience</p>
+                    <h3 class="counter" data-target="10">0</h3>
+                    <p>Years Innovation</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- Premium Blog Section -->
     <section class="blog scroll-animate" id="blog">
         <div class="container">
             <div class="section-header">
-                <h2>Latest Marketing Insights</h2>
-                <p>Stay ahead of the curve with our latest blog posts covering digital marketing trends, strategies, and industry insights.</p>
+                <h2>Digital Marketing Intelligence</h2>
+                <p>Stay ahead with our latest insights on emerging technologies, marketing innovations, and industry trends that shape the future of digital business.</p>
             </div>
             <div class="blog-grid">
                 <article class="blog-card">
@@ -891,12 +1372,12 @@
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="fas fa-calendar"></i> Dec 8, 2024</span>
-                            <span><i class="fas fa-user"></i> Sarah Johnson</span>
+                            <span><i class="fas fa-user"></i> Dr. Sarah Chen</span>
                         </div>
-                        <h3>The Future of AI in Digital Marketing</h3>
-                        <p>Explore how artificial intelligence is revolutionizing digital marketing strategies and what it means for businesses in 2025.</p>
+                        <h3>The Metaverse Marketing Revolution</h3>
+                        <p>Explore how virtual worlds and augmented reality are creating unprecedented opportunities for brand engagement and customer experiences.</p>
                         <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
+                            Dive Deeper <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
@@ -905,12 +1386,12 @@
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="fas fa-calendar"></i> Dec 5, 2024</span>
-                            <span><i class="fas fa-user"></i> Mike Chen</span>
+                            <span><i class="fas fa-user"></i> Alex Rodriguez</span>
                         </div>
-                        <h3>Social Media Trends to Watch</h3>
-                        <p>Discover the emerging social media trends that will shape your marketing strategy and help you connect with your audience.</p>
+                        <h3>AI-Driven Personalization at Scale</h3>
+                        <p>Discover how machine learning algorithms are enabling hyper-personalized customer journeys and driving unprecedented conversion rates.</p>
                         <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
+                            Dive Deeper <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
@@ -919,12 +1400,12 @@
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="fas fa-calendar"></i> Dec 2, 2024</span>
-                            <span><i class="fas fa-user"></i> Emma Davis</span>
+                            <span><i class="fas fa-user"></i> Emma Thompson</span>
                         </div>
-                        <h3>SEO Best Practices for 2025</h3>
-                        <p>Learn the latest SEO techniques and algorithm updates that will help your website rank higher in search results.</p>
+                        <h3>Voice Commerce & Conversational AI</h3>
+                        <p>Learn how voice-activated shopping and AI chatbots are transforming the e-commerce landscape and customer service paradigms.</p>
                         <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
+                            Dive Deeper <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
@@ -933,12 +1414,12 @@
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="fas fa-calendar"></i> Nov 28, 2024</span>
-                            <span><i class="fas fa-user"></i> Alex Rodriguez</span>
+                            <span><i class="fas fa-user"></i> Michael Kim</span>
                         </div>
-                        <h3>Email Marketing Automation</h3>
-                        <p>Master the art of email marketing automation to nurture leads and increase conversions with personalized campaigns.</p>
+                        <h3>Blockchain in Digital Advertising</h3>
+                        <p>Understand how blockchain technology is revolutionizing ad transparency, fraud prevention, and creator monetization in the digital space.</p>
                         <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
+                            Dive Deeper <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
@@ -949,10 +1430,10 @@
                             <span><i class="fas fa-calendar"></i> Nov 25, 2024</span>
                             <span><i class="fas fa-user"></i> Lisa Wang</span>
                         </div>
-                        <h3>Content Marketing ROI</h3>
-                        <p>Measure and maximize your content marketing return on investment with proven strategies and analytics tools.</p>
+                        <h3>Quantum Computing & Marketing</h3>
+                        <p>Explore the potential of quantum computing in processing massive datasets and optimizing complex marketing algorithms.</p>
                         <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
+                            Dive Deeper <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
@@ -961,12 +1442,12 @@
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span><i class="fas fa-calendar"></i> Nov 22, 2024</span>
-                            <span><i class="fas fa-user"></i> David Kim</span>
+                            <span><i class="fas fa-user"></i> David Park</span>
                         </div>
-                        <h3>PPC Campaign Optimization</h3>
-                        <p>Optimize your pay-per-click campaigns for better performance, lower costs, and higher conversion rates.</p>
+                        <h3>Sustainable Digital Marketing</h3>
+                        <p>Discover eco-friendly marketing strategies and how brands are reducing their digital carbon footprint while maintaining growth.</p>
                         <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
+                            Dive Deeper <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
@@ -974,23 +1455,23 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Premium Contact Section -->
     <section class="contact scroll-animate" id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Let's Start Your Digital Journey</h2>
-                <p>Ready to transform your digital presence? Get in touch with our team of experts and let's create something amazing together.</p>
+                <h2>Begin Your Digital Transformation</h2>
+                <p>Ready to revolutionize your digital presence? Connect with our team of experts and let's create extraordinary experiences together.</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Get in Touch</h3>
+                    <h3>Let's Connect</h3>
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h4>Address</h4>
-                            <p>123 Digital Street, Tech City, TC 12345</p>
+                            <h4>Global Headquarters</h4>
+                            <p>Silicon Valley Innovation Center<br>123 Tech Boulevard, CA 94025</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -998,8 +1479,8 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h4>Phone</h4>
-                            <p>+1 (555) 123-4567</p>
+                            <h4>24/7 Support</h4>
+                            <p>+1 (555) DIGITAL<br>+1 (555) 344-4825</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1008,7 +1489,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>hello@digitalpulse.com</p>
+                            <p>hello@digitalpulse.com<br>partnerships@digitalpulse.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1017,7 +1498,7 @@
                         </div>
                         <div>
                             <h4>Business Hours</h4>
-                            <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                            <p>Mon - Fri: 8:00 AM - 8:00 PM PST<br>Weekend: On-call support</p>
                         </div>
                     </div>
                 </div>
@@ -1035,81 +1516,217 @@
                         <input type="text" id="company" name="company">
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
+                        <label for="budget">Project Budget</label>
+                        <select id="budget" name="budget" style="width: 100%; padding: 1.5rem; border: 2px solid #e1e8ed; border-radius: 15px; font-size: 1.1rem; background: #f8fafc;">
+                            <option value="">Select Budget Range</option>
+                            <option value="10k-25k">$10K - $25K</option>
+                            <option value="25k-50k">$25K - $50K</option>
+                            <option value="50k-100k">$50K - $100K</option>
+                            <option value="100k+">$100K+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">
                         <i class="fas fa-paper-plane"></i>
-                        Send Message
+                        Launch Consultation
                     </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Premium Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DigitalPulse</h3>
-                    <p>Transforming businesses through innovative digital marketing strategies and cutting-edge technology solutions.</p>
+                    <p>Pioneering the future of digital marketing through innovative technologies, data-driven strategies, and immersive brand experiences that transcend traditional boundaries.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h3>Services</h3>
-                    <a href="#">SEO Optimization</a>
-                    <a href="#">Social Media Marketing</a>
-                    <a href="#">PPC Advertising</a>
-                    <a href="#">Email Marketing</a>
-                    <a href="#">Content Creation</a>
+                    <h3>Premium Services</h3>
+                    <a href="#">AI-Powered SEO</a>
+                    <a href="#">Social Media Automation</a>
+                    <a href="#">Programmatic Advertising</a>
+                    <a href="#">Hyper-Personalized Email</a>
+                    <a href="#">Immersive Content</a>
+                    <a href="#">Predictive Analytics</a>
                 </div>
                 <div class="footer-section">
                     <h3>Company</h3>
                     <a href="#">About Us</a>
-                    <a href="#">Our Team</a>
+                    <a href="#">Leadership Team</a>
                     <a href="#">Careers</a>
                     <a href="#">Case Studies</a>
+                    <a href="#">Press & Media</a>
                     <a href="#">Contact</a>
                 </div>
                 <div class="footer-section">
                     <h3>Resources</h3>
-                    <a href="#">Blog</a>
-                    <a href="#">Whitepapers</a>
-                    <a href="#">Webinars</a>
-                    <a href="#">Tools</a>
-                    <a href="#">Support</a>
+                    <a href="#">Digital Intelligence Blog</a>
+                    <a href="#">Industry Reports</a>
+                    <a href="#">Webinar Series</a>
+                    <a href="#">Marketing Tools</a>
+                    <a href="#">API Documentation</a>
+                    <a href="#">24/7 Support</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 DigitalPulse. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p>&copy; 2024 DigitalPulse. All rights reserved. | Privacy Policy | Terms of Service | Cookie Policy</p>
             </div>
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <i class="fas fa-check-circle" style="font-size: 4rem; color: #4CAF50; margin-bottom: 1rem;"></i>
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for reaching out. Our team will contact you within 24 hours to discuss your project.</p>
+        </div>
+    </div>
+
     <script>
-        // Loading Screen
-        window.addEventListener('load', function() {
-            const loading = document.getElementById('loading');
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
             setTimeout(() => {
-                loading.classList.add('hidden');
-            }, 1000);
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
         });
 
-        // Navbar Scroll Effect
+        // Particle System
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Advanced Loading Screen
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            const progress = document.querySelector('.loading-progress');
+            const text = document.querySelector('.loading-text');
+            
+            const messages = [
+                'Initializing Experience...',
+                'Loading AI Systems...',
+                'Preparing 3D Elements...',
+                'Optimizing Performance...',
+                'Ready to Launch!'
+            ];
+            
+            let messageIndex = 0;
+            const messageInterval = setInterval(() => {
+                if (messageIndex < messages.length - 1) {
+                    messageIndex++;
+                    text.textContent = messages[messageIndex];
+                } else {
+                    clearInterval(messageInterval);
+                }
+            }, 600);
+            
+            setTimeout(() => {
+                loading.classList.add('hidden');
+                createParticles();
+            }, 3000);
+        });
+
+        // Enhanced Navbar Scroll Effect
+        let lastScrollY = window.scrollY;
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            
+            // Hide/show navbar on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 500) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
         });
+
+        // Advanced Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    
+                    // Trigger counter animation for stats
+                    if (entry.target.classList.contains('stats')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                }, 16);
+            });
+        }
 
         // Smooth Scrolling for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1125,99 +1742,100 @@
             });
         });
 
-        // Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-animate').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const count = parseInt(counter.innerText);
-                const increment = target / 100;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(() => animateCounters(), 20);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        // Trigger counter animation when stats section is visible
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
-
-        // Contact Form Handling
+        // Enhanced Contact Form Handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Simulate form submission
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             submitBtn.disabled = true;
             
+            // Simulate form submission with advanced animation
             setTimeout(() => {
-                alert('Thank you for your message! We\'ll get back to you soon.');
                 this.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 2000);
+                showModal();
+            }, 2500);
         });
 
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.querySelector('.nav-links');
+        // Modal Functions
+        function showModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
         
-        mobileMenu.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            this.classList.toggle('active');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 3D Card Interactions
+        document.querySelectorAll('.service-card, .blog-card, .stat-item').forEach(card => {
+            card.addEventListener('mouseenter', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            });
         });
 
         // Parallax Effect for Hero Section
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            const heroContent = document.querySelector('.hero-content');
+            const heroVisual = document.querySelector('.hero-visual');
+            
+            if (hero && scrolled < window.innerHeight) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+                heroVisual.style.transform = `translateY(${scrolled * 0.2}px)`;
             }
         });
 
         // Dynamic Typing Effect
-        function typeWriter(element, text, speed = 100) {
+        function typeWriter(element, text, speed = 50) {
             let i = 0;
             element.innerHTML = '';
             
@@ -1233,49 +1851,42 @@
         }
 
         // Initialize typing effect when page loads
-        window.addEventListener('load', function() {
+        setTimeout(() => {
             const heroTitle = document.querySelector('.hero-content h1');
             if (heroTitle) {
                 const originalText = heroTitle.textContent;
-                setTimeout(() => {
-                    typeWriter(heroTitle, originalText, 50);
-                }, 1500);
+                typeWriter(heroTitle, originalText, 30);
             }
-        });
+        }, 3500);
 
-        // Add hover effects to service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+        // Advanced Hover Effects
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
             });
             
-            card.addEventListener('mouseleave', function() {
+            btn.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
 
-        // Blog card interactions
-        document.querySelectorAll('.blog-card').forEach(card => {
-            card.addEventListener('click', function() {
-                // Add click animation
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
             });
-        });
-
-        // Add floating animation to hero cards
-        document.querySelectorAll('.floating-card').forEach((card, index) => {
-            card.style.animationDelay = `${index * 2}s`;
-        });
+        }
 
         // Intersection Observer for fade-in animations
         const fadeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.transform = 'translateY(0) rotateX(0deg)';
                 }
             });
         }, { threshold: 0.1 });
@@ -1283,9 +1894,43 @@
         // Apply fade-in to all major sections
         document.querySelectorAll('section').forEach(section => {
             section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'all 0.6s ease';
+            section.style.transform = 'translateY(50px) rotateX(-15deg)';
+            section.style.transition = 'all 0.8s ease';
             fadeObserver.observe(section);
+        });
+
+        // Advanced cursor interactions
+        document.querySelectorAll('a, button, .service-card, .blog-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+                cursorFollower.style.transform = 'scale(1.5)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursorFollower.style.transform = 'scale(1)';
+            });
+        });
+
+        // Performance optimization
+        let ticking = false;
+        
+        function updateAnimations() {
+            // Update any continuous animations here
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateAnimations);
+                ticking = true;
+            }
+        }
+
+        // Initialize all animations
+        window.addEventListener('load', function() {
+            // Add any initialization code here
+            console.log('DigitalPulse - Premium Experience Loaded');
         });
     </script>
 </body>
