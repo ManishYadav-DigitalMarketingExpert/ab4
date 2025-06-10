@@ -3,1798 +3,1585 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Marketing Hub - Latest Updates & Insights</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Digital Marketing Wiki - Latest Updates & Resources</title>
     <style>
+        /* Modern Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-
+        
         body {
-            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #1a1a2e; /* Deep navy */
+            background-color: #f8fafc; /* Light gray-blue */
             overflow-x: hidden;
-            background: #f8f9fa;
-            perspective: 1000px;
         }
-
+        
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
         }
-
-        /* Enhanced 3D Hero Section */
+        
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #1a1a2e; /* Deep navy */
+            position: relative;
+            padding-left: 20px;
+            border-left: 4px solid #6366f1; /* Indigo accent */
+            font-weight: 700;
+        }
+        
+        /* Modern Hero Section with Contact Form */
         .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
             height: 100vh;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             display: flex;
             align-items: center;
         }
-
-        .hero-scene {
+        
+        /* Modern Animated Circle */
+        .animated-circle {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            animation: rotate 40s infinite linear;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotateY(0) rotateX(5deg); }
-            100% { transform: rotateY(360deg) rotateX(5deg); }
-        }
-
-        .hero-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-        }
-
-        .hero-layer:nth-child(1) {
-            transform: translateZ(-400px);
-            background: radial-gradient(circle at center, #0f0f23 0%, #000 70%);
-        }
-
-        .hero-layer:nth-child(2) {
-            transform: translateZ(-300px);
-        }
-
-        .hero-layer:nth-child(3) {
-            transform: translateZ(-200px);
-        }
-
-        .hero-layer:nth-child(4) {
-            transform: translateZ(-100px);
-        }
-
-        .hero-layer:nth-child(5) {
-            transform: translateZ(0);
-        }
-
-        .star {
-            position: absolute;
-            background: white;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
             border-radius: 50%;
-            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
-            animation: twinkle 3s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .grid-line {
-            position: absolute;
-            background: rgba(102, 126, 234, 0.2);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-
-        .horizontal-line {
-            width: 100%;
-            height: 1px;
-        }
-
-        .vertical-line {
-            width: 1px;
-            height: 100%;
-        }
-
-        .hero-content-wrapper {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-left {
-            flex: 1;
-            padding-right: 50px;
-            color: white;
-            transform-style: preserve-3d;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #ff6b6b, #4facfe, #00f2fe, #764ba2, #667eea);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientText 8s ease infinite;
-            background-size: 300% 300%;
-            text-shadow: 0 0 20px rgba(255,255,255,0.1);
-            transform: translateZ(50px);
-        }
-
-        @keyframes gradientText {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #4facfe;
-            text-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
-            transform: translateZ(40px);
-            animation: slideInLeft 1s ease-out 0.3s both;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.6;
-            transform: translateZ(30px);
-            animation: slideInLeft 1s ease-out 0.6s both;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            transform: translateZ(20px);
-            animation: slideInLeft 1s ease-out 0.9s both;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ff6b6b;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .hero-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-            position: relative;
-            overflow: hidden;
+            right: -150px;
+            bottom: -150px;
+            opacity: 0.8;
             z-index: 1;
-            transform: translateZ(60px);
-            animation: slideInLeft 1s ease-out 1.2s both;
+            transition: transform 0.5s ease-out;
+            box-shadow: 0 0 100px rgba(255, 107, 107, 0.3);
         }
-
-        .hero-btn:before {
+        
+        /* Gradient overlay on circle */
+        .animated-circle::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
-            z-index: -1;
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
         }
-
-        .hero-btn:hover:before {
-            left: 100%;
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-3px) translateZ(70px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px) translateZ(0);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0) translateZ(var(--z-depth, 0));
-            }
-        }
-
-        /* Right Side Animation Slides */
-        .hero-right {
-            flex: 1;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-        }
-
-        .animation-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .slide-track {
+        
+        /* Modern Floating Elements */
+        .floating-elements {
             position: absolute;
-            width: 120%;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            animation: slideVertical 20s linear infinite;
+            pointer-events: none;
+            z-index: 1;
         }
-
-        @keyframes slideVertical {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
-        }
-
-        .marketing-slide {
-            width: 300px;
-            height: 200px;
-            margin: 30px auto;
-            background: rgba(255,255,255,0.1);
+        
+        .modern-shape {
+            position: absolute;
             border-radius: 20px;
-            padding: 30px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
-            transform-style: preserve-3d;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
-
-        .marketing-slide:hover {
-            transform: rotateY(10deg) rotateX(5deg) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .marketing-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,107,107,0.1), rgba(79,172,254,0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .marketing-slide:hover::before {
-            opacity: 1;
-        }
-
-        .slide-icon {
-            font-size: 3rem;
-            color: #4facfe;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(79,172,254,0.5);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .slide-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .slide-text {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.4;
-        }
-
-        /* Multiple slide tracks for continuous animation */
-        .slide-track:nth-child(1) {
-            left: 0;
-            animation-delay: 0s;
-        }
-
-        .slide-track:nth-child(2) {
-            left: 20%;
-            animation-delay: -5s;
-        }
-
-        .slide-track:nth-child(3) {
-            left: 40%;
-            animation-delay: -10s;
-        }
-
-        /* 3D Floating Objects */
-        .floating-object {
-            position: absolute;
-            transform-style: preserve-3d;
-            animation: float3D 15s ease-in-out infinite alternate;
-        }
-
-        .floating-object:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 10%;
-            background: linear-gradient(45deg, #667eea, transparent);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation-delay: 0s;
-        }
-
-        .floating-object:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            right: 15%;
-            background: linear-gradient(45deg, #764ba2, transparent);
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            animation-delay: 5s;
-        }
-
-        .floating-object:nth-child(3) {
+        
+        .modern-shape:nth-child(1) {
             width: 80px;
             height: 80px;
-            bottom: 30%;
-            left: 20%;
-            background: linear-gradient(45deg, #4facfe, transparent);
-            border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
-            animation-delay: 10s;
+            top: 20%;
+            left: 15%;
+            animation: float1 6s ease-in-out infinite;
         }
-
-        @keyframes float3D {
-            0% { transform: translateY(0) translateX(0) rotateY(0) rotateX(0) rotateZ(0); }
-            100% { transform: translateY(-50px) translateX(30px) rotateY(180deg) rotateX(45deg) rotateZ(90deg); }
+        
+        .modern-shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 25%;
+            animation: float2 8s ease-in-out infinite 2s;
+            border-radius: 50%;
         }
-
-        /* Digital Marketing Icons floating */
-        .dm-icon {
+        
+        .modern-shape:nth-child(3) {
+            width: 100px;
+            height: 40px;
+            top: 30%;
+            right: 20%;
+            animation: float3 7s ease-in-out infinite 1s;
+        }
+        
+        .modern-shape:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            top: 70%;
+            right: 30%;
+            animation: float1 9s ease-in-out infinite 3s;
+            transform: rotate(45deg);
+        }
+        
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+        
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(-5deg); }
+        }
+        
+        /* Particle System */
+        .particles {
             position: absolute;
-            font-size: 2rem;
-            color: rgba(255,255,255,0.3);
-            animation: floatIcon 8s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
-
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.8; }
-        }
-
-        .dm-icon:nth-child(1) { top: 15%; left: 5%; animation-delay: 0s; }
-        .dm-icon:nth-child(2) { top: 25%; right: 10%; animation-delay: 2s; }
-        .dm-icon:nth-child(3) { top: 45%; left: 8%; animation-delay: 4s; }
-        .dm-icon:nth-child(4) { top: 65%; right: 12%; animation-delay: 6s; }
-        .dm-icon:nth-child(5) { top: 85%; left: 15%; animation-delay: 8s; }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #333;
-            position: relative;
-            text-transform: uppercase;
-        }
-
-        .section-title::after {
-            content: '';
+        
+        .particle {
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            width: 4px;
             height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        /* Blog Updates Section */
-        .blog-updates {
-            background: #fff;
-            position: relative;
-        }
-
-        .blog-updates::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0l100,100M0,100l100,-100" stroke="rgba(0,0,0,0.03)" stroke-width="1"/></svg>');
-            opacity: 0.5;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-        }
-
-        .blog-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .blog-card:hover .blog-image::before {
-            opacity: 1;
-        }
-
-        .blog-content {
-            padding: 25px;
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease;
-        }
-
-        .blog-card:hover .blog-content {
-            transform: translateZ(20px);
-        }
-
-        .blog-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        /* Tips & Tricks Section */
-        .tips-tricks {
-            background: #f8f9fa;
-            position: relative;
-        }
-
-        .tips-tricks::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(0,0,0,0.03)"/></svg>');
-            background-size: 20px 20px;
-        }
-
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tip-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            transform-style: preserve-3d;
-        }
-
-        .tip-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .tip-image {
-            width: 100%;
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tip-content {
-            padding: 25px;
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease;
-        }
-
-        .tip-card:hover .tip-content {
-            transform: translateZ(20px);
-        }
-
-        .tip-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* Subscription Section */
-        .subscription {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-            color: white;
-            text-align: center;
-        }
-
-        .subscription::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.6);
             border-radius: 50%;
+            animation: particleFloat 12s linear infinite;
         }
-
-        .subscription::after {
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            right: -150px;
-            width: 300px;
-            height: 300px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
+        
+        .particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 30%; left: 60%; animation-delay: 2s; }
+        .particle:nth-child(3) { top: 50%; left: 40%; animation-delay: 4s; }
+        .particle:nth-child(4) { top: 70%; left: 80%; animation-delay: 6s; }
+        .particle:nth-child(5) { top: 20%; left: 70%; animation-delay: 8s; }
+        .particle:nth-child(6) { top: 60%; left: 30%; animation-delay: 10s; }
+        
+        @keyframes particleFloat {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
         }
-
-        .subscription-content {
-            position: relative;
-            z-index: 2;
-            transform-style: preserve-3d;
-        }
-
-        .subscription h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            transform: translateZ(30px);
-        }
-
-        .subscription p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            transform: translateZ(20px);
-        }
-
-        .subscription-form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            transform: translateZ(40px);
-        }
-
-        .subscription-form input {
-            flex: 1;
-            min-width: 250px;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .subscription-form button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .subscription-form button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
-        }
-
-        .subscription-form button:hover:before {
-            left: 100%;
-        }
-
-        .subscription-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Quiz Section */
-        .quiz-section {
-            background: #fff;
-            position: relative;
-        }
-
-        .quiz-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0l100,100M0,100l100,-100" stroke="rgba(0,0,0,0.03)" stroke-width="1"/></svg>');
-            opacity: 0.5;
-        }
-
-        .quiz-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .quiz-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transform-style: preserve-3d;
-            transition: all 0.3s ease;
-        }
-
-        .quiz-card:hover {
-            transform: translateY(-5px) rotateX(5deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .quiz-question {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .quiz-option {
+        
+        /* Hero Layout with Contact Form */
+        .hero-layout {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .quiz-option:hover {
-            background: #e9ecef;
-        }
-
-        .quiz-option input[type="radio"] {
-            margin-right: 10px;
-        }
-
-        .quiz-option.selected {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .quiz-results {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .result-bar {
-            display: flex;
-            align-items: center;
-            margin: 5px 0;
-        }
-
-        .result-label {
-            width: 100px;
-            font-size: 0.8rem;
-        }
-
-        .result-progress {
-            flex: 1;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            margin: 0 10px;
-            overflow: hidden;
-        }
-
-        .result-fill {
-            height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
-        }
-
-        .result-percent {
-            font-weight: bold;
-            min-width: 40px;
-            text-align: right;
-        }
-
-        /* Services Section */
-        .services {
-            background: #f8f9fa;
-            position: relative;
-        }
-
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+            justify-content: space-between;
             width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(0,0,0,0.03)"/></svg>');
-            background-size: 20px 20px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 60px;
             position: relative;
             z-index: 2;
         }
-
-        .service-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-card > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #667eea;
-            transition: color 0.3s ease;
-        }
-
-        .service-card:hover .service-icon {
-            color: white;
-        }
-
-        .service-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            transition: color 0.3s ease;
-        }
-
-        .service-card:hover .service-title {
-            color: white;
-        }
-
-        .service-description {
-            line-height: 1.6;
-            color: #666;
-            transition: color 0.3s ease;
-        }
-
-        .service-card:hover .service-description {
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: -50px;
-            width: 100px;
-            height: 100px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-        }
-
-        .contact::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            right: -100px;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-        }
-
-        .contact-form {
+        
+        .hero-content {
+            flex: 1;
             max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 24px;
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 32px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .hero-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: rgba(255,255,255,0.15);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 2;
-            transform-style: preserve-3d;
+            border: 1px solid rgba(255,255,255,0.2);
         }
-
+        
+        .hero-button:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Contact Form in Hero */
+        .hero-contact-form {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            width: 400px;
+            flex-shrink: 0;
+        }
+        
+        .contact-form-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         .form-group {
-            margin-bottom: 25px;
-            transform-style: preserve-3d;
+            margin-bottom: 20px;
         }
-
+        
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: bold;
-            transform: translateZ(10px);
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            font-size: 14px;
         }
-
+        
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
+            padding: 12px 16px;
             border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.9);
-            outline: none;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.15);
+            color: #ffffff;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s ease;
-            transform: translateZ(5px);
         }
-
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
         .form-group input:focus,
         .form-group textarea:focus {
-            background: white;
-            transform: translateY(-2px) translateZ(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            outline: none;
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
         }
-
+        
         .form-group textarea {
-            height: 120px;
+            height: 100px;
             resize: vertical;
         }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
+        
+        .contact-submit-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.2);
+            color: #ffffff;
             border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .contact-submit-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Modern Posts Grid */
+        .posts-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 24px;
+        }
+        
+        .post-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .post-image {
             width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f1f5f9;
+            position: relative;
+        }
+        
+        .post-image::after {
+            content: '📷';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            opacity: 0.5;
+        }
+        
+        .post-title {
+            padding: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a2e;
+            line-height: 1.4;
+        }
+        
+        /* Animated Subscribe Section with Reading Video Background */
+        .subscribe {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 80px 0;
+            text-align: center;
             position: relative;
             overflow: hidden;
-            transform: translateZ(20px);
         }
-
-        .submit-btn:before {
+        
+        /* Animated Reading Video Background */
+        .reading-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+        
+        /* Animated Books Flying */
+        .flying-book {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .flying-book::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 2px;
+        }
+        
+        .flying-book::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: 1px;
+            background: rgba(0,0,0,0.3);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.3), 0 8px 0 rgba(0,0,0,0.3), 0 12px 0 rgba(0,0,0,0.3);
+        }
+        
+        .flying-book:nth-child(1) {
+            top: 10%;
+            left: -50px;
+            animation: flyAcross1 15s linear infinite;
+        }
+        
+        .flying-book:nth-child(2) {
+            top: 30%;
+            left: -50px;
+            animation: flyAcross2 18s linear infinite 3s;
+        }
+        
+        .flying-book:nth-child(3) {
+            top: 50%;
+            left: -50px;
+            animation: flyAcross3 20s linear infinite 6s;
+        }
+        
+        .flying-book:nth-child(4) {
+            top: 70%;
+            left: -50px;
+            animation: flyAcross1 16s linear infinite 9s;
+        }
+        
+        .flying-book:nth-child(5) {
+            top: 20%;
+            left: -50px;
+            animation: flyAcross2 22s linear infinite 12s;
+        }
+        
+        @keyframes flyAcross1 {
+            0% { 
+                transform: translateX(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            50% { 
+                transform: translateX(50vw) rotate(180deg) scale(1.2);
+            }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateX(100vw) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes flyAcross2 {
+            0% { 
+                transform: translateX(0) rotate(0deg) translateY(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            25% { transform: translateX(25vw) rotate(90deg) translateY(-20px); }
+            50% { transform: translateX(50vw) rotate(180deg) translateY(0); }
+            75% { transform: translateX(75vw) rotate(270deg) translateY(20px); }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateX(100vw) rotate(360deg) translateY(0);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes flyAcross3 {
+            0% { 
+                transform: translateX(0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            30% { transform: translateX(30vw) rotate(120deg) scale(1.3); }
+            60% { transform: translateX(60vw) rotate(240deg) scale(0.7); }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateX(100vw) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        /* Floating Letters Animation */
+        .floating-letters {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .letter {
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold;
+            color: rgba(255,255,255,0.6);
+            animation: letterFloat 8s ease-in-out infinite;
+        }
+        
+        .letter:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .letter:nth-child(2) { top: 25%; left: 80%; animation-delay: 1s; }
+        .letter:nth-child(3) { top: 45%; left: 20%; animation-delay: 2s; }
+        .letter:nth-child(4) { top: 65%; left: 70%; animation-delay: 3s; }
+        .letter:nth-child(5) { top: 35%; left: 90%; animation-delay: 4s; }
+        .letter:nth-child(6) { top: 55%; left: 5%; animation-delay: 5s; }
+        .letter:nth-child(7) { top: 75%; left: 40%; animation-delay: 6s; }
+        .letter:nth-child(8) { top: 85%; left: 85%; animation-delay: 7s; }
+        
+        @keyframes letterFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(180deg) scale(1.2);
+                opacity: 1;
+            }
+        }
+        
+        /* Email Envelope Animation */
+        .email-envelope {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 60px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            animation: envelopeFloat 6s ease-in-out infinite;
+        }
+        
+        .email-envelope::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
+            height: 50%;
+            background: rgba(255,255,255,0.9);
+            clip-path: polygon(0 0, 50% 70%, 100% 0);
+            border-radius: 8px 8px 0 0;
         }
-
-        .submit-btn:hover:before {
-            left: 100%;
+        
+        .email-envelope::after {
+            content: '✉️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
         }
-
-        .submit-btn:hover {
-            transform: translateY(-2px) translateZ(25px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        
+        @keyframes envelopeFloat {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            50% { 
+                transform: translate(-50%, -60%) scale(1.1) rotate(5deg);
+            }
         }
-
-        /* Footer */
-        footer {
-            background: #222;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
+        
+        .subscribe-content {
             position: relative;
+            z-index: 2;
         }
-
-        .social-icons {
-            margin-bottom: 20px;
+        
+        .subscribe h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            color: #ffffff;
+            font-weight: 700;
         }
-
-        .social-icons a {
-            display: inline-block;
-            margin: 0 15px;
-            color: white;
-            font-size: 1.5rem;
+        
+        .subscribe-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .subscribe-form input {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.15);
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .subscribe-form input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .subscribe-form button {
+            background: rgba(255,255,255,0.2);
+            color: #ffffff;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
             transition: all 0.3s ease;
         }
-
-        .social-icons a:hover {
-            color: #667eea;
-            transform: translateY(-3px);
+        
+        .subscribe-form button:hover {
+            background: rgba(255,255,255,0.3);
         }
-
-        /* Mobile Responsiveness */
+        
+        /* Modern Quiz Section */
+        .quiz-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .quiz-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        
+        .quiz-question {
+            font-size: 20px;
+            margin-bottom: 24px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.3;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        
+        .quiz-option:hover {
+            background: #e2e8f0;
+            border-color: #6366f1;
+        }
+        
+        .option-text {
+            font-size: 16px;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .option-percent {
+            font-size: 14px;
+            font-weight: 700;
+            color: #6366f1;
+        }
+        
+        /* Compact Modern Services Section */
+        .services-section {
+            padding: 60px 0; /* Reduced from 80px */
+            background: #ffffff;
+            position: relative;
+        }
+        
+        .services-container {
+            display: flex;
+            gap: 32px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Left Side Menu - Compact */
+        .services-menu {
+            width: 220px; /* Reduced from 250px */
+            flex-shrink: 0;
+            border-right: 2px solid #e2e8f0;
+            padding-right: 20px;
+        }
+        
+        .service-tab {
+            padding: 12px 16px; /* Reduced padding */
+            margin-bottom: 8px; /* Reduced margin */
+            background: transparent;
+            color: #64748b;
+            border-radius: 12px 0 0 12px;
+            font-size: 16px; /* Reduced font size */
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-align: left;
+            border-left: 3px solid transparent;
+        }
+        
+        .service-tab:hover {
+            background: rgba(99, 102, 241, 0.05);
+            color: #6366f1;
+        }
+        
+        .service-tab.active {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            border-left: 3px solid #6366f1;
+            font-weight: 700;
+        }
+        
+        /* Right Side Content - Compact */
+        .service-content {
+            flex: 1;
+            position: relative;
+        }
+        
+        .service-panel {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 32px; /* Reduced from 40px */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .service-panel.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .service-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px; /* Reduced margin */
+        }
+        
+        .service-icon {
+            width: 60px; /* Reduced from 80px */
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 16px; /* Changed from circle to rounded square */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            color: #ffffff;
+            font-size: 24px; /* Reduced font size */
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .service-title {
+            font-size: 24px; /* Reduced from 28px */
+            color: #1a1a2e;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+        
+        .service-subtitle {
+            font-size: 14px;
+            color: #64748b;
+            font-style: italic;
+        }
+        
+        .service-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #374151;
+            margin-bottom: 24px; /* Reduced margin */
+        }
+        
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px; /* Reduced gap */
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px; /* Reduced font size */
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .feature-item::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 16px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Footer with Social Media */
+        footer {
+            background: #1a1a2e;
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .social-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .linkedin {
+            background: rgba(0, 119, 181, 0.2);
+        }
+        
+        .linkedin:hover {
+            background: rgba(0, 119, 181, 0.4);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-layout {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .hero-contact-form {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .posts-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .quiz-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-container {
+                flex-direction: column;
+            }
+            
+            .services-menu {
+                width: 100%;
+                border-right: none;
+                border-bottom: 2px solid #e2e8f0;
+                padding-right: 0;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                display: flex;
+                overflow-x: auto;
+                gap: 8px;
+            }
+            
+            .service-tab {
+                margin-right: 0;
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                white-space: nowrap;
+                border-radius: 12px 12px 0 0;
+            }
+            
+            .service-tab.active {
+                border-left: none;
+                border-bottom: 3px solid #6366f1;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .hero-content-wrapper {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .animated-circle {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .hero-contact-form {
+                padding: 24px;
+            }
+            
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quiz-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .service-panel {
+                padding: 24px 16px;
+            }
+            
+            .service-header {
                 flex-direction: column;
                 text-align: center;
             }
-
-            .hero-left {
-                padding-right: 0;
-                margin-bottom: 30px;
+            
+            .service-icon {
+                margin-right: 0;
+                margin-bottom: 12px;
             }
-
-            .hero-right {
-                height: 300px;
-            }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .blog-grid, .tips-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-
-            .quiz-container {
-                grid-template-columns: 1fr;
-            }
-
-            .subscription-form {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .subscription-form input {
-                min-width: 100%;
-                margin-bottom: 15px;
-            }
-
-            .floating-object {
-                display: none;
-            }
-
-            .slide-track:nth-child(2),
-            .slide-track:nth-child(3) {
+            
+            .flying-book {
                 display: none;
             }
         }
-
+        
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.5rem;
+            .hero h1 {
+                font-size: 36px;
             }
-
-            .section {
-                padding: 50px 0;
+            
+            .hero p {
+                font-size: 16px;
             }
-
-            .service-card,
-            .blog-card,
-            .tip-card {
-                margin-bottom: 20px;
+            
+            .animated-circle {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .service-title {
+                font-size: 20px;
+            }
+            
+            .service-description {
+                font-size: 14px;
+            }
+            
+            .modern-shape {
+                display: none;
+            }
+            
+            .letter {
+                font-size: 16px;
+            }
+            
+            .hero-contact-form {
+                padding: 20px;
+            }
+            
+            .contact-form-title {
+                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Enhanced 3D Hero Section -->
+    <!-- Modern Hero Section with Contact Form -->
     <section class="hero">
-        <div class="hero-scene">
-            <div class="hero-layer"></div>
-            <div class="hero-layer">
-                <!-- Dynamic Stars -->
-            </div>
-            <div class="hero-layer">
-                <!-- Grid Lines -->
-                <div class="grid-line horizontal-line" style="top: 20%;"></div>
-                <div class="grid-line horizontal-line" style="top: 40%;"></div>
-                <div class="grid-line horizontal-line" style="top: 60%;"></div>
-                <div class="grid-line horizontal-line" style="top: 80%;"></div>
-                <div class="grid-line vertical-line" style="left: 20%;"></div>
-                <div class="grid-line vertical-line" style="left: 40%;"></div>
-                <div class="grid-line vertical-line" style="left: 60%;"></div>
-                <div class="grid-line vertical-line" style="left: 80%;"></div>
-            </div>
-            <div class="hero-layer">
-                <div class="floating-object"></div>
-                <div class="floating-object"></div>
-                <div class="floating-object"></div>
-            </div>
-            <div class="hero-layer">
-                <!-- Digital Marketing Icons -->
-                <div class="dm-icon"><i class="fas fa-chart-line"></i></div>
-                <div class="dm-icon"><i class="fas fa-bullhorn"></i></div>
-                <div class="dm-icon"><i class="fas fa-search"></i></div>
-                <div class="dm-icon"><i class="fas fa-share-alt"></i></div>
-                <div class="dm-icon"><i class="fas fa-envelope"></i></div>
-            </div>
+        <!-- Modern Animated Circle -->
+        <div class="animated-circle"></div>
+        
+        <!-- Modern Floating Elements -->
+        <div class="floating-elements">
+            <div class="modern-shape"></div>
+            <div class="modern-shape"></div>
+            <div class="modern-shape"></div>
+            <div class="modern-shape"></div>
+        </div>
+        
+        <!-- Particle System -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
         
         <div class="container">
-            <div class="hero-content-wrapper">
-                <div class="hero-left">
-                    <h1 class="hero-title">Digital Marketing Hub</h1>
-                    <p class="hero-subtitle">For Digital Marketers & Learners</p>
-                    <p class="hero-description">
-                        Stay ahead in the digital marketing world with the latest updates, trends, insights, and strategies. 
-                        Whether you're a seasoned marketer or just starting your journey, we've got you covered.
-                    </p>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Articles</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">50K+</span>
-                            <span class="stat-label">Readers</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Daily</span>
-                            <span class="stat-label">Updates</span>
-                        </div>
-                    </div>
-                    
-                    <a href="#blog-updates" class="hero-btn">Explore Latest Updates</a>
+            <div class="hero-layout">
+                <!-- Left Side: Hero Content -->
+                <div class="hero-content">
+                    <h1>Digital Marketing Wiki</h1>
+                    <p>Your comprehensive resource for the latest digital marketing trends, tips, and strategies</p>
+                    <a href="#latest-updates" class="hero-button">Explore Resources</a>
                 </div>
                 
-                <div class="hero-right">
-                    <div class="animation-container">
-                        <!-- Sliding Animation Track 1 -->
-                        <div class="slide-track">
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-search"></i></div>
-                                <div class="slide-title">SEO Mastery</div>
-                                <div class="slide-text">Learn advanced SEO techniques and algorithm updates</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-ad"></i></div>
-                                <div class="slide-title">PPC Campaigns</div>
-                                <div class="slide-text">Master Google Ads and Facebook advertising strategies</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-chart-bar"></i></div>
-                                <div class="slide-title">Analytics</div>
-                                <div class="slide-text">Data-driven insights for better marketing decisions</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-mobile-alt"></i></div>
-                                <div class="slide-title">Mobile Marketing</div>
-                                <div class="slide-text">Optimize for mobile-first digital experiences</div>
-                            </div>
+                <!-- Right Side: Contact Form -->
+                <div class="hero-contact-form">
+                    <h3 class="contact-form-title">Get In Touch</h3>
+                    <form action="mailto:manishyv0@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                         </div>
                         
-                        <!-- Sliding Animation Track 2 -->
-                        <div class="slide-track">
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-share-alt"></i></div>
-                                <div class="slide-title">Social Media</div>
-                                <div class="slide-text">Trending social media marketing strategies</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-envelope"></i></div>
-                                <div class="slide-title">Email Marketing</div>
-                                <div class="slide-text">Build effective email campaigns that convert</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-video"></i></div>
-                                <div class="slide-title">Video Content</div>
-                                <div class="slide-text">Create engaging video content for all platforms</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-robot"></i></div>
-                                <div class="slide-title">AI Marketing</div>
-                                <div class="slide-text">Leverage AI tools for marketing automation</div>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
                         </div>
                         
-                        <!-- Sliding Animation Track 3 -->
-                        <div class="slide-track">
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-bullhorn"></i></div>
-                                <div class="slide-title">Brand Building</div>
-                                <div class="slide-text">Strategies to build and grow your brand online</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-shopping-cart"></i></div>
-                                <div class="slide-title">E-commerce</div>
-                                <div class="slide-text">Boost online sales with proven tactics</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-users"></i></div>
-                                <div class="slide-title">Community</div>
-                                <div class="slide-text">Build engaged communities around your brand</div>
-                            </div>
-                            <div class="marketing-slide">
-                                <div class="slide-icon"><i class="fas fa-rocket"></i></div>
-                                <div class="slide-title">Growth Hacking</div>
-                                <div class="slide-text">Rapid growth strategies for startups</div>
-                            </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
                         </div>
-                    </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="contact-submit-btn">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Digital Marketing Updates -->
-    <section class="section blog-updates" id="blog-updates">
+    
+    <!-- Latest Updates Section -->
+    <section id="latest-updates" class="posts-section">
         <div class="container">
-            <h2 class="section-title">Latest Digital Marketing Updates</h2>
-            <div class="blog-grid">
-                <!-- Row 1 -->
-                <div class="blog-card" onclick="window.open('#', '_blank')">
-                    <div class="blog-image" style="background: linear-gradient(45deg, #667eea, #764ba2);"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Google Ads New Features 2024</h3>
-                    </div>
+            <h2 class="section-title">Latest Updates / Changes in Digital Marketing</h2>
+            <div class="posts-grid">
+                <!-- Post 1 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Analytics+Update');"></div>
+                    <div class="post-title">Google Analytics 4 New Features</div>
                 </div>
-                <div class="blog-card" onclick="window.open('#', '_blank')">
-                    <div class="blog-image" style="background: linear-gradient(45deg, #f093fb, #f5576c);"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Social Media Marketing Trends</h3>
-                    </div>
+                
+                <!-- Post 2 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Instagram+Algorithm');"></div>
+                    <div class="post-title">Instagram Algorithm Update</div>
                 </div>
-                <div class="blog-card" onclick="window.open('#', '_blank')">
-                    <div class="blog-image" style="background: linear-gradient(45deg, #4facfe, #00f2fe);"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">SEO Algorithm Updates</h3>
-                    </div>
+                
+                <!-- Post 3 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Search+Console');"></div>
+                    <div class="post-title">Google Search Console Changes</div>
                 </div>
-                <div class="blog-card" onclick="window.open('#', '_blank')">
-                    <div class="blog-image" style="background: linear-gradient(45deg, #fa709a, #fee140);"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Email Marketing Best Practices</h3>
-                    </div>
+                
+                <!-- Post 4 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Facebook+Targeting');"></div>
+                    <div class="post-title">Facebook Ads New Targeting Options</div>
                 </div>
-                <!-- Row 2 -->
-                <div class="blog-card" onclick="window.open('#', '_blank')">
-                    <div class="blog-image" style="background: linear-gradient(45deg, #a8edea, #fed6e3);"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Content Marketing Strategy</h3>
-                    </div>
+                
+                <!-- Post 5 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=LinkedIn+Features');"></div>
+                    <div class="post-title">LinkedIn Marketing Features</div>
                 </div>
-                <div class="blog-card" onclick="window.open('#', '_blank')">
-                    <div class="blog-image" style="background: linear-gradient(45deg, #ffecd2, #fcb69f);"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Local SEO Complete Guide</h3>
-                    </div>
-                </div>
-                <div class="blog-card" onclick="window.open('#', '_blank')">
-                    <div class="blog-image" style="background: linear-gradient(45deg, #667eea, #764ba2);"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">PPC Campaign Optimization</h3>
-                    </div>
-                </div>
-                <div class="blog-card" onclick="window.open('#', '_blank')">
-                    <div class="blog-image" style="background: linear-gradient(45deg, #ff9a9e, #fecfef);"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Conversion Rate Optimization</h3>
-                    </div>
+                
+                <!-- Post 6 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Smart+Bidding');"></div>
+                    <div class="post-title">Google Ads Smart Bidding Update</div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Tips & Tricks -->
-    <section class="section tips-tricks">
-        <div class="container">
-            <h2 class="section-title">Tips & Tricks</h2>
-            <div class="tips-grid">
-                <div class="tip-card" onclick="window.open('#', '_blank')">
-                    <div class="tip-image" style="background: linear-gradient(45deg, #667eea, #764ba2);"></div>
-                    <div class="tip-content">
-                        <h3 class="tip-title">Quick SEO Audit Checklist</h3>
-                    </div>
-                </div>
-                <div class="tip-card" onclick="window.open('#', '_blank')">
-                    <div class="tip-image" style="background: linear-gradient(45deg, #f093fb, #f5576c);"></div>
-                    <div class="tip-content">
-                        <h3 class="tip-title">Social Media Posting Schedule</h3>
-                    </div>
-                </div>
-                <div class="tip-card" onclick="window.open('#', '_blank')">
-                    <div class="tip-image" style="background: linear-gradient(45deg, #4facfe, #00f2fe);"></div>
-                    <div class="tip-content">
-                        <h3 class="tip-title">Google Ads Budget Optimization</h3>
-                    </div>
-                </div>
+    
+    <!-- Animated Subscribe Section with Reading Video Background -->
+    <section class="subscribe">
+        <!-- Animated Reading Video Background -->
+        <div class="reading-video-bg">
+            <!-- Flying Books -->
+            <div class="flying-book"></div>
+            <div class="flying-book"></div>
+            <div class="flying-book"></div>
+            <div class="flying-book"></div>
+            <div class="flying-book"></div>
+            
+            <!-- Floating Letters -->
+            <div class="floating-letters">
+                <div class="letter">S</div>
+                <div class="letter">U</div>
+                <div class="letter">B</div>
+                <div class="letter">S</div>
+                <div class="letter">C</div>
+                <div class="letter">R</div>
+                <div class="letter">I</div>
+                <div class="letter">B</div>
             </div>
+            
+            <!-- Email Envelope -->
+            <div class="email-envelope"></div>
         </div>
-    </section>
-
-    <!-- Subscription Section -->
-    <section class="section subscription">
+        
         <div class="container">
-            <div class="subscription-content">
-                <h2>Stay Updated with Digital Marketing Insights</h2>
-                <p>Get the latest tips, trends, and strategies delivered straight to your inbox</p>
-                <form class="subscription-form" action="mailto:manishyv0@gmail.com" method="post" enctype="text/plain">
+            <div class="subscribe-content">
+                <h2>Subscribe for Digital Marketing Updates</h2>
+                <form class="subscribe-form" action="mailto:manishyv0@gmail.com" method="post" enctype="text/plain">
                     <input type="email" name="email" placeholder="Enter your email address" required>
-                    <button type="submit">Subscribe Now</button>
+                    <button type="submit">Subscribe</button>
                 </form>
             </div>
         </div>
     </section>
-
+    
+    <!-- General Blogs Section -->
+    <section class="posts-section">
+        <div class="container">
+            <h2 class="section-title">Digital Marketing Resources</h2>
+            <div class="posts-grid">
+                <!-- Blog 1 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=SEO+Best+Practices');"></div>
+                    <div class="post-title">SEO Best Practices Guide</div>
+                </div>
+                
+                <!-- Blog 2 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Content+Marketing');"></div>
+                    <div class="post-title">Content Marketing Strategy</div>
+                </div>
+                
+                <!-- Blog 3 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Social+Media+Tips');"></div>
+                    <div class="post-title">Social Media Marketing Tips</div>
+                </div>
+                
+                <!-- Blog 4 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Email+Automation');"></div>
+                    <div class="post-title">Email Marketing Automation</div>
+                </div>
+                
+                <!-- Blog 5 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Google+Ads+Setup');"></div>
+                    <div class="post-title">Google Ads Campaign Setup</div>
+                </div>
+                
+                <!-- Blog 6 -->
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Analytics+Guide');"></div>
+                    <div class="post-title">Analytics & Reporting Guide</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Quiz Section -->
-    <section class="section quiz-section">
+    <section class="quiz-section">
         <div class="container">
-            <h2 class="section-title">Digital Marketing Quiz</h2>
-            <div class="quiz-container">
-                <!-- Row 1 -->
+            <h2 class="section-title">Digital Marketing Polls</h2>
+            <div class="quiz-grid">
+                <!-- Quiz 1 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">What does SEO stand for?</div>
+                    <div class="quiz-question">Which social platform gives you the best ROI?</div>
                     <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz1" value="a" onchange="updateQuiz(1, 'a')">
-                            Search Engine Optimization
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz1" value="b" onchange="updateQuiz(1, 'b')">
-                            Social Engine Optimization
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz1" value="c" onchange="updateQuiz(1, 'c')">
-                            Search Email Optimization
-                        </label>
+                        <div class="quiz-option" onclick="updatePoll(this, 0, 0)">
+                            <span class="option-text">Facebook</span>
+                            <span class="option-percent">65%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 0, 1)">
+                            <span class="option-text">Instagram</span>
+                            <span class="option-percent">25%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 0, 2)">
+                            <span class="option-text">LinkedIn</span>
+                            <span class="option-percent">10%</span>
+                        </div>
                     </div>
-                    <div class="quiz-results" id="results1"></div>
                 </div>
-
+                
+                <!-- Quiz 2 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">Which platform is best for B2B marketing?</div>
+                    <div class="quiz-question">How often do you update your website?</div>
                     <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz2" value="a" onchange="updateQuiz(2, 'a')">
-                            Instagram
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz2" value="b" onchange="updateQuiz(2, 'b')">
-                            LinkedIn
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz2" value="c" onchange="updateQuiz(2, 'c')">
-                            TikTok
-                        </label>
+                        <div class="quiz-option" onclick="updatePoll(this, 1, 0)">
+                            <span class="option-text">Weekly</span>
+                            <span class="option-percent">30%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 1, 1)">
+                            <span class="option-text">Monthly</span>
+                            <span class="option-percent">45%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 1, 2)">
+                            <span class="option-text">Quarterly</span>
+                            <span class="option-percent">25%</span>
+                        </div>
                     </div>
-                    <div class="quiz-results" id="results2"></div>
                 </div>
-
+                
+                <!-- Quiz 3 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">What is the ideal length for a blog post?</div>
+                    <div class="quiz-question">What's your biggest SEO challenge?</div>
                     <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz3" value="a" onchange="updateQuiz(3, 'a')">
-                            300-500 words
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz3" value="b" onchange="updateQuiz(3, 'b')">
-                            1000-2000 words
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz3" value="c" onchange="updateQuiz(3, 'c')">
-                            100-200 words
-                        </label>
+                        <div class="quiz-option" onclick="updatePoll(this, 2, 0)">
+                            <span class="option-text">Content Creation</span>
+                            <span class="option-percent">40%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 2, 1)">
+                            <span class="option-text">Link Building</span>
+                            <span class="option-percent">35%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 2, 2)">
+                            <span class="option-text">Technical SEO</span>
+                            <span class="option-percent">25%</span>
+                        </div>
                     </div>
-                    <div class="quiz-results" id="results3"></div>
                 </div>
-
-                <!-- Row 2 -->
+                
+                <!-- Quiz 4 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">What is CTR in digital marketing?</div>
+                    <div class="quiz-question">Which ad platform performs best for you?</div>
                     <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz4" value="a" onchange="updateQuiz(4, 'a')">
-                            Click Through Rate
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz4" value="b" onchange="updateQuiz(4, 'b')">
-                            Cost To Revenue
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz4" value="c" onchange="updateQuiz(4, 'c')">
-                            Customer Target Reach
-                        </label>
+                        <div class="quiz-option" onclick="updatePoll(this, 3, 0)">
+                            <span class="option-text">Google Ads</span>
+                            <span class="option-percent">55%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 3, 1)">
+                            <span class="option-text">Facebook Ads</span>
+                            <span class="option-percent">35%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 3, 2)">
+                            <span class="option-text">LinkedIn Ads</span>
+                            <span class="option-percent">10%</span>
+                        </div>
                     </div>
-                    <div class="quiz-results" id="results4"></div>
                 </div>
-
+                
+                <!-- Quiz 5 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">Which metric measures website traffic quality?</div>
+                    <div class="quiz-question">How much of your budget goes to digital?</div>
                     <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz5" value="a" onchange="updateQuiz(5, 'a')">
-                            Page Views
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz5" value="b" onchange="updateQuiz(5, 'b')">
-                            Bounce Rate
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz5" value="c" onchange="updateQuiz(5, 'c')">
-                            Total Visits
-                        </label>
+                        <div class="quiz-option" onclick="updatePoll(this, 4, 0)">
+                            <span class="option-text">Less than 25%</span>
+                            <span class="option-percent">20%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 4, 1)">
+                            <span class="option-text">25% - 50%</span>
+                            <span class="option-percent">45%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 4, 2)">
+                            <span class="option-text">More than 50%</span>
+                            <span class="option-percent">35%</span>
+                        </div>
                     </div>
-                    <div class="quiz-results" id="results5"></div>
                 </div>
-
+                
+                <!-- Quiz 6 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">What does PPC stand for?</div>
+                    <div class="quiz-question">What content type works best for you?</div>
                     <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz6" value="a" onchange="updateQuiz(6, 'a')">
-                            Pay Per Click
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz6" value="b" onchange="updateQuiz(6, 'b')">
-                            Pay Per Customer
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="quiz6" value="c" onchange="updateQuiz(6, 'c')">
-                            Pay Per Conversion
-                        </label>
+                        <div class="quiz-option" onclick="updatePoll(this, 5, 0)">
+                            <span class="option-text">Blog Posts</span>
+                            <span class="option-percent">30%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 5, 1)">
+                            <span class="option-text">Videos</span>
+                            <span class="option-percent">45%</span>
+                        </div>
+                        <div class="quiz-option" onclick="updatePoll(this, 5, 2)">
+                            <span class="option-text">Infographics</span>
+                            <span class="option-percent">25%</span>
+                        </div>
                     </div>
-                    <div class="quiz-results" id="results6"></div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Services Section -->
-    <section class="section services" id="services">
+    
+    <!-- Compact Services Section with Left Menu -->
+    <section class="services-section">
         <div class="container">
-            <h2 class="section-title">Our Digital Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3 class="service-title">Website Designing</h3>
-                    <p class="service-description">Create stunning, responsive websites that convert visitors into customers with modern design and user experience.</p>
+            <h2 class="section-title">Our Digital Marketing Services</h2>
+            
+            <div class="services-container">
+                <!-- Left Side Menu -->
+                <div class="services-menu">
+                    <div class="service-tab active" onclick="showService(0)">Website Design</div>
+                    <div class="service-tab" onclick="showService(1)">SEO Services</div>
+                    <div class="service-tab" onclick="showService(2)">Social Media</div>
+                    <div class="service-tab" onclick="showService(3)">Google Ads</div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-search"></i></div>
-                    <h3 class="service-title">SEO</h3>
-                    <p class="service-description">Boost your website's visibility and rank higher on search engines with our proven SEO strategies and techniques.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-share-alt"></i></div>
-                    <h3 class="service-title">Social Media Marketing</h3>
-                    <p class="service-description">Engage your audience and build brand awareness across all major social media platforms with targeted campaigns.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-ad"></i></div>
-                    <h3 class="service-title">Google Ads</h3>
-                    <p class="service-description">Drive qualified traffic and maximize ROI with expertly managed Google Ads campaigns and optimization.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <h3 class="service-title">E-commerce Marketing</h3>
-                    <p class="service-description">Boost your online store sales with comprehensive e-commerce marketing strategies and conversion optimization.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fab fa-youtube"></i></div>
-                    <h3 class="service-title">YouTube Optimization</h3>
-                    <p class="service-description">Grow your YouTube channel with optimized content, SEO strategies, and audience engagement techniques.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-envelope"></i></div>
-                    <h3 class="service-title">Email Marketing</h3>
-                    <p class="service-description">Build relationships and drive conversions with targeted email campaigns and automated marketing sequences.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-newspaper"></i></div>
-                    <h3 class="service-title">Press Release</h3>
-                    <p class="service-description">Increase brand visibility and credibility with professionally written and distributed press releases.</p>
+                
+                <!-- Right Side Content -->
+                <div class="service-content">
+                    <!-- Website Design Panel -->
+                    <div class="service-panel active" id="service-0">
+                        <div class="service-header">
+                            <div class="service-icon">🌐</div>
+                            <div>
+                                <h3 class="service-title">Website Designing</h3>
+                                <p class="service-subtitle">Custom, responsive websites that convert</p>
+                            </div>
+                        </div>
+                        
+                        <p class="service-description">
+                            Our website design services focus on creating beautiful, functional websites that not only look great but also drive conversions. We combine aesthetics with user experience to ensure your site stands out from the competition.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">Responsive Design</div>
+                            <div class="feature-item">SEO Optimized</div>
+                            <div class="feature-item">Fast Loading</div>
+                            <div class="feature-item">Modern UI/UX</div>
+                            <div class="feature-item">Mobile Friendly</div>
+                            <div class="feature-item">Conversion Focused</div>
+                        </div>
+                    </div>
+                    
+                    <!-- SEO Services Panel -->
+                    <div class="service-panel" id="service-1">
+                        <div class="service-header">
+                            <div class="service-icon">🔍</div>
+                            <div>
+                                <h3 class="service-title">Complete SEO</h3>
+                                <p class="service-subtitle">Boost rankings and drive organic traffic</p>
+                            </div>
+                        </div>
+                        
+                        <p class="service-description">
+                            Our comprehensive SEO services help your website rank higher in search engines, driving more organic traffic to your business. We use proven strategies and the latest techniques to improve your online visibility.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">Keyword Research</div>
+                            <div class="feature-item">On-Page SEO</div>
+                            <div class="feature-item">Link Building</div>
+                            <div class="feature-item">Technical SEO</div>
+                            <div class="feature-item">Local SEO</div>
+                            <div class="feature-item">Monthly Reporting</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Panel -->
+                    <div class="service-panel" id="service-2">
+                        <div class="service-header">
+                            <div class="service-icon">📱</div>
+                            <div>
+                                <h3 class="service-title">Social Media Marketing</h3>
+                                <p class="service-subtitle">Engage your audience and build brand awareness</p>
+                            </div>
+                        </div>
+                        
+                        <p class="service-description">
+                            Our social media marketing services help you connect with your audience on the platforms they use most. We create engaging content and manage your social presence to build brand awareness and drive engagement.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">Content Creation</div>
+                            <div class="feature-item">Community Management</div>
+                            <div class="feature-item">Paid Campaigns</div>
+                            <div class="feature-item">Analytics & Insights</div>
+                            <div class="feature-item">Influencer Marketing</div>
+                            <div class="feature-item">Platform Strategy</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Google Ads Panel -->
+                    <div class="service-panel" id="service-3">
+                        <div class="service-header">
+                            <div class="service-icon">🎯</div>
+                            <div>
+                                <h3 class="service-title">Google Ads</h3>
+                                <p class="service-subtitle">Drive targeted traffic and maximize ROI</p>
+                            </div>
+                        </div>
+                        
+                        <p class="service-description">
+                            Our Google Ads services help you reach potential customers at the exact moment they're searching for your products or services. We create and manage campaigns that drive targeted traffic and maximize your return on investment.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">Campaign Setup</div>
+                            <div class="feature-item">Keyword Research</div>
+                            <div class="feature-item">Ad Copywriting</div>
+                            <div class="feature-item">Performance Tracking</div>
+                            <div class="feature-item">Conversion Optimization</div>
+                            <div class="feature-item">ROI Maximization</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <section class="section contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <form class="contact-form" action="mailto:manishyv0@gmail.com" method="post" enctype="text/plain">
-                <div class="form-group">
-                    <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" name="fullname" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Contact Number</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Details/Comment</label>
-                    <textarea id="message" name="message" placeholder="Tell us about your project or requirements..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    
+    <!-- Footer with Social Media -->
     <footer>
         <div class="container">
-            <div class="social-icons">
-                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <div class="footer-content">
+                <div class="social-media">
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin" title="Follow us on LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p>&copy; 2024 Digital Marketing Wiki. All Rights Reserved.</p>
             </div>
-            <p>&copy; 2024 Digital Marketing Hub. All rights reserved.</p>
         </div>
     </footer>
-
+    
+    <!-- JavaScript -->
     <script>
-        // Create dynamic stars
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroLayer = document.querySelector('.hero-layer:nth-child(2)');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.width = `${Math.random() * 3 + 1}px`;
-                star.style.height = star.style.width;
-                star.style.opacity = Math.random() * 0.8 + 0.2;
-                star.style.animationDelay = `${Math.random() * 3}s`;
-                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                heroLayer.appendChild(star);
-            }
-        });
-
-        // Quiz functionality
-        const quizData = {
-            1: { correct: 'a', votes: { a: 0, b: 0, c: 0 } },
-            2: { correct: 'b', votes: { a: 0, b: 0, c: 0 } },
-            3: { correct: 'b', votes: { a: 0, b: 0, c: 0 } },
-            4: { correct: 'a', votes: { a: 0, b: 0, c: 0 } },
-            5: { correct: 'b', votes: { a: 0, b: 0, c: 0 } },
-            6: { correct: 'a', votes: { a: 0, b: 0, c: 0 } }
-        };
-
-        // Load saved data from localStorage
-        function loadQuizData() {
-            const saved = localStorage.getItem('quizData');
-            if (saved) {
-                const savedData = JSON.parse(saved);
-                Object.keys(savedData).forEach(key => {
-                    if (quizData[key]) {
-                        quizData[key].votes = savedData[key].votes;
-                    }
-                });
-            }
-
-            // Load saved answers
-            Object.keys(quizData).forEach(quizId => {
-                const savedAnswer = localStorage.getItem(`quiz${quizId}_answer`);
-                if (savedAnswer) {
-                    const radio = document.querySelector(`input[name="quiz${quizId}"][value="${savedAnswer}"]`);
-                    if (radio) {
-                        radio.checked = true;
-                        radio.closest('.quiz-option').classList.add('selected');
-                    }
-                }
-                updateResults(quizId);
-            });
-        }
-
-        function updateQuiz(quizId, answer) {
-            // Save answer to localStorage
-            localStorage.setItem(`quiz${quizId}_answer`, answer);
+        // Function to handle poll voting
+        function updatePoll(element, questionIndex, optionIndex) {
+            const options = element.parentElement.children;
+            const pollKey = `poll_${questionIndex}`;
             
-            // Update vote count
-            quizData[quizId].votes[answer]++;
-            
-            // Save updated data
-            localStorage.setItem('quizData', JSON.stringify(quizData));
-            
-            // Update visual selection
-            const options = document.querySelectorAll(`input[name="quiz${quizId}"]`);
-            options.forEach(option => {
-                option.closest('.quiz-option').classList.remove('selected');
-            });
-            
-            const selectedOption = document.querySelector(`input[name="quiz${quizId}"][value="${answer}"]`);
-            selectedOption.closest('.quiz-option').classList.add('selected');
-            
-            // Update results display
-            updateResults(quizId);
-        }
-
-        function updateResults(quizId) {
-            const votes = quizData[quizId].votes;
-            const total = votes.a + votes.b + votes.c;
-            const resultsDiv = document.getElementById(`results${quizId}`);
-            
-            if (total === 0) {
-                resultsDiv.innerHTML = '<p style="color: #666; font-style: italic;">No votes yet</p>';
+            if (localStorage.getItem(pollKey)) {
+                alert("You've already voted on this poll!");
                 return;
             }
             
-            const labels = {
-                1: ['Search Engine Optimization', 'Social Engine Optimization', 'Search Email Optimization'],
-                2: ['Instagram', 'LinkedIn', 'TikTok'],
-                3: ['300-500 words', '1000-2000 words', '100-200 words'],
-                4: ['Click Through Rate', 'Cost To Revenue', 'Customer Target Reach'],
-                5: ['Page Views', 'Bounce Rate', 'Total Visits'],
-                6: ['Pay Per Click', 'Pay Per Customer', 'Pay Per Conversion']
-            };
+            let percentages = generateRandomPercentages();
             
-            let html = '<div style="margin-top: 15px;">';
-            ['a', 'b', 'c'].forEach((option, index) => {
-                const percentage = total > 0 ? Math.round((votes[option] / total) * 100) : 0;
-                const isCorrect = option === quizData[quizId].correct;
-                const color = isCorrect ? '#28a745' : '#667eea';
+            for (let i = 0; i < options.length; i++) {
+                options[i].querySelector('.option-percent').textContent = percentages[i] + '%';
                 
-                html += `
-                    <div class="result-bar">
-                        <div class="result-label">${labels[quizId][index].substring(0, 15)}${labels[quizId][index].length > 15 ? '...' : ''}</div>
-                        <div class="result-progress">
-                            <div class="result-fill" style="width: ${percentage}%; background: ${color};"></div>
-                        </div>
-                        <div class="result-percent">${percentage}%</div>
-                    </div>
-                `;
-            });
-            html += '</div>';
+                if (i === optionIndex) {
+                    options[i].style.background = '#e2e8f0';
+                    options[i].style.borderColor = '#6366f1';
+                }
+            }
             
-            resultsDiv.innerHTML = html;
+            localStorage.setItem(pollKey, optionIndex.toString());
         }
-
-        // Initialize quiz data on page load
-        document.addEventListener('DOMContentLoaded', loadQuizData);
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        
+        function generateRandomPercentages() {
+            let a = Math.floor(Math.random() * 60) + 10;
+            let b = Math.floor(Math.random() * (90 - a)) + 5;
+            let c = 100 - a - b;
+            return [a, b, c];
+        }
+        
+        function showService(index) {
+            const panels = document.querySelectorAll('.service-panel');
+            panels.forEach(panel => {
+                panel.classList.remove('active');
+            });
+            
+            document.getElementById(`service-${index}`).classList.add('active');
+            
+            const tabs = document.querySelectorAll('.service-tab');
+            tabs.forEach((tab, i) => {
+                if (i === index) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
                 }
             });
-        });
-
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) rotateX(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards and sections
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.blog-card, .tip-card, .service-card, .quiz-card');
-            elements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px) rotateX(10deg)';
-                el.style.transition = 'all 0.6s ease';
-                observer.observe(el);
-            });
-        });
-
-        // Enhanced 3D parallax effect
-        document.addEventListener('mousemove', function(e) {
-            const hero = document.querySelector('.hero');
-            const heroContent = document.querySelector('.hero-left');
-            const heroScene = document.querySelector('.hero-scene');
-            const animationContainer = document.querySelector('.animation-container');
+        }
+        
+        // Modern animated circle that moves on scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const circle = document.querySelector('.animated-circle');
             
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-            
-            if (heroContent) {
-                heroContent.style.transform = `rotateY(${xAxis/2}deg) rotateX(${-yAxis/2}deg)`;
-            }
-            if (heroScene) {
-                heroScene.style.transform = `rotateY(${xAxis/3}deg) rotateX(${yAxis/3}deg)`;
-            }
-            if (animationContainer) {
-                animationContainer.style.transform = `rotateY(${-xAxis/4}deg) rotateX(${yAxis/4}deg)`;
+            if (scrollPosition <= window.innerHeight) {
+                const translateX = -scrollPosition * 0.6;
+                const translateY = scrollPosition * 0.3;
+                const scale = 1 - (scrollPosition / window.innerHeight) * 0.2;
+                
+                circle.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
             }
         });
-
-        // Add dynamic counter animation for stats
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                const target = counter.textContent;
-                if (target.includes('+')) {
-                    const num = parseInt(target.replace(/\D/g, ''));
-                    let current = 0;
-                    const increment = num / 100;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= num) {
-                            counter.textContent = target;
-                            clearInterval(timer);
-                        } else {
-                            counter.textContent = Math.floor(current) + (target.includes('K') ? 'K+' : '+');
+        
+        // Check for existing votes on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            for (let i = 0; i < 6; i++) {
+                const pollKey = `poll_${i}`;
+                const savedVote = localStorage.getItem(pollKey);
+                
+                if (savedVote !== null) {
+                    const quizCard = document.querySelectorAll('.quiz-card')[i];
+                    if (quizCard) {
+                        const options = quizCard.querySelectorAll('.quiz-option');
+                        const selectedOption = options[parseInt(savedVote)];
+                        
+                        if (selectedOption) {
+                            selectedOption.style.background = '#e2e8f0';
+                            selectedOption.style.borderColor = '#6366f1';
                         }
-                    }, 20);
+                    }
                 }
-            });
-        }
-
-        // Trigger counter animation when hero is visible
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    heroObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                heroObserver.observe(hero);
             }
         });
     </script>
