@@ -334,11 +334,18 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
+            cursor: pointer;
         }
         
         .post-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .post-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         
         .post-image {
@@ -935,6 +942,8 @@
             .animated-circle {
                 width: 300px;
                 height: 300px;
+                /* Keep the circle visible on mobile */
+                display: block;
             }
             
             .hero-contact-form {
@@ -985,6 +994,10 @@
             .animated-circle {
                 width: 200px;
                 height: 200px;
+                /* Keep the circle visible on mobile */
+                display: block;
+                right: -100px;
+                bottom: -100px;
             }
             
             .section-title {
@@ -1053,7 +1066,7 @@
                 <!-- Right Side: Contact Form -->
                 <div class="hero-contact-form">
                     <h3 class="contact-form-title">Get In Touch</h3>
-                    <form action="https://formspree.io/f/manishyv0@gmail.com" method="POST">
+                    <form action="mailto:manishyv0@gmail.com" method="post" enctype="text/plain">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -1088,38 +1101,50 @@
             <div class="posts-grid">
                 <!-- Post 1 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Analytics+Update');"></div>
-                    <div class="post-title">Google Analytics 4 New Features</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Analytics+Update');"></div>
+                        <div class="post-title">Google Analytics 4 New Features</div>
+                    </a>
                 </div>
                 
                 <!-- Post 2 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Instagram+Algorithm');"></div>
-                    <div class="post-title">Instagram Algorithm Update</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Instagram+Algorithm');"></div>
+                        <div class="post-title">Instagram Algorithm Update</div>
+                    </a>
                 </div>
                 
                 <!-- Post 3 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Search+Console');"></div>
-                    <div class="post-title">Google Search Console Changes</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Search+Console');"></div>
+                        <div class="post-title">Google Search Console Changes</div>
+                    </a>
                 </div>
                 
                 <!-- Post 4 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Facebook+Targeting');"></div>
-                    <div class="post-title">Facebook Ads New Targeting Options</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Facebook+Targeting');"></div>
+                        <div class="post-title">Facebook Ads New Targeting Options</div>
+                    </a>
                 </div>
                 
                 <!-- Post 5 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=LinkedIn+Features');"></div>
-                    <div class="post-title">LinkedIn Marketing Features</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=LinkedIn+Features');"></div>
+                        <div class="post-title">LinkedIn Marketing Features</div>
+                    </a>
                 </div>
                 
                 <!-- Post 6 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Smart+Bidding');"></div>
-                    <div class="post-title">Google Ads Smart Bidding Update</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Smart+Bidding');"></div>
+                        <div class="post-title">Google Ads Smart Bidding Update</div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1155,7 +1180,7 @@
         <div class="container">
             <div class="subscribe-content">
                 <h2>Subscribe for Digital Marketing Updates</h2>
-                <form class="subscribe-form" action="https://formspree.io/f/manishyv0@gmail.com" method="POST">
+                <form class="subscribe-form" action="mailto:manishyv0@gmail.com" method="post" enctype="text/plain">
                     <input type="email" name="email" placeholder="Enter your email address" required>
                     <button type="submit">Subscribe</button>
                 </form>
@@ -1170,38 +1195,50 @@
             <div class="posts-grid">
                 <!-- Blog 1 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=SEO+Best+Practices');"></div>
-                    <div class="post-title">SEO Best Practices Guide</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=SEO+Best+Practices');"></div>
+                        <div class="post-title">SEO Best Practices Guide</div>
+                    </a>
                 </div>
                 
                 <!-- Blog 2 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Content+Marketing');"></div>
-                    <div class="post-title">Content Marketing Strategy</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Content+Marketing');"></div>
+                        <div class="post-title">Content Marketing Strategy</div>
+                    </a>
                 </div>
                 
                 <!-- Blog 3 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Social+Media+Tips');"></div>
-                    <div class="post-title">Social Media Marketing Tips</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Social+Media+Tips');"></div>
+                        <div class="post-title">Social Media Marketing Tips</div>
+                    </a>
                 </div>
                 
                 <!-- Blog 4 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Email+Automation');"></div>
-                    <div class="post-title">Email Marketing Automation</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Email+Automation');"></div>
+                        <div class="post-title">Email Marketing Automation</div>
+                    </a>
                 </div>
                 
                 <!-- Blog 5 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Google+Ads+Setup');"></div>
-                    <div class="post-title">Google Ads Campaign Setup</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Google+Ads+Setup');"></div>
+                        <div class="post-title">Google Ads Campaign Setup</div>
+                    </a>
                 </div>
                 
                 <!-- Blog 6 -->
                 <div class="post-card">
-                    <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Analytics+Guide');"></div>
-                    <div class="post-title">Analytics & Reporting Guide</div>
+                    <a href="#" class="post-link">
+                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Analytics+Guide');"></div>
+                        <div class="post-title">Analytics & Reporting Guide</div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1215,7 +1252,7 @@
                 <!-- Quiz 1 -->
                 <div class="quiz-card">
                     <div class="quiz-question">Which social platform gives you the best ROI?</div>
-                    <div class="quiz-options">
+                    <div class="quiz-options" data-poll-id="0">
                         <div class="quiz-option" onclick="updatePoll(this, 0, 0)">
                             <span class="option-text">Facebook</span>
                             <span class="option-percent">65%</span>
@@ -1234,7 +1271,7 @@
                 <!-- Quiz 2 -->
                 <div class="quiz-card">
                     <div class="quiz-question">How often do you update your website?</div>
-                    <div class="quiz-options">
+                    <div class="quiz-options" data-poll-id="1">
                         <div class="quiz-option" onclick="updatePoll(this, 1, 0)">
                             <span class="option-text">Weekly</span>
                             <span class="option-percent">30%</span>
@@ -1253,7 +1290,7 @@
                 <!-- Quiz 3 -->
                 <div class="quiz-card">
                     <div class="quiz-question">What's your biggest SEO challenge?</div>
-                    <div class="quiz-options">
+                    <div class="quiz-options" data-poll-id="2">
                         <div class="quiz-option" onclick="updatePoll(this, 2, 0)">
                             <span class="option-text">Content Creation</span>
                             <span class="option-percent">40%</span>
@@ -1272,7 +1309,7 @@
                 <!-- Quiz 4 -->
                 <div class="quiz-card">
                     <div class="quiz-question">Which ad platform performs best for you?</div>
-                    <div class="quiz-options">
+                    <div class="quiz-options" data-poll-id="3">
                         <div class="quiz-option" onclick="updatePoll(this, 3, 0)">
                             <span class="option-text">Google Ads</span>
                             <span class="option-percent">55%</span>
@@ -1291,7 +1328,7 @@
                 <!-- Quiz 5 -->
                 <div class="quiz-card">
                     <div class="quiz-question">How much of your budget goes to digital?</div>
-                    <div class="quiz-options">
+                    <div class="quiz-options" data-poll-id="4">
                         <div class="quiz-option" onclick="updatePoll(this, 4, 0)">
                             <span class="option-text">Less than 25%</span>
                             <span class="option-percent">20%</span>
@@ -1310,7 +1347,7 @@
                 <!-- Quiz 6 -->
                 <div class="quiz-card">
                     <div class="quiz-question">What content type works best for you?</div>
-                    <div class="quiz-options">
+                    <div class="quiz-options" data-poll-id="5">
                         <div class="quiz-option" onclick="updatePoll(this, 5, 0)">
                             <span class="option-text">Blog Posts</span>
                             <span class="option-percent">30%</span>
@@ -1456,18 +1493,14 @@
     <script>
         // Function to handle poll voting - Fixed to allow only one selection per poll
         function updatePoll(element, questionIndex, optionIndex) {
-            const pollKey = `poll_${questionIndex}`;
+            // Get the parent options container
+            const optionsContainer = element.parentElement;
+            const options = optionsContainer.children;
             
             // Check if user has already voted on this poll
-            if (localStorage.getItem(pollKey)) {
-                alert("You've already voted on this poll!");
-                return;
-            }
+            const pollKey = `poll_${questionIndex}`;
             
-            // Get all options in this poll
-            const options = element.parentElement.children;
-            
-            // Remove selected class from all options
+            // Remove selected class from all options in this poll
             for (let i = 0; i < options.length; i++) {
                 options[i].classList.remove('selected');
             }
@@ -1483,7 +1516,7 @@
                 options[i].querySelector('.option-percent').textContent = percentages[i] + '%';
             }
             
-            // Save the vote to prevent multiple votes
+            // Save the vote
             localStorage.setItem(pollKey, optionIndex.toString());
         }
         
