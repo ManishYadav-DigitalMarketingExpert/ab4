@@ -33,7 +33,7 @@
             color: #1a1a2e; /* Deep navy */
             position: relative;
             padding-left: 20px;
-            border-left: 4px solid #6366f1; /* Indigo accent */
+            border-left: 4px solid #f093fb; /* Changed to pink */
             font-weight: 700;
         }
         
@@ -692,24 +692,36 @@
         
         .quiz-option:hover {
             background: #e2e8f0;
-            border-color: #6366f1;
+            border-color: #f093fb;
         }
         
         .quiz-option.selected {
             background: #e2e8f0;
-            border-color: #6366f1;
+            border-color: #f093fb;
+        }
+        
+        .quiz-option.correct {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            color: #15803d;
+        }
+        
+        .quiz-option.wrong {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: #ef4444;
+            color: #dc2626;
         }
         
         .option-text {
             font-size: 16px;
-            color: #374151;
+            color: inherit;
             font-weight: 500;
         }
         
-        .option-percent {
+        .option-status {
             font-size: 14px;
             font-weight: 700;
-            color: #6366f1;
+            color: inherit;
         }
         
         /* Compact Modern Services Section */
@@ -750,14 +762,14 @@
         }
         
         .service-tab:hover {
-            background: rgba(99, 102, 241, 0.05);
-            color: #6366f1;
+            background: rgba(240, 147, 251, 0.05);
+            color: #f093fb;
         }
         
         .service-tab.active {
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-            border-left: 3px solid #6366f1;
+            background: rgba(240, 147, 251, 0.1);
+            color: #f093fb;
+            border-left: 3px solid #f093fb;
             font-weight: 700;
         }
         
@@ -795,7 +807,7 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            background: linear-gradient(135deg, #f093fb, #f5576c);
         }
         
         .service-header {
@@ -807,7 +819,7 @@
         .service-icon {
             width: 60px; /* Reduced from 80px */
             height: 60px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            background: linear-gradient(135deg, #f093fb, #f5576c);
             border-radius: 16px; /* Changed from circle to rounded square */
             display: flex;
             align-items: center;
@@ -815,7 +827,7 @@
             margin-right: 16px;
             color: #ffffff;
             font-size: 24px; /* Reduced font size */
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
         }
         
         .service-title {
@@ -865,6 +877,72 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+            background: #f8fafc;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        
+        .faq-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a2e;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding: 12px 0;
+            border-bottom: 2px solid #f093fb;
+        }
+        
+        .faq-question:hover {
+            color: #f093fb;
+        }
+        
+        .faq-icon {
+            font-size: 20px;
+            color: #f093fb;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #374151;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.open {
+            max-height: 200px;
         }
         
         /* Footer - Simplified */
@@ -926,7 +1004,11 @@
             
             .service-tab.active {
                 border-left: none;
-                border-bottom: 3px solid #6366f1;
+                border-bottom: 3px solid #f093fb;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -980,6 +1062,10 @@
             .flying-book {
                 display: none;
             }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1026,6 +1112,14 @@
             
             .contact-form-title {
                 font-size: 20px;
+            }
+            
+            .faq-question {
+                font-size: 16px;
+            }
+            
+            .faq-answer {
+                font-size: 14px;
             }
         }
     </style>
@@ -1252,113 +1346,113 @@
                 <!-- Quiz 1 -->
                 <div class="quiz-card">
                     <div class="quiz-question">Which social platform gives you the best ROI?</div>
-                    <div class="quiz-options" data-poll-id="0">
+                    <div class="quiz-options" data-poll-id="0" data-correct="0">
                         <div class="quiz-option" onclick="updatePoll(this, 0, 0)">
                             <span class="option-text">Facebook</span>
-                            <span class="option-percent">65%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 0, 1)">
                             <span class="option-text">Instagram</span>
-                            <span class="option-percent">25%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 0, 2)">
                             <span class="option-text">LinkedIn</span>
-                            <span class="option-percent">10%</span>
+                            <span class="option-status"></span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Quiz 2 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">How often do you update your website?</div>
-                    <div class="quiz-options" data-poll-id="1">
+                    <div class="quiz-question">How often should you update your website content?</div>
+                    <div class="quiz-options" data-poll-id="1" data-correct="1">
                         <div class="quiz-option" onclick="updatePoll(this, 1, 0)">
                             <span class="option-text">Weekly</span>
-                            <span class="option-percent">30%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 1, 1)">
                             <span class="option-text">Monthly</span>
-                            <span class="option-percent">45%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 1, 2)">
                             <span class="option-text">Quarterly</span>
-                            <span class="option-percent">25%</span>
+                            <span class="option-status"></span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Quiz 3 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">What's your biggest SEO challenge?</div>
-                    <div class="quiz-options" data-poll-id="2">
+                    <div class="quiz-question">What's the most important SEO factor?</div>
+                    <div class="quiz-options" data-poll-id="2" data-correct="0">
                         <div class="quiz-option" onclick="updatePoll(this, 2, 0)">
-                            <span class="option-text">Content Creation</span>
-                            <span class="option-percent">40%</span>
+                            <span class="option-text">Quality Content</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 2, 1)">
                             <span class="option-text">Link Building</span>
-                            <span class="option-percent">35%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 2, 2)">
                             <span class="option-text">Technical SEO</span>
-                            <span class="option-percent">25%</span>
+                            <span class="option-status"></span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Quiz 4 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">Which ad platform performs best for you?</div>
-                    <div class="quiz-options" data-poll-id="3">
+                    <div class="quiz-question">Which ad platform has the highest conversion rate?</div>
+                    <div class="quiz-options" data-poll-id="3" data-correct="0">
                         <div class="quiz-option" onclick="updatePoll(this, 3, 0)">
                             <span class="option-text">Google Ads</span>
-                            <span class="option-percent">55%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 3, 1)">
                             <span class="option-text">Facebook Ads</span>
-                            <span class="option-percent">35%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 3, 2)">
                             <span class="option-text">LinkedIn Ads</span>
-                            <span class="option-percent">10%</span>
+                            <span class="option-status"></span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Quiz 5 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">How much of your budget goes to digital?</div>
-                    <div class="quiz-options" data-poll-id="4">
+                    <div class="quiz-question">What's the ideal email open rate?</div>
+                    <div class="quiz-options" data-poll-id="4" data-correct="1">
                         <div class="quiz-option" onclick="updatePoll(this, 4, 0)">
-                            <span class="option-text">Less than 25%</span>
-                            <span class="option-percent">20%</span>
+                            <span class="option-text">10-15%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 4, 1)">
-                            <span class="option-text">25% - 50%</span>
-                            <span class="option-percent">45%</span>
+                            <span class="option-text">20-25%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 4, 2)">
-                            <span class="option-text">More than 50%</span>
-                            <span class="option-percent">35%</span>
+                            <span class="option-text">30-35%</span>
+                            <span class="option-status"></span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Quiz 6 -->
                 <div class="quiz-card">
-                    <div class="quiz-question">What content type works best for you?</div>
-                    <div class="quiz-options" data-poll-id="5">
+                    <div class="quiz-question">What content type gets the most engagement?</div>
+                    <div class="quiz-options" data-poll-id="5" data-correct="1">
                         <div class="quiz-option" onclick="updatePoll(this, 5, 0)">
                             <span class="option-text">Blog Posts</span>
-                            <span class="option-percent">30%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 5, 1)">
                             <span class="option-text">Videos</span>
-                            <span class="option-percent">45%</span>
+                            <span class="option-status"></span>
                         </div>
                         <div class="quiz-option" onclick="updatePoll(this, 5, 2)">
                             <span class="option-text">Infographics</span>
-                            <span class="option-percent">25%</span>
+                            <span class="option-status"></span>
                         </div>
                     </div>
                 </div>
@@ -1374,40 +1468,16 @@
             <div class="services-container">
                 <!-- Left Side Menu -->
                 <div class="services-menu">
-                    <div class="service-tab active" onclick="showService(0)">Website Design</div>
-                    <div class="service-tab" onclick="showService(1)">SEO Services</div>
+                    <div class="service-tab active" onclick="showService(0)">SEO Services</div>
+                    <div class="service-tab" onclick="showService(1)">Google Ads</div>
                     <div class="service-tab" onclick="showService(2)">Social Media</div>
-                    <div class="service-tab" onclick="showService(3)">Google Ads</div>
+                    <div class="service-tab" onclick="showService(3)">Website Design</div>
                 </div>
                 
                 <!-- Right Side Content -->
                 <div class="service-content">
-                    <!-- Website Design Panel -->
-                    <div class="service-panel active" id="service-0">
-                        <div class="service-header">
-                            <div class="service-icon">🌐</div>
-                            <div>
-                                <h3 class="service-title">Website Designing</h3>
-                                <p class="service-subtitle">Custom, responsive websites that convert</p>
-                            </div>
-                        </div>
-                        
-                        <p class="service-description">
-                            Our website design services focus on creating beautiful, functional websites that not only look great but also drive conversions. We combine aesthetics with user experience to ensure your site stands out from the competition.
-                        </p>
-                        
-                        <div class="service-features">
-                            <div class="feature-item">Responsive Design</div>
-                            <div class="feature-item">SEO Optimized</div>
-                            <div class="feature-item">Fast Loading</div>
-                            <div class="feature-item">Modern UI/UX</div>
-                            <div class="feature-item">Mobile Friendly</div>
-                            <div class="feature-item">Conversion Focused</div>
-                        </div>
-                    </div>
-                    
                     <!-- SEO Services Panel -->
-                    <div class="service-panel" id="service-1">
+                    <div class="service-panel active" id="service-0">
                         <div class="service-header">
                             <div class="service-icon">🔍</div>
                             <div>
@@ -1427,6 +1497,30 @@
                             <div class="feature-item">Technical SEO</div>
                             <div class="feature-item">Local SEO</div>
                             <div class="feature-item">Monthly Reporting</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Google Ads Panel -->
+                    <div class="service-panel" id="service-1">
+                        <div class="service-header">
+                            <div class="service-icon">🎯</div>
+                            <div>
+                                <h3 class="service-title">Google Ads</h3>
+                                <p class="service-subtitle">Drive targeted traffic and maximize ROI</p>
+                            </div>
+                        </div>
+                        
+                        <p class="service-description">
+                            Our Google Ads services help you reach potential customers at the exact moment they're searching for your products or services. We create and manage campaigns that drive targeted traffic and maximize your return on investment.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">Campaign Setup</div>
+                            <div class="feature-item">Keyword Research</div>
+                            <div class="feature-item">Ad Copywriting</div>
+                            <div class="feature-item">Performance Tracking</div>
+                            <div class="feature-item">Conversion Optimization</div>
+                            <div class="feature-item">ROI Maximization</div>
                         </div>
                     </div>
                     
@@ -1454,28 +1548,80 @@
                         </div>
                     </div>
                     
-                    <!-- Google Ads Panel -->
+                    <!-- Website Design Panel -->
                     <div class="service-panel" id="service-3">
                         <div class="service-header">
-                            <div class="service-icon">🎯</div>
+                            <div class="service-icon">🌐</div>
                             <div>
-                                <h3 class="service-title">Google Ads</h3>
-                                <p class="service-subtitle">Drive targeted traffic and maximize ROI</p>
+                                <h3 class="service-title">Website Designing</h3>
+                                <p class="service-subtitle">Custom, responsive websites that convert</p>
                             </div>
                         </div>
                         
                         <p class="service-description">
-                            Our Google Ads services help you reach potential customers at the exact moment they're searching for your products or services. We create and manage campaigns that drive targeted traffic and maximize your return on investment.
+                            Our website design services focus on creating beautiful, functional websites that not only look great but also drive conversions. We combine aesthetics with user experience to ensure your site stands out from the competition.
                         </p>
                         
                         <div class="service-features">
-                            <div class="feature-item">Campaign Setup</div>
-                            <div class="feature-item">Keyword Research</div>
-                            <div class="feature-item">Ad Copywriting</div>
-                            <div class="feature-item">Performance Tracking</div>
-                            <div class="feature-item">Conversion Optimization</div>
-                            <div class="feature-item">ROI Maximization</div>
+                            <div class="feature-item">Responsive Design</div>
+                            <div class="feature-item">SEO Optimized</div>
+                            <div class="feature-item">Fast Loading</div>
+                            <div class="feature-item">Modern UI/UX</div>
+                            <div class="feature-item">Mobile Friendly</div>
+                            <div class="feature-item">Conversion Focused</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How long does SEO take to show results?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        SEO typically takes 3-6 months to show significant results. However, some improvements can be seen within the first month, especially for technical SEO fixes and on-page optimizations.
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What's the difference between Google Ads and Facebook Ads?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Google Ads targets users actively searching for products/services, while Facebook Ads targets users based on interests and demographics. Google Ads typically have higher intent but Facebook Ads offer better targeting options.
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How often should I post on social media?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Posting frequency varies by platform: Facebook (3-5 times/week), Instagram (1-2 times/day), Twitter (3-5 times/day), LinkedIn (1-2 times/day). Quality is more important than quantity.
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Do I need a mobile-responsive website?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, absolutely! Over 60% of web traffic comes from mobile devices. Google also uses mobile-first indexing, meaning your mobile site affects your search rankings more than your desktop version.
                     </div>
                 </div>
             </div>
@@ -1491,14 +1637,18 @@
     
     <!-- JavaScript -->
     <script>
-        // Function to handle poll voting - Fixed to allow only one selection per poll
+        // Function to handle poll voting with correct/wrong answers
         function updatePoll(element, questionIndex, optionIndex) {
             // Get the parent options container
             const optionsContainer = element.parentElement;
             const options = optionsContainer.children;
+            const correctAnswer = parseInt(optionsContainer.getAttribute('data-correct'));
             
             // Check if user has already voted on this poll
             const pollKey = `poll_${questionIndex}`;
+            if (localStorage.getItem(pollKey)) {
+                return; // Already voted
+            }
             
             // Remove selected class from all options in this poll
             for (let i = 0; i < options.length; i++) {
@@ -1508,23 +1658,22 @@
             // Add selected class to clicked option
             element.classList.add('selected');
             
-            // Generate new percentages
-            let percentages = generateRandomPercentages();
-            
-            // Update percentages for all options
+            // Show correct/wrong answers
             for (let i = 0; i < options.length; i++) {
-                options[i].querySelector('.option-percent').textContent = percentages[i] + '%';
+                const option = options[i];
+                const statusSpan = option.querySelector('.option-status');
+                
+                if (i === correctAnswer) {
+                    option.classList.add('correct');
+                    statusSpan.textContent = 'Correct';
+                } else {
+                    option.classList.add('wrong');
+                    statusSpan.textContent = 'Wrong';
+                }
             }
             
             // Save the vote
             localStorage.setItem(pollKey, optionIndex.toString());
-        }
-        
-        function generateRandomPercentages() {
-            let a = Math.floor(Math.random() * 60) + 10;
-            let b = Math.floor(Math.random() * (90 - a)) + 5;
-            let c = 100 - a - b;
-            return [a, b, c];
         }
         
         function showService(index) {
@@ -1543,6 +1692,21 @@
                     tab.classList.remove('active');
                 }
             });
+        }
+        
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = element.querySelector('.faq-icon');
+            
+            // Toggle the answer visibility
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.classList.remove('rotated');
+            } else {
+                answer.classList.add('open');
+                icon.classList.add('rotated');
+            }
         }
         
         // Modern animated circle that moves on scroll
@@ -1568,11 +1732,27 @@
                 if (savedVote !== null) {
                     const quizCard = document.querySelectorAll('.quiz-card')[i];
                     if (quizCard) {
-                        const options = quizCard.querySelectorAll('.quiz-option');
+                        const optionsContainer = quizCard.querySelector('.quiz-options');
+                        const options = optionsContainer.querySelectorAll('.quiz-option');
+                        const correctAnswer = parseInt(optionsContainer.getAttribute('data-correct'));
                         const selectedOption = options[parseInt(savedVote)];
                         
                         if (selectedOption) {
                             selectedOption.classList.add('selected');
+                            
+                            // Show correct/wrong answers for already voted polls
+                            for (let j = 0; j < options.length; j++) {
+                                const option = options[j];
+                                const statusSpan = option.querySelector('.option-status');
+                                
+                                if (j === correctAnswer) {
+                                    option.classList.add('correct');
+                                    statusSpan.textContent = 'Correct';
+                                } else {
+                                    option.classList.add('wrong');
+                                    statusSpan.textContent = 'Wrong';
+                                }
+                            }
                         }
                     }
                 }
@@ -1581,3 +1761,36 @@
     </script>
 </body>
 </html>
+
+## ✅ All Changes Implemented:
+
+### 1. 🗳️ Fixed Polling System
+- Removed percentages and replaced with correct/wrong answer system
+- Added `data-correct` attribute to each poll to define the correct answer
+- When user selects an option, all options show as either "Correct" (light green) or "Wrong" (light red)
+- Users can only vote once per poll (stored in localStorage)
+- Added proper color coding: green for correct answers, red for wrong answers
+
+### 2. ❓ Added FAQ Section
+- Created a new FAQ section with 4 questions in a 2x2 grid layout
+- Questions are clickable and expand/collapse to show answers
+- Added smooth animations for opening/closing answers
+- Responsive design that stacks to single column on mobile
+- Pink theme matching the header and subscribe sections
+
+### 3. 🔄 Reordered Services
+- Changed service order as requested:
+  1. SEO Services (first)
+  2. Google Ads (second) 
+  3. Social Media Marketing (third)
+  4. Website Design (fourth)
+
+### 4. 🎨 Changed Theme to Pink
+- Updated all blue colors to pink gradients matching header/subscribe
+- Changed section title border color to pink (`#f093fb`)
+- Updated service tab active states to pink
+- Changed service panel accent border to pink gradient
+- Updated service icons background to pink gradient
+- Modified hover states to use pink colors
+
+The polling system now works as a quiz with correct/wrong feedback, the FAQ section provides expandable answers, services are reordered as requested, and the entire theme is consistently pink throughout the site.
