@@ -867,100 +867,6 @@
             justify-content: center;
         }
         
-        /* FAQ Section */
-        .faq-section {
-            padding: 80px 0;
-            background: #f8fafc;
-        }
-        
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-        }
-        
-        .faq-item {
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-        
-        .faq-question {
-            padding: 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #ffffff;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .faq-question:hover {
-            background: #f8fafc;
-        }
-        
-        .faq-question.active {
-            background: #f0f4ff;
-            border-bottom-color: #6366f1;
-        }
-        
-        .faq-question h3 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1a1a2e;
-            margin: 0;
-            line-height: 1.4;
-            flex: 1;
-            padding-right: 16px;
-        }
-        
-        .faq-icon {
-            width: 24px;
-            height: 24px;
-            background: #6366f1;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .faq-question.active .faq-icon {
-            transform: rotate(45deg);
-            background: #8b5cf6;
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            background: #ffffff;
-        }
-        
-        .faq-answer.active {
-            max-height: 200px;
-        }
-        
-        .faq-answer-content {
-            padding: 0 24px 24px 24px;
-            color: #64748b;
-            line-height: 1.6;
-            font-size: 16px;
-        }
-        
         /* Footer - Simplified */
         footer {
             background: #1a1a2e;
@@ -1022,10 +928,6 @@
                 border-left: none;
                 border-bottom: 3px solid #6366f1;
             }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
         }
         
         @media (max-width: 768px) {
@@ -1078,10 +980,6 @@
             .flying-book {
                 display: none;
             }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
         }
         
         @media (max-width: 480px) {
@@ -1128,19 +1026,6 @@
             
             .contact-form-title {
                 font-size: 20px;
-            }
-            
-            .faq-question {
-                padding: 20px;
-            }
-            
-            .faq-question h3 {
-                font-size: 16px;
-            }
-            
-            .faq-answer-content {
-                padding: 0 20px 20px 20px;
-                font-size: 14px;
             }
         }
     </style>
@@ -1368,17 +1253,17 @@
                 <div class="quiz-card">
                     <div class="quiz-question">Which social platform gives you the best ROI?</div>
                     <div class="quiz-options" data-poll-id="0">
-                        <div class="quiz-option" onclick="updatePoll(this, 0, 0)" data-initial-percent="45">
+                        <div class="quiz-option" onclick="updatePoll(this, 0, 0)">
                             <span class="option-text">Facebook</span>
-                            <span class="option-percent">45%</span>
+                            <span class="option-percent">65%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 0, 1)" data-initial-percent="35">
+                        <div class="quiz-option" onclick="updatePoll(this, 0, 1)">
                             <span class="option-text">Instagram</span>
-                            <span class="option-percent">35%</span>
+                            <span class="option-percent">25%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 0, 2)" data-initial-percent="20">
+                        <div class="quiz-option" onclick="updatePoll(this, 0, 2)">
                             <span class="option-text">LinkedIn</span>
-                            <span class="option-percent">20%</span>
+                            <span class="option-percent">10%</span>
                         </div>
                     </div>
                 </div>
@@ -1387,15 +1272,15 @@
                 <div class="quiz-card">
                     <div class="quiz-question">How often do you update your website?</div>
                     <div class="quiz-options" data-poll-id="1">
-                        <div class="quiz-option" onclick="updatePoll(this, 1, 0)" data-initial-percent="30">
+                        <div class="quiz-option" onclick="updatePoll(this, 1, 0)">
                             <span class="option-text">Weekly</span>
                             <span class="option-percent">30%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 1, 1)" data-initial-percent="45">
+                        <div class="quiz-option" onclick="updatePoll(this, 1, 1)">
                             <span class="option-text">Monthly</span>
                             <span class="option-percent">45%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 1, 2)" data-initial-percent="25">
+                        <div class="quiz-option" onclick="updatePoll(this, 1, 2)">
                             <span class="option-text">Quarterly</span>
                             <span class="option-percent">25%</span>
                         </div>
@@ -1406,15 +1291,15 @@
                 <div class="quiz-card">
                     <div class="quiz-question">What's your biggest SEO challenge?</div>
                     <div class="quiz-options" data-poll-id="2">
-                        <div class="quiz-option" onclick="updatePoll(this, 2, 0)" data-initial-percent="40">
+                        <div class="quiz-option" onclick="updatePoll(this, 2, 0)">
                             <span class="option-text">Content Creation</span>
                             <span class="option-percent">40%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 2, 1)" data-initial-percent="35">
+                        <div class="quiz-option" onclick="updatePoll(this, 2, 1)">
                             <span class="option-text">Link Building</span>
                             <span class="option-percent">35%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 2, 2)" data-initial-percent="25">
+                        <div class="quiz-option" onclick="updatePoll(this, 2, 2)">
                             <span class="option-text">Technical SEO</span>
                             <span class="option-percent">25%</span>
                         </div>
@@ -1425,15 +1310,15 @@
                 <div class="quiz-card">
                     <div class="quiz-question">Which ad platform performs best for you?</div>
                     <div class="quiz-options" data-poll-id="3">
-                        <div class="quiz-option" onclick="updatePoll(this, 3, 0)" data-initial-percent="55">
+                        <div class="quiz-option" onclick="updatePoll(this, 3, 0)">
                             <span class="option-text">Google Ads</span>
                             <span class="option-percent">55%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 3, 1)" data-initial-percent="35">
+                        <div class="quiz-option" onclick="updatePoll(this, 3, 1)">
                             <span class="option-text">Facebook Ads</span>
                             <span class="option-percent">35%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 3, 2)" data-initial-percent="10">
+                        <div class="quiz-option" onclick="updatePoll(this, 3, 2)">
                             <span class="option-text">LinkedIn Ads</span>
                             <span class="option-percent">10%</span>
                         </div>
@@ -1444,15 +1329,15 @@
                 <div class="quiz-card">
                     <div class="quiz-question">How much of your budget goes to digital?</div>
                     <div class="quiz-options" data-poll-id="4">
-                        <div class="quiz-option" onclick="updatePoll(this, 4, 0)" data-initial-percent="20">
+                        <div class="quiz-option" onclick="updatePoll(this, 4, 0)">
                             <span class="option-text">Less than 25%</span>
                             <span class="option-percent">20%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 4, 1)" data-initial-percent="45">
+                        <div class="quiz-option" onclick="updatePoll(this, 4, 1)">
                             <span class="option-text">25% - 50%</span>
                             <span class="option-percent">45%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 4, 2)" data-initial-percent="35">
+                        <div class="quiz-option" onclick="updatePoll(this, 4, 2)">
                             <span class="option-text">More than 50%</span>
                             <span class="option-percent">35%</span>
                         </div>
@@ -1463,15 +1348,15 @@
                 <div class="quiz-card">
                     <div class="quiz-question">What content type works best for you?</div>
                     <div class="quiz-options" data-poll-id="5">
-                        <div class="quiz-option" onclick="updatePoll(this, 5, 0)" data-initial-percent="30">
+                        <div class="quiz-option" onclick="updatePoll(this, 5, 0)">
                             <span class="option-text">Blog Posts</span>
                             <span class="option-percent">30%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 5, 1)" data-initial-percent="45">
+                        <div class="quiz-option" onclick="updatePoll(this, 5, 1)">
                             <span class="option-text">Videos</span>
                             <span class="option-percent">45%</span>
                         </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 5, 2)" data-initial-percent="25">
+                        <div class="quiz-option" onclick="updatePoll(this, 5, 2)">
                             <span class="option-text">Infographics</span>
                             <span class="option-percent">25%</span>
                         </div>
@@ -1597,66 +1482,6 @@
         </div>
     </section>
     
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-grid">
-                <!-- FAQ 1 -->
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>How long does it take to see SEO results?</h3>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            SEO results typically start showing within 3-6 months, but significant improvements can take 6-12 months. The timeline depends on your website's current state, competition level, and the keywords you're targeting. We provide monthly reports to track progress and adjust strategies accordingly.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ 2 -->
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>What's included in your website design service?</h3>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Our website design service includes custom design, responsive layout, SEO optimization, fast loading speeds, contact forms, social media integration, and basic analytics setup. We also provide 30 days of free support after launch and training on how to update your content.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ 3 -->
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>How much should I budget for Google Ads?</h3>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Google Ads budget varies by industry and goals. We recommend starting with $1,000-$3,000 per month for small businesses, but we can work with smaller budgets. The key is to start with a focused campaign, measure results, and scale up what works. We'll help you determine the right budget based on your specific goals.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ 4 -->
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Do you provide social media content creation?</h3>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Yes! Our social media service includes content creation, posting schedules, community management, and performance analytics. We create custom graphics, write engaging captions, and develop content calendars tailored to your brand voice and audience preferences across all major platforms.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- Footer - Simplified -->
     <footer>
         <div class="container">
@@ -1666,17 +1491,7 @@
     
     <!-- JavaScript -->
     <script>
-        // Store initial percentages for each poll
-        const pollData = {
-            0: [45, 35, 20],
-            1: [30, 45, 25],
-            2: [40, 35, 25],
-            3: [55, 35, 10],
-            4: [20, 45, 35],
-            5: [30, 45, 25]
-        };
-        
-        // Function to handle poll voting - Fixed percentage calculation
+        // Function to handle poll voting - Fixed to allow only one selection per poll
         function updatePoll(element, questionIndex, optionIndex) {
             // Get the parent options container
             const optionsContainer = element.parentElement;
@@ -1693,39 +1508,23 @@
             // Add selected class to clicked option
             element.classList.add('selected');
             
-            // Get current percentages and simulate realistic vote change
-            let currentPercentages = [...pollData[questionIndex]];
+            // Generate new percentages
+            let percentages = generateRandomPercentages();
             
-            // Increase selected option by 1-3%
-            const increase = Math.floor(Math.random() * 3) + 1;
-            currentPercentages[optionIndex] += increase;
-            
-            // Decrease other options proportionally
-            const totalDecrease = increase;
-            const otherIndices = [0, 1, 2].filter(i => i !== optionIndex);
-            
-            for (let i = 0; i < otherIndices.length; i++) {
-                const decreaseAmount = Math.floor(totalDecrease / otherIndices.length);
-                currentPercentages[otherIndices[i]] = Math.max(1, currentPercentages[otherIndices[i]] - decreaseAmount);
-            }
-            
-            // Ensure total is 100%
-            const total = currentPercentages.reduce((sum, val) => sum + val, 0);
-            if (total !== 100) {
-                const diff = 100 - total;
-                currentPercentages[optionIndex] += diff;
-            }
-            
-            // Update the stored data
-            pollData[questionIndex] = currentPercentages;
-            
-            // Update percentages display
+            // Update percentages for all options
             for (let i = 0; i < options.length; i++) {
-                options[i].querySelector('.option-percent').textContent = currentPercentages[i] + '%';
+                options[i].querySelector('.option-percent').textContent = percentages[i] + '%';
             }
             
             // Save the vote
             localStorage.setItem(pollKey, optionIndex.toString());
+        }
+        
+        function generateRandomPercentages() {
+            let a = Math.floor(Math.random() * 60) + 10;
+            let b = Math.floor(Math.random() * (90 - a)) + 5;
+            let c = 100 - a - b;
+            return [a, b, c];
         }
         
         function showService(index) {
@@ -1744,34 +1543,6 @@
                     tab.classList.remove('active');
                 }
             });
-        }
-        
-        // FAQ Toggle Function
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const icon = element.querySelector('.faq-icon');
-            
-            // Close all other FAQs
-            const allFAQs = document.querySelectorAll('.faq-item');
-            allFAQs.forEach(item => {
-                if (item !== faqItem) {
-                    item.querySelector('.faq-question').classList.remove('active');
-                    item.querySelector('.faq-answer').classList.remove('active');
-                    item.querySelector('.faq-icon').textContent = '+';
-                }
-            });
-            
-            // Toggle current FAQ
-            if (answer.classList.contains('active')) {
-                element.classList.remove('active');
-                answer.classList.remove('active');
-                icon.textContent = '+';
-            } else {
-                element.classList.add('active');
-                answer.classList.add('active');
-                icon.textContent = '×';
-            }
         }
         
         // Modern animated circle that moves on scroll
