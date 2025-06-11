@@ -1243,7 +1243,45 @@
             </div>
         </div>
     </section>
-    
+    <!-- Marketing Creatives Section (Image Gallery) -->
+<section class="marketing-gallery" style="padding: 40px 0; background: #f7f7f7;">
+  <div class="container" style="display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
+    <!-- 5 Images -->
+    <img src="images/creative1.jpg" class="gallery-img" alt="Creative 1">
+    <img src="images/creative2.jpg" class="gallery-img" alt="Creative 2">
+    <img src="images/creative3.jpg" class="gallery-img" alt="Creative 3">
+    <img src="images/creative4.jpg" class="gallery-img" alt="Creative 4">
+    <img src="images/creative5.jpg" class="gallery-img" alt="Creative 5">
+  </div>
+</section>
+
+<!-- Lightbox Viewer -->
+<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999;">
+  <img id="lightbox-img" src="" style="max-width:90%; max-height:90%;">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const galleryImages = document.querySelectorAll('.gallery-img');
+
+  galleryImages.forEach(img => {
+    img.style.width = '18%'; // 5 images in 1 line
+    img.style.cursor = 'pointer';
+    img.style.borderRadius = '10px';
+    img.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+  });
+</script>
+
  <!-- Animated Subscribe Section with Reading Video Background -->
 <section class="subscribe">
     <!-- Animated Reading Video Background -->
