@@ -1244,43 +1244,74 @@
         </div>
     </section>
     
-    <!-- Animated Subscribe Section with Reading Video Background -->
-    <section class="subscribe">
-        <!-- Animated Reading Video Background -->
-        <div class="reading-video-bg">
-            <!-- Flying Books -->
-            <div class="flying-book"></div>
-            <div class="flying-book"></div>
-            <div class="flying-book"></div>
-            <div class="flying-book"></div>
-            <div class="flying-book"></div>
-            
-            <!-- Floating Letters -->
-            <div class="floating-letters">
-                <div class="letter">S</div>
-                <div class="letter">U</div>
-                <div class="letter">B</div>
-                <div class="letter">S</div>
-                <div class="letter">C</div>
-                <div class="letter">R</div>
-                <div class="letter">I</div>
-                <div class="letter">B</div>
-            </div>
-            
-            <!-- Email Envelope -->
-            <div class="email-envelope"></div>
+ <!-- Animated Subscribe Section with Reading Video Background -->
+<section class="subscribe">
+    <!-- Animated Reading Video Background -->
+    <div class="reading-video-bg">
+        <!-- Flying Books -->
+        <div class="flying-book"></div>
+        <div class="flying-book"></div>
+        <div class="flying-book"></div>
+        <div class="flying-book"></div>
+        <div class="flying-book"></div>
+
+        <!-- Floating Letters -->
+        <div class="floating-letters">
+            <div class="letter">S</div>
+            <div class="letter">U</div>
+            <div class="letter">B</div>
+            <div class="letter">S</div>
+            <div class="letter">C</div>
+            <div class="letter">R</div>
+            <div class="letter">I</div>
+            <div class="letter">B</div>
         </div>
-        
-        <div class="container">
-            <div class="subscribe-content">
-                <h2>Subscribe for Digital Marketing Updates</h2>
-                <form class="subscribe-form" action="mailto:manishyv0@gmail.com" method="post" enctype="text/plain">
-                    <input type="email" name="email" placeholder="Enter your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+
+        <!-- Email Envelope -->
+        <div class="email-envelope"></div>
+    </div>
+
+    <div class="container">
+        <div class="subscribe-content">
+            <h2>Subscribe for Digital Marketing Updates</h2>
+            <form id="subscribe-form" class="subscribe-form">
+                <input type="email" id="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+                <p id="response-msg" style="margin-top:10px;color:green;"></p>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+  document.getElementById('subscribe-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+
+    const response = await fetch("https://us12.api.mailchimp.com/3.0/lists/e1ca0f4122/members", {
+      method: "POST",
+      headers: {
+        "Authorization": "apikey bdd4566d898ce807b56e32a378fbc53e-us12",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email_address: email,
+        status: "subscribed"
+      })
+    });
+
+    const msg = document.getElementById("response-msg");
+
+    if (response.status === 200 || response.status === 201) {
+      msg.innerText = "Subscribed successfully!";
+      msg.style.color = "green";
+    } else {
+      const result = await response.json();
+      msg.innerText = "Error: " + result.detail;
+      msg.style.color = "red";
+    }
+  });
+</script>
     
     <!-- General Blogs Section -->
     <section class="posts-section">
