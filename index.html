@@ -524,6 +524,16 @@
         .letter:nth-child(6) { top: 55%; left: 5%; animation-delay: 5s; }
         .letter:nth-child(7) { top: 75%; left: 40%; animation-delay: 6s; }
         .letter:nth-child(8) { top: 85%; left: 85%; animation-delay: 7s; }
+        .letter:nth-child(9) { top: 40%; left: 60%; animation-delay: 8s; }
+        .letter:nth-child(10) { top: 30%; left: 30%; animation-delay: 9s; }
+        .letter:nth-child(11) { top: 50%; left: 50%; animation-delay: 10s; }
+        .letter:nth-child(12) { top: 70%; left: 15%; animation-delay: 11s; }
+        .letter:nth-child(13) { top: 80%; left: 75%; animation-delay: 12s; }
+        .letter:nth-child(14) { top: 20%; left: 45%; animation-delay: 13s; }
+        .letter:nth-child(15) { top: 60%; left: 65%; animation-delay: 14s; }
+        .letter:nth-child(16) { top: 90%; left: 25%; animation-delay: 15s; }
+        .letter:nth-child(17) { top: 10%; left: 55%; animation-delay: 16s; }
+        .letter:nth-child(18) { top: 45%; left: 85%; animation-delay: 17s; }
         
         @keyframes letterFloat {
             0%, 100% { 
@@ -587,7 +597,7 @@
         .subscribe h2 {
             font-size: 36px;
             margin-bottom: 24px;
-            color: #ffffff;
+            color: #333333; /* Changed to dark color */
             font-weight: 700;
         }
         
@@ -605,18 +615,18 @@
             border-radius: 12px;
             font-size: 16px;
             background: rgba(255,255,255,0.15);
-            color: #ffffff;
+            color: #333333; /* Changed to dark color */
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
         }
         
         .subscribe-form input::placeholder {
-            color: rgba(255,255,255,0.7);
+            color: rgba(51,51,51,0.7); /* Changed to dark color */
         }
         
         .subscribe-form button {
-            background: rgba(255,255,255,0.2);
-            color: #ffffff;
+            background: rgba(51,51,51,0.2); /* Changed to dark color */
+            color: #333333; /* Changed to dark color */
             border: none;
             padding: 16px 24px;
             border-radius: 12px;
@@ -624,12 +634,12 @@
             font-size: 16px;
             font-weight: 600;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(51,51,51,0.3);
             transition: all 0.3s ease;
         }
         
         .subscribe-form button:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(51,51,51,0.3);
         }
         
         /* Modern Quiz Section */
@@ -932,11 +942,14 @@
             color: #374151;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.5s ease;
+            opacity: 0;
         }
         
         .faq-answer.open {
-            max-height: 200px;
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 16px;
         }
         
         /* Footer - Simplified */
@@ -1244,16 +1257,29 @@
             <div class="flying-book"></div>
             <div class="flying-book"></div>
             
-            <!-- Floating Letters -->
+            <!-- Floating Letters - CHANGED TO "BEST DIGITAL MARKETER" -->
             <div class="floating-letters">
-                <div class="letter">S</div>
-                <div class="letter">U</div>
                 <div class="letter">B</div>
+                <div class="letter">E</div>
                 <div class="letter">S</div>
-                <div class="letter">C</div>
-                <div class="letter">R</div>
+                <div class="letter">T</div>
+                <div class="letter"> </div>
+                <div class="letter">D</div>
                 <div class="letter">I</div>
-                <div class="letter">B</div>
+                <div class="letter">G</div>
+                <div class="letter">I</div>
+                <div class="letter">T</div>
+                <div class="letter">A</div>
+                <div class="letter">L</div>
+                <div class="letter"> </div>
+                <div class="letter">M</div>
+                <div class="letter">A</div>
+                <div class="letter">R</div>
+                <div class="letter">K</div>
+                <div class="letter">E</div>
+                <div class="letter">T</div>
+                <div class="letter">E</div>
+                <div class="letter">R</div>
             </div>
             
             <!-- Email Envelope -->
@@ -1614,60 +1640,4 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        Yes, absolutely! Over 60% of web traffic comes from mobile devices. Google also uses mobile-first indexing, meaning your mobile site affects your search rankings more than your desktop version.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer - Simplified -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Digital Marketing Wiki. All Rights Reserved.</p>
-        </div>
-    </footer>
-    
-    <!-- JavaScript -->
-    <script>
-        // Function to handle poll voting with correct/wrong answers
-        function updatePoll(element, questionIndex, optionIndex) {
-            // Get the parent options container
-            const optionsContainer = element.parentElement;
-            const options = optionsContainer.children;
-            const correctAnswer = parseInt(optionsContainer.getAttribute('data-correct'));
-            
-            // Check if user has already voted on this poll
-            const pollKey = `poll_${questionIndex}`;
-            if (localStorage.getItem(pollKey)) {
-                return; // Already voted
-            }
-            
-            // Remove selected class from all options in this poll
-            for (let i = 0; i < options.length; i++) {
-                options[i].classList.remove('selected');
-            }
-            
-            // Add selected class to clicked option
-            element.classList.add('selected');
-            
-            // Show correct/wrong answers
-            for (let i = 0; i < options.length; i++) {
-                const option = options[i];
-                const statusSpan = option.querySelector('.option-status');
-                
-                if (i === correctAnswer) {
-                    option.classList.add('correct');
-                    statusSpan.textContent = 'Correct';
-                } else {
-                    option.classList.add('wrong');
-                    statusSpan.textContent = 'Wrong';
-                }
-            }
-            
-            // Save the vote
-            localStorage.setItem(pollKey, optionIndex.toString());
-        }
-        
-        function showService(index) {
-            const panels = document.querySelectorAll('.
+                        Yes, absolutely! Over 60% of web traffic comes from mobile devices. Google also uses
