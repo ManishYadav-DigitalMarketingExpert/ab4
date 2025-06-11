@@ -1188,8 +1188,7 @@
                 </div>
             </div>
         </div>
-    </section>
-    
+    </section>  
     <!-- Latest Updates Section -->
     <section id="latest-updates" class="posts-section">
         <div class="container">
@@ -1246,7 +1245,7 @@
         </div>
     </section>
     
-    <!-- Animated Subscribe Section with Reading Video Background - CHANGED COLOR -->
+    <!-- Animated Subscribe Section with Reading Video Background -->
     <section class="subscribe">
         <!-- Animated Reading Video Background -->
         <div class="reading-video-bg">
@@ -1257,29 +1256,16 @@
             <div class="flying-book"></div>
             <div class="flying-book"></div>
             
-            <!-- Floating Letters - CHANGED TO "BEST DIGITAL MARKETER" -->
+            <!-- Floating Letters -->
             <div class="floating-letters">
-                <div class="letter">B</div>
-                <div class="letter">E</div>
                 <div class="letter">S</div>
-                <div class="letter">T</div>
-                <div class="letter"> </div>
-                <div class="letter">D</div>
-                <div class="letter">I</div>
-                <div class="letter">G</div>
-                <div class="letter">I</div>
-                <div class="letter">T</div>
-                <div class="letter">A</div>
-                <div class="letter">L</div>
-                <div class="letter"> </div>
-                <div class="letter">M</div>
-                <div class="letter">A</div>
+                <div class="letter">U</div>
+                <div class="letter">B</div>
+                <div class="letter">S</div>
+                <div class="letter">C</div>
                 <div class="letter">R</div>
-                <div class="letter">K</div>
-                <div class="letter">E</div>
-                <div class="letter">T</div>
-                <div class="letter">E</div>
-                <div class="letter">R</div>
+                <div class="letter">I</div>
+                <div class="letter">B</div>
             </div>
             
             <!-- Email Envelope -->
@@ -1289,13 +1275,9 @@
         <div class="container">
             <div class="subscribe-content">
                 <h2>Subscribe for Digital Marketing Updates</h2>
-                <form class="subscribe-form" id="mc-embedded-subscribe-form" action="https://us12.list-manage.com/subscribe/post?u=YOUR_USER_ID&amp;id=YOUR_LIST_ID" method="post" name="mc-embedded-subscribe-form" target="_blank">
-                    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email address" required>
-                    <button type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe</button>
-                    <!-- Mailchimp required hidden input -->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                        <input type="text" name="b_YOUR_USER_ID_YOUR_LIST_ID" tabindex="-1" value="">
-                    </div>
+                <form class="subscribe-form" action="mailto:manishyv0@gmail.com" method="post" enctype="text/plain">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
                 </form>
             </div>
         </div>
@@ -1640,4 +1622,143 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        Yes, absolutely! Over 60% of web traffic comes from mobile devices. Google also uses
+                        Yes, absolutely! Over 60% of web traffic comes from mobile devices. Google also uses mobile-first indexing, meaning your mobile site affects your search rankings more than your desktop version.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer - Simplified -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Digital Marketing Wiki. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Function to handle poll voting with correct/wrong answers
+        function updatePoll(element, questionIndex, optionIndex) {
+            // Get the parent options container
+            const optionsContainer = element.parentElement;
+            const options = optionsContainer.children;
+            const correctAnswer = parseInt(optionsContainer.getAttribute('data-correct'));
+            
+            // Check if user has already voted on this poll
+            const pollKey = `poll_${questionIndex}`;
+            if (localStorage.getItem(pollKey)) {
+                return; // Already voted
+            }
+            
+            // Remove selected class from all options in this poll
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('selected');
+            }
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Show correct/wrong answers
+            for (let i = 0; i < options.length; i++) {
+                const option = options[i];
+                const statusSpan = option.querySelector('.option-status');
+                
+                if (i === correctAnswer) {
+                    option.classList.add('correct');
+                    statusSpan.textContent = 'Correct';
+                } else {
+                    option.classList.add('wrong');
+                    statusSpan.textContent = 'Wrong';
+                }
+            }
+            
+            // Save the vote
+            localStorage.setItem(pollKey, optionIndex.toString());
+        }
+        
+        function showService(index) {
+            const panels = document.querySelectorAll('.service-panel');
+            panels.forEach(panel => {
+                panel.classList.remove('active');
+            });
+            
+            document.getElementById(`service-${index}`).classList.add('active');
+            
+            const tabs = document.querySelectorAll('.service-tab');
+            tabs.forEach((tab, i) => {
+                if (i === index) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+        }
+        
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = element.querySelector('.faq-icon');
+            
+            // Toggle the answer visibility
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.classList.remove('rotated');
+            } else {
+                answer.classList.add('open');
+                icon.classList.add('rotated');
+            }
+        }
+        
+        // Modern animated circle that moves on scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const circle = document.querySelector('.animated-circle');
+            
+            if (scrollPosition <= window.innerHeight) {
+                const translateX = -scrollPosition * 0.6;
+                const translateY = scrollPosition * 0.3;
+                const scale = 1 - (scrollPosition / window.innerHeight) * 0.2;
+                
+                circle.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            }
+        });
+        
+        // Check for existing votes on page load and mark them as selected
+        document.addEventListener('DOMContentLoaded', function() {
+            for (let i = 0; i < 6; i++) {
+                const pollKey = `poll_${i}`;
+                const savedVote = localStorage.getItem(pollKey);
+                
+                if (savedVote !== null) {
+                    const quizCard = document.querySelectorAll('.quiz-card')[i];
+                    if (quizCard) {
+                        const optionsContainer = quizCard.querySelector('.quiz-options');
+                        const options = optionsContainer.querySelectorAll('.quiz-option');
+                        const correctAnswer = parseInt(optionsContainer.getAttribute('data-correct'));
+                        const selectedOption = options[parseInt(savedVote)];
+                        
+                        if (selectedOption) {
+                            selectedOption.classList.add('selected');
+                            
+                            // Show correct/wrong answers for already voted polls
+                            for (let j = 0; j < options.length; j++) {
+                                const option = options[j];
+                                const statusSpan = option.querySelector('.option-status');
+                                
+                                if (j === correctAnswer) {
+                                    option.classList.add('correct');
+                                    statusSpan.textContent = 'Correct';
+                                } else {
+                                    option.classList.add('wrong');
+                                    statusSpan.textContent = 'Wrong';
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
