@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SERP Snippet Preview Tool - Best Digital Marketer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robots.txt Viewer Tool - Best Digital Marketer</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f7f9fc;
+      background: #f7f7f7;
       padding: 20px;
       color: #333;
     }
@@ -17,132 +17,86 @@
       color: #1a73e8;
     }
 
-    .input-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    input, textarea {
+    input {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 10px;
+      padding: 12px;
       font-size: 16px;
+      margin-bottom: 10px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
       box-sizing: border-box;
     }
 
-    .preview-box {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 15px;
+    button {
+      padding: 10px 20px;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      max-width: 700px;
-      margin: auto;
+      font-size: 16px;
+      cursor: pointer;
     }
 
-    .serp-title {
-      color: #1a0dab;
-      font-size: 18px;
-      margin-bottom: 5px;
+    .output {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border: 1px solid #ddd;
     }
 
-    .serp-url {
-      color: #006621;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .serp-description {
-      color: #545454;
-      font-size: 14px;
-    }
-
-    .counter {
-      font-size: 13px;
-      color: #666;
-      float: right;
-    }
-
-    .warning {
+    .error {
       color: red;
-      font-size: 13px;
+      margin-top: 10px;
     }
 
-    @media(max-width: 600px){
-      input, textarea {
-        font-size: 14px;
+    @media (max-width: 600px) {
+      input, button {
+        font-size: 15px;
       }
-      .serp-title { font-size: 16px; }
-      .serp-url { font-size: 13px; }
-      .serp-description { font-size: 13px; }
     }
   </style>
 </head>
 <body>
 
-  <h1>Google SERP Snippet Preview Tool</h1>
+  <h1>Robots.txt Viewer Tool</h1>
 
-  <div class="input-group">
-    <label for="title">Title Tag <span id="titleCount" class="counter">(0 / 60)</span></label>
-    <input type="text" id="title" placeholder="Enter SEO Title..." maxlength="80">
-    <div id="titleWarning" class="warning"></div>
-  </div>
+  <p>Enter a domain name (like <strong>example.com</strong>) to view its robots.txt file:</p>
+  <input type="text" id="domainInput" placeholder="Enter domain... (e.g. bestdigitalmarketer.com)">
+  <button onclick="fetchRobots()">Check robots.txt</button>
 
-  <div class="input-group">
-    <label for="url">Display URL</label>
-    <input type="text" id="url" placeholder="https://www.bestdigitalmarketer.com/page-url">
-  </div>
-
-  <div class="input-group">
-    <label for="description">Meta Description <span id="descCount" class="counter">(0 / 160)</span></label>
-    <textarea id="description" rows="3" placeholder="Enter SEO Meta Description..." maxlength="300"></textarea>
-    <div id="descWarning" class="warning"></div>
-  </div>
-
-  <div class="preview-box">
-    <div class="serp-title" id="serpTitle">Your Title Will Appear Here</div>
-    <div class="serp-url" id="serpURL">www.example.com</div>
-    <div class="serp-description" id="serpDesc">Your meta description will appear here.</div>
-  </div>
+  <div id="result" class="output" style="display:none;"></div>
+  <div id="error" class="error"></div>
 
   <script>
-    const title = document.getElementById("title");
-    const url = document.getElementById("url");
-    const desc = document.getElementById("description");
+    async function fetchRobots() {
+      const domain = document.getElementById("domainInput").value.trim().replace(/^https?:\/\//, '');
+      const resultDiv = document.getElementById("result");
+      const errorDiv = document.getElementById("error");
+      resultDiv.style.display = "none";
+      errorDiv.textContent = "";
 
-    const serpTitle = document.getElementById("serpTitle");
-    const serpURL = document.getElementById("serpURL");
-    const serpDesc = document.getElementById("serpDesc");
+      if (!domain) {
+        errorDiv.textContent = "Please enter a valid domain.";
+        return;
+      }
 
-    const titleCount = document.getElementById("titleCount");
-    const descCount = document.getElementById("descCount");
+      try {
+        const response = await fetch(`https://${domain}/robots.txt`);
 
-    const titleWarning = document.getElementById("titleWarning");
-    const descWarning = document.getElementById("descWarning");
+        if (!response.ok) {
+          throw new Error(`Unable to fetch robots.txt (status ${response.status})`);
+        }
 
-    title.addEventListener("input", () => {
-      let len = title.value.length;
-      serpTitle.textContent = title.value || "Your Title Will Appear Here";
-      titleCount.textContent = `(${len} / 60)`;
-      titleWarning.textContent = len > 60 ? "⚠️ Title may be too long for Google." : "";
-    });
-
-    url.addEventListener("input", () => {
-      serpURL.textContent = url.value || "www.example.com";
-    });
-
-    desc.addEventListener("input", () => {
-      let len = desc.value.length;
-      serpDesc.textContent = desc.value || "Your meta description will appear here.";
-      descCount.textContent = `(${len} / 160)`;
-      descWarning.textContent = len > 160 ? "⚠️ Description may be too long for Google." : "";
-    });
+        const text = await response.text();
+        resultDiv.textContent = text;
+        resultDiv.style.display = "block";
+      } catch (err) {
+        errorDiv.textContent = "Error: Could not fetch robots.txt. The domain may not allow CORS or has no file.";
+      }
+    }
   </script>
 
 </body>
