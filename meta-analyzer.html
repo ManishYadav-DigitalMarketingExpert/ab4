@@ -7,8 +7,9 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
       padding: 20px;
-      background: #f5f5f5;
       color: #333;
     }
 
@@ -22,109 +23,116 @@
       height: 200px;
       padding: 10px;
       font-size: 14px;
-      border-radius: 5px;
       border: 1px solid #ccc;
+      border-radius: 5px;
       resize: vertical;
     }
 
     button {
-      background-color: #1a73e8;
-      color: white;
-      padding: 10px 20px;
-      margin-top: 10px;
+      display: block;
+      margin: 20px auto;
+      padding: 10px 25px;
+      background: #1a73e8;
+      color: #fff;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
       font-size: 16px;
+      cursor: pointer;
     }
 
     .result {
-      margin-top: 20px;
-      background: white;
+      background: #fff;
       padding: 20px;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .result h3 {
       color: #444;
-      margin-bottom: 5px;
     }
 
     .highlight {
-      background: #e0f7fa;
-      padding: 5px;
-      border-radius: 3px;
+      background: #e3f2fd;
+      padding: 8px;
       display: inline-block;
-      margin-bottom: 5px;
+      margin: 5px 0;
+      border-radius: 4px;
+      font-weight: bold;
     }
 
-    @media(max-width: 600px){
-      textarea { height: 150px; }
+    .error {
+      color: red;
     }
   </style>
 </head>
 <body>
 
-  <h1>Meta Tag Analyzer</h1>
-  <p>Paste the HTML code of a webpage below. This tool will analyze your meta tags:</p>
+  <h1>Meta Tag Analyzer Tool</h1>
+  <p>Paste your HTML source code below (must include &lt;head&gt; section):</p>
 
-  <textarea id="htmlInput" placeholder="Paste your HTML code here..."></textarea>
-  <button onclick="analyzeMeta()">Analyze</button>
+  <textarea id="htmlInput" placeholder="Paste full HTML source here..."></textarea>
+  <button onclick="analyzeTags()">Analyze Meta Tags</button>
 
-  <div id="output" class="result" style="display:none;"></div>
+  <div id="results" class="result" style="display:none;"></div>
 
   <script>
-    function analyzeMeta() {
-      const html = document.getElementById('htmlInput').value;
+    function analyzeTags() {
+      const htmlContent = document.getElementById('htmlInput').value.trim();
+      if (!htmlContent.includes("<head")) {
+        alert("Please paste full HTML content including the <head> section.");
+        return;
+      }
+
       const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      let output = '';
+      const doc = parser.parseFromString(htmlContent, 'text/html');
 
-      // Title Tag
-      const title = doc.querySelector('title');
-      output += '<h3>Title Tag</h3>';
-      if (title) {
+      const title = doc.querySelector("title");
+      const desc = doc.querySelector("meta[name='description']");
+      const keywords = doc.querySelector("meta[name='keywords']");
+      const robots = doc.querySelector("meta[name='robots']");
+
+      let output = "";
+
+      // Title
+      output += "<h3>Title Tag</h3>";
+      if (title && title.textContent) {
         output += `<div class="highlight">${title.textContent}</div>`;
-        output += `<p>Length: ${title.textContent.length} characters (Recommended: 50–60)</p>`;
+        output += `<p>Length: ${title.textContent.length} characters</p>`;
       } else {
-        output += `<p style="color:red;">No &lt;title&gt; tag found.</p>`;
+        output += '<p class="error">No &lt;title&gt; tag found.</p>';
       }
 
-      // Meta Description
-      const desc = doc.querySelector('meta[name="description"]');
-      output += '<h3>Meta Description</h3>';
-      if (desc) {
-        const content = desc.getAttribute('content');
-        output += `<div class="highlight">${content}</div>`;
-        output += `<p>Length: ${content.length} characters (Recommended: 150–160)</p>`;
+      // Description
+      output += "<h3>Meta Description</h3>";
+      if (desc && desc.content) {
+        output += `<div class="highlight">${desc.content}</div>`;
+        output += `<p>Length: ${desc.content.length} characters</p>`;
       } else {
-        output += `<p style="color:red;">No meta description tag found.</p>`;
+        output += '<p class="error">No meta description tag found.</p>';
       }
 
-      // Meta Keywords
-      const keywords = doc.querySelector('meta[name="keywords"]');
-      output += '<h3>Meta Keywords</h3>';
-      if (keywords) {
-        output += `<div class="highlight">${keywords.getAttribute('content')}</div>`;
+      // Keywords
+      output += "<h3>Meta Keywords</h3>";
+      if (keywords && keywords.content) {
+        output += `<div class="highlight">${keywords.content}</div>`;
       } else {
-        output += `<p style="color:red;">No meta keywords tag found.</p>`;
+        output += '<p class="error">No meta keywords tag found.</p>';
       }
 
-      // Meta Robots
-      const robots = doc.querySelector('meta[name="robots"]');
-      output += '<h3>Meta Robots</h3>';
-      if (robots) {
-        output += `<div class="highlight">${robots.getAttribute('content')}</div>`;
+      // Robots
+      output += "<h3>Meta Robots</h3>";
+      if (robots && robots.content) {
+        output += `<div class="highlight">${robots.content}</div>`;
       } else {
-        output += `<p style="color:red;">No meta robots tag found.</p>`;
+        output += '<p class="error">No meta robots tag found.</p>';
       }
 
-      document.getElementById('output').innerHTML = output;
-      document.getElementById('output').style.display = 'block';
+      const resultBox = document.getElementById("results");
+      resultBox.innerHTML = output;
+      resultBox.style.display = "block";
     }
   </script>
 
 </body>
 </html>
-meta-analyzer.html
