@@ -1,103 +1,902 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Robots.txt Viewer Tool - Best Digital Marketer</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      padding: 20px;
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      color: #1a73e8;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #1a73e8;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .output {
-      margin-top: 20px;
-      white-space: pre-wrap;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      border: 1px solid #ddd;
-    }
-
-    .error {
-      color: red;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 600px) {
-      input, button {
-        font-size: 15px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <h1>Robots.txt Viewer Tool</h1>
-
-  <p>Enter a domain name (like <strong>example.com</strong>) to view its robots.txt file:</p>
-  <input type="text" id="domainInput" placeholder="Enter domain... (e.g. bestdigitalmarketer.com)">
-  <button onclick="fetchRobots()">Check robots.txt</button>
-
-  <div id="result" class="output" style="display:none;"></div>
-  <div id="error" class="error"></div>
-
-  <script>
-    async function fetchRobots() {
-      const domain = document.getElementById("domainInput").value.trim().replace(/^https?:\/\//, '');
-      const resultDiv = document.getElementById("result");
-      const errorDiv = document.getElementById("error");
-      resultDiv.style.display = "none";
-      errorDiv.textContent = "";
-
-      if (!domain) {
-        errorDiv.textContent = "Please enter a valid domain.";
-        return;
-      }
-
-      try {
-        const response = await fetch(`https://${domain}/robots.txt`);
-
-        if (!response.ok) {
-          throw new Error(`Unable to fetch robots.txt (status ${response.status})`);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Digital Marketing Tools - All-in-One Toolkit</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        const text = await response.text();
-        resultDiv.textContent = text;
-        resultDiv.style.display = "block";
-      } catch (err) {
-        errorDiv.textContent = "Error: Could not fetch robots.txt. The domain may not allow CORS or has no file.";
-      }
-    }
-  </script>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .tools-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .tool-section {
+            display: none;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .tool-section.active {
+            display: block;
+        }
+
+        .tool-title {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .input-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        }
+
+        .result-box {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .color-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .color-box:hover {
+            transform: scale(1.1);
+        }
+
+        .qr-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qr-container canvas {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .password-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slider-group {
+            margin: 15px 0;
+        }
+
+        .slider-group input[type="range"] {
+            width: 100%;
+        }
+
+        .slider-value {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-nav {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ Free Digital Marketing Tools</h1>
+            <p>Complete toolkit with 15+ tools - All data is 100% accurate and free!</p>
+        </div>
+
+        <div class="tools-nav">
+            <button class="nav-btn active" onclick="showTool('word-counter')">Word Counter</button>
+            <button class="nav-btn" onclick="showTool('color-generator')">Color Generator</button>
+            <button class="nav-btn" onclick="showTool('password-generator')">Password Generator</button>
+            <button class="nav-btn" onclick="showTool('qr-generator')">QR Code Generator</button>
+            <button class="nav-btn" onclick="showTool('base64-tool')">Base64 Tool</button>
+            <button class="nav-btn" onclick="showTool('json-formatter')">JSON Formatter</button>
+            <button class="nav-btn" onclick="showTool('url-encoder')">URL Encoder</button>
+            <button class="nav-btn" onclick="showTool('hash-generator')">Hash Generator</button>
+            <button class="nav-btn" onclick="showTool('lorem-generator')">Lorem Ipsum</button>
+            <button class="nav-btn" onclick="showTool('case-converter')">Case Converter</button>
+            <button class="nav-btn" onclick="showTool('timestamp-converter')">Timestamp Tool</button>
+            <button class="nav-btn" onclick="showTool('percentage-calculator')">Percentage Calc</button>
+            <button class="nav-btn" onclick="showTool('random-generator')">Random Generator</button>
+            <button class="nav-btn" onclick="showTool('hex-converter')">Hex Converter</button>
+            <button class="nav-btn" onclick="showTool('character-counter')">Character Analysis</button>
+        </div>
+
+        <!-- Word Counter Tool -->
+        <div id="word-counter" class="tool-section active">
+            <h2 class="tool-title">📝 Word Counter & Text Analyzer</h2>
+            <div class="input-group">
+                <label>Enter your text:</label>
+                <textarea id="wordCounterText" placeholder="Type or paste your text here..." oninput="analyzeText()"></textarea>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="wordCount">0</div>
+                    <div class="stat-label">Words</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="charCount">0</div>
+                    <div class="stat-label">Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="charCountNoSpaces">0</div>
+                    <div class="stat-label">Characters (no spaces)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="paragraphCount">0</div>
+                    <div class="stat-label">Paragraphs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="sentenceCount">0</div>
+                    <div class="stat-label">Sentences</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="readingTime">0</div>
+                    <div class="stat-label">Reading Time (min)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Generator Tool -->
+        <div id="color-generator" class="tool-section">
+            <h2 class="tool-title">🎨 Color Palette Generator</h2>
+            <button class="btn" onclick="generateColorPalette()">Generate Random Palette</button>
+            <button class="btn btn-secondary" onclick="generateMonochrome()">Generate Monochrome</button>
+            <button class="btn btn-secondary" onclick="generateComplementary()">Generate Complementary</button>
+            <div id="colorPalette" class="color-palette"></div>
+        </div>
+
+        <!-- Password Generator Tool -->
+        <div id="password-generator" class="tool-section">
+            <h2 class="tool-title">🔐 Password Generator</h2>
+            <div class="slider-group">
+                <label>Password Length: <span class="slider-value" id="lengthValue">12</span></label>
+                <input type="range" id="passwordLength" min="4" max="50" value="12" oninput="updateLength()">
+            </div>
+            <div class="password-options">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="includeUppercase" checked>
+                    <label for="includeUppercase">Uppercase (A-Z)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="includeLowercase" checked>
+                    <label for="includeLowercase">Lowercase (a-z)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="includeNumbers" checked>
+                    <label for="includeNumbers">Numbers (0-9)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="includeSymbols">
+                    <label for="includeSymbols">Symbols (!@#$%)</label>
+                </div>
+            </div>
+            <button class="btn" onclick="generatePassword()">Generate Password</button>
+            <div class="result-box" id="passwordResult"></div>
+        </div>
+
+        <!-- QR Code Generator -->
+        <div id="qr-generator" class="tool-section">
+            <h2 class="tool-title">📱 QR Code Generator</h2>
+            <div class="input-group">
+                <label>Enter text or URL:</label>
+                <textarea id="qrText" placeholder="Enter text, URL, or any data to convert to QR code"></textarea>
+            </div>
+            <button class="btn" onclick="generateQR()">Generate QR Code</button>
+            <div class="qr-container" id="qrContainer"></div>
+        </div>
+
+        <!-- Base64 Tool -->
+        <div id="base64-tool" class="tool-section">
+            <h2 class="tool-title">🔄 Base64 Encoder/Decoder</h2>
+            <div class="two-column">
+                <div>
+                    <div class="input-group">
+                        <label>Plain Text:</label>
+                        <textarea id="plainText" placeholder="Enter text to encode"></textarea>
+                    </div>
+                    <button class="btn" onclick="encodeBase64()">Encode to Base64</button>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <label>Base64 Text:</label>
+                        <textarea id="base64Text" placeholder="Enter Base64 to decode"></textarea>
+                    </div>
+                    <button class="btn" onclick="decodeBase64()">Decode from Base64</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- JSON Formatter -->
+        <div id="json-formatter" class="tool-section">
+            <h2 class="tool-title">📋 JSON Formatter & Validator</h2>
+            <div class="input-group">
+                <label>Enter JSON:</label>
+                <textarea id="jsonInput" placeholder='{"name": "example", "data": [1,2,3]}'></textarea>
+            </div>
+            <button class="btn" onclick="formatJSON()">Format JSON</button>
+            <button class="btn btn-secondary" onclick="minifyJSON()">Minify JSON</button>
+            <button class="btn btn-secondary" onclick="validateJSON()">Validate JSON</button>
+            <div class="result-box" id="jsonResult"></div>
+        </div>
+
+        <!-- URL Encoder -->
+        <div id="url-encoder" class="tool-section">
+            <h2 class="tool-title">🔗 URL Encoder/Decoder</h2>
+            <div class="two-column">
+                <div>
+                    <div class="input-group">
+                        <label>Plain URL:</label>
+                        <textarea id="plainUrl" placeholder="Enter URL to encode"></textarea>
+                    </div>
+                    <button class="btn" onclick="encodeURL()">Encode URL</button>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <label>Encoded URL:</label>
+                        <textarea id="encodedUrl" placeholder="Enter encoded URL to decode"></textarea>
+                    </div>
+                    <button class="btn" onclick="decodeURL()">Decode URL</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hash Generator -->
+        <div id="hash-generator" class="tool-section">
+            <h2 class="tool-title">🔒 Hash Generator</h2>
+            <div class="input-group">
+                <label>Enter text to hash:</label>
+                <textarea id="hashInput" placeholder="Enter text to generate hash"></textarea>
+            </div>
+            <button class="btn" onclick="generateHashes()">Generate All Hashes</button>
+            <div class="result-box" id="hashResult"></div>
+        </div>
+
+        <!-- Lorem Ipsum Generator -->
+        <div id="lorem-generator" class="tool-section">
+            <h2 class="tool-title">📄 Lorem Ipsum Generator</h2>
+            <div class="input-group">
+                <label>Number of paragraphs:</label>
+                <input type="number" id="loremCount" value="3" min="1" max="20">
+            </div>
+            <button class="btn" onclick="generateLorem()">Generate Lorem Ipsum</button>
+            <div class="result-box" id="loremResult"></div>
+        </div>
+
+        <!-- Case Converter -->
+        <div id="case-converter" class="tool-section">
+            <h2 class="tool-title">🔤 Text Case Converter</h2>
+            <div class="input-group">
+                <label>Enter text:</label>
+                <textarea id="caseInput" placeholder="Enter text to convert case"></textarea>
+            </div>
+            <button class="btn" onclick="convertCase('upper')">UPPERCASE</button>
+            <button class="btn" onclick="convertCase('lower')">lowercase</button>
+            <button class="btn" onclick="convertCase('title')">Title Case</button>
+            <button class="btn" onclick="convertCase('sentence')">Sentence case</button>
+            <button class="btn" onclick="convertCase('camel')">camelCase</button>
+            <div class="result-box" id="caseResult"></div>
+        </div>
+
+        <!-- Timestamp Converter -->
+        <div id="timestamp-converter" class="tool-section">
+            <h2 class="tool-title">⏰ Timestamp Converter</h2>
+            <div class="two-column">
+                <div>
+                    <div class="input-group">
+                        <label>Current Timestamp:</label>
+                        <input type="text" id="currentTimestamp" readonly>
+                    </div>
+                    <button class="btn" onclick="updateCurrentTimestamp()">Get Current Timestamp</button>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <label>Convert Timestamp:</label>
+                        <input type="number" id="timestampInput" placeholder="Enter timestamp">
+                    </div>
+                    <button class="btn" onclick="convertTimestamp()">Convert to Date</button>
+                </div>
+            </div>
+            <div class="result-box" id="timestampResult"></div>
+        </div>
+
+        <!-- Percentage Calculator -->
+        <div id="percentage-calculator" class="tool-section">
+            <h2 class="tool-title">📊 Percentage Calculator</h2>
+            <div class="two-column">
+                <div>
+                    <div class="input-group">
+                        <label>What is <input type="number" id="percent1" style="width:80px"> % of <input type="number" id="number1" style="width:80px"> ?</label>
+                    </div>
+                    <button class="btn" onclick="calculatePercentage1()">Calculate</button>
+                    <div class="result-box" id="percentResult1"></div>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <label><input type="number" id="number2" style="width:80px"> is what % of <input type="number" id="number3" style="width:80px"> ?</label>
+                    </div>
+                    <button class="btn" onclick="calculatePercentage2()">Calculate</button>
+                    <div class="result-box" id="percentResult2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Random Generator -->
+        <div id="random-generator" class="tool-section">
+            <h2 class="tool-title">🎲 Random Number Generator</h2>
+            <div class="input-group">
+                <label>Min: <input type="number" id="randomMin" value="1" style="width:100px"> Max: <input type="number" id="randomMax" value="100" style="width:100px"></label>
+            </div>
+            <button class="btn" onclick="generateRandomNumber()">Generate Random Number</button>
+            <button class="btn btn-secondary" onclick="generateRandomList()">Generate 10 Numbers</button>
+            <div class="result-box" id="randomResult"></div>
+        </div>
+
+        <!-- Hex Converter -->
+        <div id="hex-converter" class="tool-section">
+            <h2 class="tool-title">🎨 Hex to RGB Converter</h2>
+            <div class="two-column">
+                <div>
+                    <div class="input-group">
+                        <label>Hex Color:</label>
+                        <input type="text" id="hexInput" placeholder="#FF5733" maxlength="7">
+                    </div>
+                    <button class="btn" onclick="hexToRgb()">Convert to RGB</button>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <label>RGB (R,G,B):</label>
+                        <input type="text" id="rgbInput" placeholder="255,87,51">
+                    </div>
+                    <button class="btn" onclick="rgbToHex()">Convert to Hex</button>
+                </div>
+            </div>
+            <div class="result-box" id="colorResult"></div>
+        </div>
+
+        <!-- Character Analysis -->
+        <div id="character-counter" class="tool-section">
+            <h2 class="tool-title">🔍 Character Frequency Analysis</h2>
+            <div class="input-group">
+                <label>Enter text to analyze:</label>
+                <textarea id="charAnalysisInput" placeholder="Enter text to analyze character frequency"></textarea>
+            </div>
+            <button class="btn" onclick="analyzeCharacters()">Analyze Characters</button>
+            <div class="result-box" id="charAnalysisResult"></div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        function showTool(toolId) {
+            document.querySelectorAll('.tool-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(toolId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Word Counter
+        function analyzeText() {
+            const text = document.getElementById('wordCounterText').value;
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            const chars = text.length;
+            const charsNoSpaces = text.replace(/\s/g, '').length;
+            const paragraphs = text.trim() ? text.split(/\n\s*\n/).length : 0;
+            const sentences = text.trim() ? text.split(/[.!?]+/).filter(s => s.length > 0).length : 0;
+            const readingTime = Math.ceil(words / 200);
+
+            document.getElementById('wordCount').textContent = words;
+            document.getElementById('charCount').textContent = chars;
+            document.getElementById('charCountNoSpaces').textContent = charsNoSpaces;
+            document.getElementById('paragraphCount').textContent = paragraphs;
+            document.getElementById('sentenceCount').textContent = sentences;
+            document.getElementById('readingTime').textContent = readingTime;
+        }
+
+        // Color Generator
+        function generateColorPalette() {
+            const colors = [];
+            for (let i = 0; i < 5; i++) {
+                colors.push('#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0'));
+            }
+            displayColors(colors);
+        }
+
+        function generateMonochrome() {
+            const baseHue = Math.floor(Math.random() * 360);
+            const colors = [];
+            for (let i = 0; i < 5; i++) {
+                const lightness = 20 + (i * 15);
+                colors.push(`hsl(${baseHue}, 70%, ${lightness}%)`);
+            }
+            displayColors(colors);
+        }
+
+        function generateComplementary() {
+            const baseHue = Math.floor(Math.random() * 360);
+            const complementaryHue = (baseHue + 180) % 360;
+            const colors = [
+                `hsl(${baseHue}, 70%, 50%)`,
+                `hsl(${baseHue}, 70%, 30%)`,
+                `hsl(${baseHue}, 70%, 70%)`,
+                `hsl(${complementaryHue}, 70%, 50%)`,
+                `hsl(${complementaryHue}, 70%, 30%)`
+            ];
+            displayColors(colors);
+        }
+
+        function displayColors(colors) {
+            const palette = document.getElementById('colorPalette');
+            palette.innerHTML = '';
+            colors.forEach(color => {
+                const colorBox = document.createElement('div');
+                colorBox.className = 'color-box';
+                colorBox.style.backgroundColor = color;
+                colorBox.textContent = color;
+                colorBox.onclick = () => navigator.clipboard.writeText(color);
+                palette.appendChild(colorBox);
+            });
+        }
+
+        // Password Generator
+        function updateLength() {
+            document.getElementById('lengthValue').textContent = document.getElementById('passwordLength').value;
+        }
+
+        function generatePassword() {
+            const length = parseInt(document.getElementById('passwordLength').value);
+            const includeUppercase = document.getElementById('includeUppercase').checked;
+            const includeLowercase = document.getElementById('includeLowercase').checked;
+            const includeNumbers = document.getElementById('includeNumbers').checked;
+            const includeSymbols = document.getElementById('includeSymbols').checked;
+
+            let charset = '';
+            if (includeUppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (includeLowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
+            if (includeNumbers) charset += '0123456789';
+            if (includeSymbols) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+            if (!charset) {
+                document.getElementById('passwordResult').textContent = 'Please select at least one character type.';
+                return;
+            }
+
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+
+            document.getElementById('passwordResult').textContent = password;
+        }
+
+        // QR Code Generator
+        function generateQR() {
+            const text = document.getElementById('qrText').value;
+            if (!text) return;
+
+            const container = document.getElementById('qrContainer');
+            container.innerHTML = '';
+
+            QRCode.toCanvas(text, { width: 256 }, (error, canvas) => {
+                if (error) {
+                    container.innerHTML = '<p>Error generating QR code</p>';
+                } else {
+                    container.appendChild(canvas);
+                }
+            });
+        }
+
+        // Base64 Tools
+        function encodeBase64() {
+            const text = document.getElementById('plainText').value;
+            const encoded = btoa(unescape(encodeURIComponent(text)));
+            document.getElementById('base64Text').value = encoded;
+        }
+
+        function decodeBase64() {
+            try {
+                const encoded = document.getElementById('base64Text').value;
+                const decoded = decodeURIComponent(escape(atob(encoded)));
+                document.getElementById('plainText').value = decoded;
+            } catch (e) {
+                alert('Invalid Base64 string');
+            }
+        }
+
+        // JSON Formatter
+        function formatJSON() {
+            try {
+                const json = document.getElementById('jsonInput').value;
+                const parsed = JSON.parse(json);
+                document.getElementById('jsonResult').textContent = JSON.stringify(parsed, null, 2);
+            } catch (e) {
+                document.getElementById('jsonResult').textContent = 'Invalid JSON: ' + e.message;
+            }
+        }
+
+        function minifyJSON() {
+            try {
+                const json = document.getElementById('jsonInput').value;
+                const parsed = JSON.parse(json);
+                document.getElementById('jsonResult').textContent = JSON.stringify(parsed);
+            } catch (e) {
+                document.getElementById('jsonResult').textContent = 'Invalid JSON: ' + e.message;
+            }
+        }
+
+        function validateJSON() {
+            try {
+                const json = document.getElementById('jsonInput').value;
+                JSON.parse(json);
+                document.getElementById('jsonResult').textContent = '✅ Valid JSON';
+            } catch (e) {
+                document.getElementById('jsonResult').textContent = '❌ Invalid JSON: ' + e.message;
+            }
+        }
+
+        // URL Encoder
+        function encodeURL() {
+            const url = document.getElementById('plainUrl').value;
+            document.getElementById('encodedUrl').value = encodeURIComponent(url);
+        }
+
+        function decodeURL() {
+            const encoded = document.getElementById('encodedUrl').value;
+            document.getElementById('plainUrl').value = decodeURIComponent(encoded);
+        }
+
+        // Hash Generator
+        function generateHashes() {
+            const text = document.getElementById('hashInput').value;
+            if (!text) return;
+
+            const md5 = CryptoJS.MD5(text).toString();
+            const sha1 = CryptoJS.SHA1(text).toString();
+            const sha256 = CryptoJS.SHA256(text).toString();
+            const sha512 = CryptoJS.SHA512(text).toString();
+
+            document.getElementById('hashResult').textContent = 
+                `MD5: ${md5}\n\nSHA1: ${sha1}\n\nSHA256: ${sha256}\n\nSHA512: ${sha512}`;
+        }
+
+        // Lorem Ipsum Generator
+        function generateLorem() {
+            const count = parseInt(document.getElementById('loremCount').value);
+            const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+            
+            let result = '';
+            for (let i = 0; i < count; i++) {
+                result += lorem + '\n\n';
+            }
+            
+            document.getElementById('loremResult').textContent = result.trim();
+        }
+
+        // Case Converter
+        function convertCase(type) {
+            const text = document.getElementById('caseInput').value;
+            let result = '';
+
+            switch (type) {
+                case 'upper':
+                    result = text.toUpperCase();
+                    break;
+                case 'lower':
+                    result = text.toLowerCase();
+                    break;
+                case 'title':
+                    result = text.replace(/\w\S*/g, (txt) => 
+                        txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+                    break;
+                case 'sentence':
+                    result = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+                    break;
+                case 'camel':
+                    result = text.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => 
+                        index === 0 ? word.toLowerCase() : word.toUpperCase()).replace(/\s+/g, '');
+                    break;
+            }
+
+            document.getElementById('caseResult').textContent = result;
+        }
+
+        // Timestamp Converter
+        function updateCurrentTimestamp() {
+            const now = Math.floor(Date.now() / 1000);
+            document.getElementById('currentTimestamp').value = now;
+        }
+
+        function convertTimestamp() {
+            const timestamp = document.getElementById('timestampInput').value;
+            if (!timestamp) return;
+
+            const date = new Date(timestamp * 1000);
+            document.getElementById('timestampResult').textContent = 
+                `Date: ${date.toLocaleDateString()}\nTime: ${date.toLocaleTimeString()}\nFull: ${date.toString()}`;
+        }
+
+        // Percentage Calculator
+        function calculatePercentage1() {
+            const percent = parseFloat(document.getElementById('percent1').value);
+            const number = parseFloat(document.getElementById('number1').value);
+            const result = (percent / 100) * number;
+            document.getElementById('percentResult1').textContent = `${percent}% of ${number} = ${result}`;
+        }
+
+        function calculatePercentage2() {
+            const number1 = parseFloat(document.getElementById('number2').value);
+            const number2 = parseFloat(document.getElementById('number3').value);
+            const result = (number1 / number2) * 100;
+            document.getElementById('percentResult2').textContent = `${number1} is ${result.toFixed(2)}% of ${number2}`;
+        }
+
+        // Random Generator
+        function generateRandomNumber() {
+            const min = parseInt(document.getElementById('randomMin').value);
+            const max = parseInt(document.getElementById('randomMax').value);
+            const random = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById('randomResult').textContent = `Random Number: ${random}`;
+        }
+
+        function generateRandomList() {
+            const min = parseInt(document.getElementById('randomMin').value);
+            const max = parseInt(document.getElementById('randomMax').value);
+            const numbers = [];
+            for (let i = 0; i < 10; i++) {
+                numbers.push(Math.floor(Math.random() * (max - min + 1)) + min);
+            }
+            document.getElementById('randomResult').textContent = `Random Numbers: ${numbers.join(', ')}`;
+        }
+
+        // Hex Converter
+        function hexToRgb() {
+            const hex = document.getElementById('hexInput').value.replace('#', '');
+            if (hex.length !== 6) {
+                document.getElementById('colorResult').textContent = 'Please enter a valid hex color (e.g., #FF5733)';
+                return;
+            }
+
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+
+            document.getElementById('colorResult').innerHTML = 
+                `RGB: rgb(${r}, ${g}, ${b})\nRGB Values: R=${r}, G=${g}, B=${b}\n\n<div style="width:100px;height:50px;background:#${hex};border:1px solid #ccc;"></div>`;
+        }
+
+        function rgbToHex() {
+            const rgb = document.getElementById('rgbInput').value.split(',');
+            if (rgb.length !== 3) {
+                document.getElementById('colorResult').textContent = 'Please enter RGB values as: 255,87,51';
+                return;
+            }
+
+            const r = parseInt(rgb[0].trim());
+            const g = parseInt(rgb[1].trim());
+            const b = parseInt(rgb[2].trim());
+
+            const hex = '#' + [r, g, b].map(x => {
+                const hex = x.toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            }).join('');
+
+            document.getElementById('colorResult').innerHTML = 
+                `Hex: ${hex}\nRGB: rgb(${r}, ${g}, ${b})\n\n<div style="width:100px;height:50px;background:${hex};border:1px solid #ccc;"></div>`;
+        }
+
+        // Character Analysis
+        function analyzeCharacters() {
+            const text = document.getElementById('charAnalysisInput').value;
+            if (!text) return;
+
+            const charCount = {};
+            for (let char of text) {
+                charCount[char] = (charCount[char] || 0) + 1;
+            }
+
+            const sorted = Object.entries(charCount)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 20);
+
+            let result = 'Character Frequency Analysis:\n\n';
+            sorted.forEach(([char, count]) => {
+                const displayChar = char === ' ' ? 'SPACE' : char === '\n' ? 'NEWLINE' : char;
+                result += `'${displayChar}': ${count} times\n`;
+            });
+
+            document.getElementById('charAnalysisResult').textContent = result;
+        }
+
+        // Initialize
+        updateCurrentTimestamp();
+    </script>
 </body>
 </html>
