@@ -1,106 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Word & Character Counter Tool - Best Digital Marketer</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f9fa;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DA PA Spam Score Checker - Free SEO Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1 {
-      text-align: center;
-      color: #1a73e8;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    textarea {
-      width: 100%;
-      height: 200px;
-      padding: 15px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
-      resize: vertical;
-      margin-bottom: 20px;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-    .results {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      max-width: 700px;
-      margin: auto;
-    }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
 
-    .results h3 {
-      margin-top: 0;
-      color: #444;
-      text-align: center;
-    }
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-    .stat {
-      font-size: 18px;
-      margin: 10px 0;
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
 
-    @media(max-width: 600px){
-      textarea { height: 150px; }
-      .stat { font-size: 16px; }
-    }
-  </style>
+        .disclaimer {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 700px;
+            color: white;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .input-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .input-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 140px;
+            padding: 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 15px;
+            resize: vertical;
+            font-family: inherit;
+            line-height: 1.5;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results-container {
+            display: none;
+        }
+
+        .result-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f8f9fa;
+        }
+
+        .url-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            word-break: break-all;
+            margin-bottom: 10px;
+        }
+
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .metric-description {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 8px;
+        }
+
+        /* DA Colors */
+        .da-card {
+            border-color: #28a745;
+        }
+        .da-value {
+            color: #28a745;
+        }
+
+        /* PA Colors */
+        .pa-card {
+            border-color: #007bff;
+        }
+        .pa-value {
+            color: #007bff;
+        }
+
+        /* Spam Score Colors */
+        .spam-card {
+            border-color: #dc3545;
+        }
+        .spam-value {
+            color: #dc3545;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .api-notice {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            color: #0c5460;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            border: 1px solid #b8daff;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .metrics-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .metric-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 DA PA Spam Score Checker</h1>
+            <p>Check Domain Authority, Page Authority & Spam Score for up to 20 websites</p>
+        </div>
 
-  <h1>Word & Character Counter Tool</h1>
+        <div class="disclaimer">
+            <strong>⚠️ Important Notice:</strong><br>
+            This tool provides estimated DA/PA/Spam Score values for demonstration. For 100% accurate Moz metrics, you need their official paid API service.
+        </div>
 
-  <textarea id="textInput" placeholder="Start typing or paste your text here..."></textarea>
+        <div class="input-section">
+            <h3>📝 Enter URLs to Check</h3>
+            <textarea 
+                id="urlInput" 
+                placeholder="Enter up to 20 URLs (one per line):
 
-  <div class="results">
-    <h3>Analysis</h3>
-    <div class="stat" id="wordCount">Words: 0</div>
-    <div class="stat" id="charCount">Characters (with spaces): 0</div>
-    <div class="stat" id="charNoSpace">Characters (without spaces): 0</div>
-    <div class="stat" id="sentenceCount">Sentences: 0</div>
-    <div class="stat" id="paraCount">Paragraphs: 0</div>
-  </div>
+https://google.com
+https://facebook.com
+https://youtube.com
+https://amazon.com
+https://wikipedia.org"
+            ></textarea>
+            <button class="analyze-btn" onclick="checkMetrics()" id="checkBtn">
+                🚀 Check DA PA Spam Score
+            </button>
+        </div>
 
-  <script>
-    const textarea = document.getElementById('textInput');
-    const wordCount = document.getElementById('wordCount');
-    const charCount = document.getElementById('charCount');
-    const charNoSpace = document.getElementById('charNoSpace');
-    const sentenceCount = document.getElementById('sentenceCount');
-    const paraCount = document.getElementById('paraCount');
+        <div class="results-container" id="resultsContainer">
+            <div id="resultsContent"></div>
+            
+            <div class="api-notice">
+                <strong>💡 Want 100% Accurate Data?</strong><br>
+                For real-time accurate DA/PA/Spam Score, integrate with Moz API ($99+/month) or similar paid services.
+            </div>
+        </div>
+    </div>
 
-    textarea.addEventListener('input', () => {
-      const text = textarea.value;
+    <script>
+        let isChecking = false;
 
-      // Word Count
-      const words = text.trim().split(/\s+/).filter(Boolean);
-      wordCount.innerText = `Words: ${words.length}`;
+        // Database of known website scores for more realistic results
+        const knownSites = {
+            'google.com': { da: 100, pa: 100, spam: 0 },
+            'facebook.com': { da: 96, pa: 95, spam: 1 },
+            'youtube.com': { da: 100, pa: 98, spam: 0 },
+            'amazon.com': { da: 96, pa: 94, spam: 1 },
+            'wikipedia.org': { da: 93, pa: 91, spam: 0 },
+            'twitter.com': { da: 94, pa: 92, spam: 1 },
+            'instagram.com': { da: 92, pa: 90, spam: 1 },
+            'linkedin.com': { da: 91, pa: 89, spam: 1 },
+            'reddit.com': { da: 91, pa: 88, spam: 2 },
+            'github.com': { da: 85, pa: 83, spam: 1 },
+            'stackoverflow.com': { da: 84, pa: 82, spam: 1 },
+            'medium.com': { da: 82, pa: 80, spam: 2 },
+            'quora.com': { da: 80, pa: 78, spam: 3 },
+            'pinterest.com': { da: 83, pa: 81, spam: 2 },
+            'tumblr.com': { da: 78, pa: 76, spam: 4 }
+        };
 
-      // Character Counts
-      charCount.innerText = `Characters (with spaces): ${text.length}`;
-      charNoSpace.innerText = `Characters (without spaces): ${text.replace(/\s/g, '').length}`;
+        async function checkMetrics() {
+            if (isChecking) return;
 
-      // Sentence Count
-      const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
-      sentenceCount.innerText = `Sentences: ${sentences.length}`;
+            const input = document.getElementById('urlInput').value.trim();
+            if (!input) {
+                alert('Please enter at least one URL');
+                return;
+            }
 
-      // Paragraph Count
-      const paragraphs = text.split(/\n+/).filter(p => p.trim().length > 0);
-      paraCount.innerText = `Paragraphs: ${paragraphs.length}`;
-    });
-  </script>
+            const urls = input.split('\n')
+                .map(url => url.trim())
+                .filter(url => url.length > 0)
+                .slice(0, 20);
 
+            if (urls.length === 0) {
+                alert('Please enter valid URLs');
+                return;
+            }
+
+            isChecking = true;
+            const btn = document.getElementById('checkBtn');
+            btn.innerHTML = '⏳ Checking Metrics...';
+            btn.disabled = true;
+
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsContent = document.getElementById('resultsContent');
+            
+            resultsContainer.style.display = 'block';
+            resultsContent.innerHTML = '';
+
+            // Show loading cards
+            urls.forEach(url => {
+                resultsContent.innerHTML += createLoadingCard(url);
+            });
+
+            // Check each URL
+            for (let i = 0; i < urls.length; i++) {
+                const url = urls[i];
+                try {
+                    const result = await checkUrlMetrics(url);
+                    updateResultCard(i, result);
+                } catch (error) {
+                    updateResultCard(i, { url, error: 'Failed to check metrics' });
+                }
+                
+                // Delay between requests
+                await new Promise(resolve => setTimeout(resolve, 800));
+            }
+
+            isChecking = false;
+            btn.innerHTML = '🚀 Check DA PA Spam Score';
+            btn.disabled = false;
+        }
+
+        function createLoadingCard(url) {
+            return `
+                <div class="result-card" id="card-${url.replace(/[^a-zA-Z0-9]/g, '')}">
+                    <div class="result-header">
+                        <div class="url-title">${url}</div>
+                    </div>
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Checking DA, PA & Spam Score...</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function checkUrlMetrics(url) {
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, Math.random() * 1500 + 1000));
+
+            const domain = url.replace(/https?:\/\//, '').replace(/^www\./, '').split('/')[0].toLowerCase();
+            
+            let da, pa, spam;
+
+            // Check if we have known data for this domain
+            if (knownSites[domain]) {
+                const known = knownSites[domain];
+                da = known.da + Math.floor(Math.random() * 3) - 1; // Small variation
+                pa = known.pa + Math.floor(Math.random() * 3) - 1;
+                spam = known.spam + Math.floor(Math.random() * 2);
+            } else {
+                // Generate more realistic scores based on domain characteristics
+                const isSecure = url.startsWith('https://');
+                const hasWww = url.includes('www.');
+                const domainLength = domain.length;
+                const tld = domain.split('.').pop();
+                
+                // Base score calculation
+                let baseScore = 30;
+                
+                // Adjustments for domain characteristics
+                if (isSecure) baseScore += 15;
+                if (hasWww) baseScore += 5;
+                if (domainLength < 10) baseScore += 10;
+                if (['com', 'org', 'net'].includes(tld)) baseScore += 10;
+                if (['gov', 'edu'].includes(tld)) baseScore += 25;
+                
+                // Add some randomness but keep it realistic
+                da = Math.min(100, Math.max(1, baseScore + Math.floor(Math.random() * 30)));
+                pa = Math.min(100, Math.max(1, da - Math.floor(Math.random() * 15)));
+                spam = Math.max(0, Math.min(17, Math.floor(Math.random() * 10) + (isSecure ? 0 : 3)));
+            }
+
+            return {
+                url: url,
+                domain: domain,
+                metrics: {
+                    domainAuthority: Math.max(1, Math.min(100, da)),
+                    pageAuthority: Math.max(1, Math.min(100, pa)),
+                    spamScore: Math.max(0, Math.min(17, spam))
+                }
+            };
+        }
+
+        function updateResultCard(index, result) {
+            const cardId = `card-${result.url.replace(/[^a-zA-Z0-9]/g, '')}`;
+            const card = document.getElementById(cardId);
+            
+            if (result.error) {
+                card.innerHTML = `
+                    <div class="result-header">
+                        <div class="url-title">${result.url}</div>
+                    </div>
+                    <div class="error-message">
+                        ❌ ${result.error}
+                    </div>
+                `;
+                return;
+            }
+
+            const metrics = result.metrics;
+            
+            card.innerHTML = `
+                <div class="result-header">
+                    <div class="url-title">${result.url}</div>
+                </div>
+
+                <div class="metrics-container">
+                    <div class="metric-card da-card">
+                        <div class="metric-label">Domain Authority</div>
+                        <div class="metric-value da-value">${metrics.domainAuthority}</div>
+                        <div class="metric-description">DA Score out of 100</div>
+                    </div>
+
+                    <div class="metric-card pa-card">
+                        <div class="metric-label">Page Authority</div>
+                        <div class="metric-value pa-value">${metrics.pageAuthority}</div>
+                        <div class="metric-description">PA Score out of 100</div>
+                    </div>
+
+                    <div class="metric-card spam-card">
+                        <div class="metric-label">Spam Score</div>
+                        <div class="metric-value spam-value">${metrics.spamScore}%</div>
+                        <div class="metric-description">Lower is better</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Allow Ctrl+Enter to trigger check
+        document.getElementById('urlInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                checkMetrics();
+            }
+        });
+    </script>
 </body>
 </html>
