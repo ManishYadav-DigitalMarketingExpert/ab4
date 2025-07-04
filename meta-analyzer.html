@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meta Tag Analyzer - Best Digital Marketer</title>
+  <title>Word & Character Counter Tool - Best Digital Marketer</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f7fa;
+      background: #f8f9fa;
       margin: 0;
       padding: 20px;
       color: #333;
@@ -21,117 +21,85 @@
     textarea {
       width: 100%;
       height: 200px;
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      resize: vertical;
-    }
-
-    button {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 25px;
-      background: #1a73e8;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
+      padding: 15px;
       font-size: 16px;
-      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      resize: vertical;
+      margin-bottom: 20px;
     }
 
-    .result {
+    .results {
       background: #fff;
       padding: 20px;
-      border-radius: 5px;
-      margin-top: 20px;
+      border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: auto;
     }
 
-    .result h3 {
+    .results h3 {
+      margin-top: 0;
       color: #444;
+      text-align: center;
     }
 
-    .highlight {
-      background: #e3f2fd;
-      padding: 8px;
-      display: inline-block;
-      margin: 5px 0;
-      border-radius: 4px;
-      font-weight: bold;
+    .stat {
+      font-size: 18px;
+      margin: 10px 0;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
     }
 
-    .error {
-      color: red;
+    @media(max-width: 600px){
+      textarea { height: 150px; }
+      .stat { font-size: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <h1>Meta Tag Analyzer Tool</h1>
-  <p>Paste your HTML source code below (must include &lt;head&gt; section):</p>
+  <h1>Word & Character Counter Tool</h1>
 
-  <textarea id="htmlInput" placeholder="Paste full HTML source here..."></textarea>
-  <button onclick="analyzeTags()">Analyze Meta Tags</button>
+  <textarea id="textInput" placeholder="Start typing or paste your text here..."></textarea>
 
-  <div id="results" class="result" style="display:none;"></div>
+  <div class="results">
+    <h3>Analysis</h3>
+    <div class="stat" id="wordCount">Words: 0</div>
+    <div class="stat" id="charCount">Characters (with spaces): 0</div>
+    <div class="stat" id="charNoSpace">Characters (without spaces): 0</div>
+    <div class="stat" id="sentenceCount">Sentences: 0</div>
+    <div class="stat" id="paraCount">Paragraphs: 0</div>
+  </div>
 
   <script>
-    function analyzeTags() {
-      const htmlContent = document.getElementById('htmlInput').value.trim();
-      if (!htmlContent.includes("<head")) {
-        alert("Please paste full HTML content including the <head> section.");
-        return;
-      }
+    const textarea = document.getElementById('textInput');
+    const wordCount = document.getElementById('wordCount');
+    const charCount = document.getElementById('charCount');
+    const charNoSpace = document.getElementById('charNoSpace');
+    const sentenceCount = document.getElementById('sentenceCount');
+    const paraCount = document.getElementById('paraCount');
 
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(htmlContent, 'text/html');
+    textarea.addEventListener('input', () => {
+      const text = textarea.value;
 
-      const title = doc.querySelector("title");
-      const desc = doc.querySelector("meta[name='description']");
-      const keywords = doc.querySelector("meta[name='keywords']");
-      const robots = doc.querySelector("meta[name='robots']");
+      // Word Count
+      const words = text.trim().split(/\s+/).filter(Boolean);
+      wordCount.innerText = `Words: ${words.length}`;
 
-      let output = "";
+      // Character Counts
+      charCount.innerText = `Characters (with spaces): ${text.length}`;
+      charNoSpace.innerText = `Characters (without spaces): ${text.replace(/\s/g, '').length}`;
 
-      // Title
-      output += "<h3>Title Tag</h3>";
-      if (title && title.textContent) {
-        output += `<div class="highlight">${title.textContent}</div>`;
-        output += `<p>Length: ${title.textContent.length} characters</p>`;
-      } else {
-        output += '<p class="error">No &lt;title&gt; tag found.</p>';
-      }
+      // Sentence Count
+      const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+      sentenceCount.innerText = `Sentences: ${sentences.length}`;
 
-      // Description
-      output += "<h3>Meta Description</h3>";
-      if (desc && desc.content) {
-        output += `<div class="highlight">${desc.content}</div>`;
-        output += `<p>Length: ${desc.content.length} characters</p>`;
-      } else {
-        output += '<p class="error">No meta description tag found.</p>';
-      }
-
-      // Keywords
-      output += "<h3>Meta Keywords</h3>";
-      if (keywords && keywords.content) {
-        output += `<div class="highlight">${keywords.content}</div>`;
-      } else {
-        output += '<p class="error">No meta keywords tag found.</p>';
-      }
-
-      // Robots
-      output += "<h3>Meta Robots</h3>";
-      if (robots && robots.content) {
-        output += `<div class="highlight">${robots.content}</div>`;
-      } else {
-        output += '<p class="error">No meta robots tag found.</p>';
-      }
-
-      const resultBox = document.getElementById("results");
-      resultBox.innerHTML = output;
-      resultBox.style.display = "block";
-    }
+      // Paragraph Count
+      const paragraphs = text.split(/\n+/).filter(p => p.trim().length > 0);
+      paraCount.innerText = `Paragraphs: ${paragraphs.length}`;
+    });
   </script>
 
 </body>
