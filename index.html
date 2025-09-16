@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mob 2 John Doe - LinkedIn Style CV</title>
+    <title>3John Doe - LinkedIn Style CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -161,11 +161,46 @@
           .mobile-hidden { display: none; }
           .mobile-w-full { width: 100%; }
           .mobile-justify-center { justify-content: center; }
+          
+          /* Added container width constraints for mobile */
+          .mobile-max-w-full { max-width: 100%; }
+          .mobile-overflow-hidden { overflow-x: hidden; }
+          
+          /* Fixed profile section layout on mobile */
+          .mobile-profile-container {
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+          }
+          
+          /* Ensure buttons stack properly on mobile */
+          .mobile-button-stack {
+            flex-direction: column;
+            width: 100%;
+          }
+          
+          .mobile-button-stack button {
+            width: 100%;
+            margin-bottom: 8px;
+          }
+        }
+        
+        /* Added global mobile container constraints */
+        @media (max-width: 767px) {
+          body {
+            overflow-x: hidden;
+          }
+          
+          * {
+            max-width: 100%;
+            box-sizing: border-box;
+          }
         }
     </style>
 </head>
-<body>
-    <div style="min-height: 100vh; background-color: var(--muted);">
+<body class="mobile-overflow-hidden">
+    <div style="min-height: 100vh; background-color: var(--muted); overflow-x: hidden;">
         <!-- Header Section - LinkedIn Style -->
         <div class="relative">
             <!-- Cover Photo -->
@@ -174,12 +209,12 @@
             </div>
 
             <!-- Profile Section -->
-            <!-- Made container responsive with mobile padding -->
-            <div style="max-width: 1024px; margin: 0 auto; padding: 0 16px; position: relative;">
-                <div class="card" style="position: relative; margin-top: -64px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
-                    <!-- Made profile section responsive -->
-                    <div class="p-8 mobile-p-4">
-                        <div class="flex gap-6 mobile-flex-col mobile-items-center mobile-gap-4" style="flex-direction: row;">
+            <!-- Made container fully responsive with proper mobile constraints -->
+            <div style="max-width: 1024px; margin: 0 auto; padding: 0 8px; position: relative;" class="mobile-max-w-full mobile-profile-container">
+                <div class="card" style="position: relative; margin-top: -64px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); margin-left: 8px; margin-right: 8px;">
+                    <!-- Enhanced mobile padding and layout -->
+                    <div class="p-8 mobile-p-4" style="padding: 32px 16px;">
+                        <div class="flex gap-6 mobile-flex-col mobile-items-center mobile-gap-4">
                             <!-- Profile Picture -->
                             <div class="flex-shrink-0">
                                 <div class="avatar" style="width: 128px; height: 128px; border: 4px solid var(--background); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -189,12 +224,12 @@
 
                             <!-- Profile Info -->
                             <div class="flex-1 mobile-w-full">
-                                <!-- Made profile info responsive with mobile layout -->
-                                <div class="flex gap-4 mobile-flex-col mobile-gap-4" style="flex-direction: row; justify-content: space-between;">
+                                <!-- Improved mobile layout with better spacing -->
+                                <div class="flex gap-4 mobile-flex-col mobile-gap-4" style="justify-content: space-between;">
                                     <div class="mobile-text-center">
-                                        <h1 class="text-3xl font-bold mb-2 mobile-text-lg mobile-mb-4">John Doe</h1>
-                                        <h2 class="text-xl primary-color font-semibold mb-3 mobile-text-sm mobile-mb-4">Senior Software Engineer | Full Stack Developer</h2>
-                                        <div class="flex flex-wrap gap-4 text-sm muted-color mb-4 mobile-justify-center mobile-gap-4 mobile-mb-4">
+                                        <h1 class="text-3xl font-bold mb-2 mobile-text-lg mobile-mb-4" style="font-size: 30px;">John Doe</h1>
+                                        <h2 class="text-xl primary-color font-semibold mb-3 mobile-text-sm mobile-mb-4" style="font-size: 20px;">Senior Software Engineer | Full Stack Developer</h2>
+                                        <div class="flex flex-wrap gap-4 text-sm muted-color mb-4 mobile-justify-center mobile-gap-4 mobile-mb-4" style="justify-content: flex-start;">
                                             <div class="flex items-center gap-2">
                                                 <span>📍</span> Mumbai, India
                                             </div>
@@ -205,15 +240,16 @@
                                                 <span>👥</span> 500+ connections
                                             </div>
                                         </div>
-                                        <div class="flex flex-wrap gap-2 mobile-justify-center">
+                                        <!-- Made buttons stack properly on mobile -->
+                                        <div class="flex flex-wrap gap-2 mobile-justify-center mobile-button-stack">
                                             <button class="button">💬 Message</button>
                                             <button class="button button-outline">👥 Connect</button>
                                         </div>
                                     </div>
 
                                     <!-- Contact Info -->
-                                    <!-- Made contact info responsive and centered on mobile -->
-                                    <div class="flex flex-col gap-2 text-sm mobile-items-center mobile-gap-4">
+                                    <!-- Better mobile alignment for contact info -->
+                                    <div class="flex flex-col gap-2 text-sm mobile-items-center mobile-gap-4" style="align-items: flex-start;">
                                         <div class="flex items-center gap-2 muted-color">
                                             <span>✉️</span> john.doe@email.com
                                         </div>
@@ -236,8 +272,8 @@
         </div>
 
         <!-- Main Content -->
-        <!-- Made main content responsive with mobile padding -->
-        <div style="max-width: 1024px; margin: 0 auto; padding: 24px 16px;" class="space-y-6">
+        <!-- Enhanced mobile padding for main content -->
+        <div style="max-width: 1024px; margin: 0 auto; padding: 24px 8px;" class="space-y-6 mobile-max-w-full">
             <!-- About Section -->
             <div class="card">
                 <div class="p-6">
