@@ -3,1454 +3,593 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn top digital marketing strategies, updates, and tips from Best Digital Marketer. Boost your online presence today!">
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Latest Updates - Tips - Tricks with Best Digital Marketer</title>
+    <title>John Doe - LinkedIn Style CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Modern Base Styles */
+        :root {
+          --background: #ffffff;
+          --foreground: #1a1a1a;
+          --card: #ffffff;
+          --card-foreground: #1a1a1a;
+          --primary: #0077b5;
+          --primary-foreground: #ffffff;
+          --secondary: #005885;
+          --secondary-foreground: #ffffff;
+          --muted: #f8f9fa;
+          --muted-foreground: #6b7280;
+          --border: #e5e7eb;
+          --ring: rgba(0, 119, 181, 0.5);
+          --radius: 8px;
+        }
+        
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
         
         body {
-            line-height: 1.6;
-            color: #1a1a2e; /* Deep navy */
-            background-color: #f8fafc; /* Light gray-blue */
-            overflow-x: hidden;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .section-title {
-            font-size: 32px;
-            margin-bottom: 40px;
-            color: #1a1a2e; /* Deep navy */
-            position: relative;
-            padding-left: 20px;
-            border-left: 4px solid #f093fb; /* Changed to pink */
-            font-weight: 700;
-        }
-        
-        /* Modern Hero Section with 3D Reading Images */
-        .hero {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: #ffffff;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-        
-        /* Modern Animated Circle */
-        .animated-circle {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-            border-radius: 50%;
-            right: -150px;
-            bottom: -150px;
-            opacity: 0.8;
-            z-index: 1;
-            transition: transform 0.5s ease-out;
-            box-shadow: 0 0 100px rgba(255, 107, 107, 0.3);
-        }
-        
-        /* Gradient overlay on circle */
-        .animated-circle::after {
-            content: '';
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            top: 15%;
-            left: 15%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
-            border-radius: 50%;
-            backdrop-filter: blur(10px);
-        }
-        
-        /* Modern Floating Elements */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .modern-shape {
-            position: absolute;
-            border-radius: 20px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .modern-shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 15%;
-            animation: float1 6s ease-in-out infinite;
-        }
-        
-        .modern-shape:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            top: 60%;
-            left: 25%;
-            animation: float2 8s ease-in-out infinite 2s;
-            border-radius: 50%;
-        }
-        
-        .modern-shape:nth-child(3) {
-            width: 100px;
-            height: 40px;
-            top: 30%;
-            right: 20%;
-            animation: float3 7s ease-in-out infinite 1s;
-        }
-        
-        .modern-shape:nth-child(4) {
-            width: 50px;
-            height: 50px;
-            top: 70%;
-            right: 30%;
-            animation: float1 9s ease-in-out infinite 3s;
-            transform: rotate(45deg);
-        }
-        
-        @keyframes float1 {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(10deg); }
-        }
-        
-        @keyframes float2 {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.1); }
-        }
-        
-        @keyframes float3 {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(-5deg); }
-        }
-        
-        /* Particle System */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255,255,255,0.6);
-            border-radius: 50%;
-            animation: particleFloat 12s linear infinite;
-        }
-        
-        .particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
-        .particle:nth-child(2) { top: 30%; left: 60%; animation-delay: 2s; }
-        .particle:nth-child(3) { top: 50%; left: 40%; animation-delay: 4s; }
-        .particle:nth-child(4) { top: 70%; left: 80%; animation-delay: 6s; }
-        .particle:nth-child(5) { top: 20%; left: 70%; animation-delay: 8s; }
-        .particle:nth-child(6) { top: 60%; left: 30%; animation-delay: 10s; }
-        
-        @keyframes particleFloat {
-            0% { transform: translateY(0) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
-        }
-        
-        /* Hero Layout with 3D Reading Images */
-        .hero-layout {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 60px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            font-size: 64px;
-            margin-bottom: 24px;
-            color: #ffffff;
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-        
-        .hero p {
-            font-size: 22px;
-            margin-bottom: 32px;
-            color: rgba(255,255,255,0.9);
-            font-weight: 400;
-            line-height: 1.6;
-        }
-        
-        .hero-button {
-            display: inline-block;
-            padding: 16px 32px;
-            background: rgba(255,255,255,0.15);
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .hero-button:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        
-        /* 3D Reading Images */
-        .reading-images {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 400px;
-            flex-shrink: 0;
-        }
-        
-        .reading-image {
-            width: 100%;
-            height: 180px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .reading-image:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-        
-        .reading-image:nth-child(1) {
-            animation: imageFloat1 6s ease-in-out infinite;
-        }
-        
-        .reading-image:nth-child(2) {
-            animation: imageFloat2 7s ease-in-out infinite 1s;
-        }
-        
-        .reading-image:nth-child(3) {
-            animation: imageFloat3 8s ease-in-out infinite 2s;
-        }
-        
-        @keyframes imageFloat1 {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-        }
-        
-        @keyframes imageFloat2 {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(-2deg); }
-        }
-        
-        @keyframes imageFloat3 {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(1deg); }
-        }
-        
-        .reading-image-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-        
-        .reading-image-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        
-        .reading-image-title {
-            font-size: 18px;
-            font-weight: 700;
-        }
-        
-        /* Modern Posts Grid */
-        .posts-section {
-            padding: 25px 0;
-            background: #ffffff;
-        }
-        
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 24px;
-        }
-        
-        .post-card {
-            background: #ffffff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
-            cursor: pointer;
-        }
-        
-        .post-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-        
-        .post-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .post-image {
-            width: 100%;
-            height: 150px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #f1f5f9;
-            position: relative;
-        }
-        
-        .post-image::after {
-            content: '📷';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            opacity: 0.5;
-        }
-        
-        .post-title {
-            padding: 20px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #1a1a2e;
-            line-height: 1.4;
-        }
-        
-        /* Modern Quiz Section */
-        .quiz-section {
-            padding: 80px 0;
-            background: #f8fafc;
-        }
-        
-        .quiz-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-        
-        .quiz-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .quiz-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-        }
-        
-        .quiz-question {
-            font-size: 20px;
-            margin-bottom: 24px;
-            font-weight: 700;
-            color: #1a1a2e;
-            line-height: 1.3;
-        }
-        
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .quiz-option {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            background: #f8fafc;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 2px solid transparent;
-        }
-        
-        .quiz-option:hover {
-            background: #e2e8f0;
-            border-color: #f093fb;
-        }
-        
-        .quiz-option.selected {
-            background: #e2e8f0;
-            border-color: #f093fb;
-        }
-        
-        .quiz-option.correct {
-            background: rgba(34, 197, 94, 0.1);
-            border-color: #22c55e;
-            color: #15803d;
-        }
-        
-        .quiz-option.wrong {
-            background: rgba(239, 68, 68, 0.1);
-            border-color: #ef4444;
-            color: #dc2626;
-        }
-        
-        .option-text {
-            font-size: 16px;
-            color: inherit;
-            font-weight: 500;
-        }
-        
-        .option-status {
-            font-size: 14px;
-            font-weight: 700;
-            color: inherit;
-        }
-        
-        /* Compact Modern Services Section */
-        .services-section {
-            padding: 60px 0; /* Reduced from 80px */
-            background: #ffffff;
-            position: relative;
-        }
-        
-        .services-container {
-            display: flex;
-            gap: 32px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Left Side Menu - Compact */
-        .services-menu {
-            width: 220px; /* Reduced from 250px */
-            flex-shrink: 0;
-            border-right: 2px solid #e2e8f0;
-            padding-right: 20px;
-        }
-        
-        .service-tab {
-            padding: 12px 16px; /* Reduced padding */
-            margin-bottom: 8px; /* Reduced margin */
-            background: transparent;
-            color: #64748b;
-            border-radius: 12px 0 0 12px;
-            font-size: 16px; /* Reduced font size */
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            text-align: left;
-            border-left: 3px solid transparent;
-        }
-        
-        .service-tab:hover {
-            background: rgba(240, 147, 251, 0.05);
-            color: #f093fb;
-        }
-        
-        .service-tab.active {
-            background: rgba(240, 147, 251, 0.1);
-            color: #f093fb;
-            border-left: 3px solid #f093fb;
-            font-weight: 700;
-        }
-        
-        /* Right Side Content - Compact */
-        .service-content {
-            flex: 1;
-            position: relative;
-        }
-        
-        .service-panel {
-            display: none;
-            animation: fadeIn 0.4s ease forwards;
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 32px; /* Reduced from 40px */
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .service-panel.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .service-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-        }
-        
-        .service-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 24px; /* Reduced margin */
-        }
-        
-        .service-icon {
-            width: 60px; /* Reduced from 80px */
-            height: 60px;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            border-radius: 16px; /* Changed from circle to rounded square */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 16px;
-            color: #ffffff;
-            font-size: 24px; /* Reduced font size */
-            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
-        }
-        
-        .service-title {
-            font-size: 24px; /* Reduced from 28px */
-            color: #1a1a2e;
-            margin-bottom: 4px;
-            font-weight: 700;
-        }
-        
-        .service-subtitle {
-            font-size: 14px;
-            color: #64748b;
-            font-style: italic;
-        }
-        
-        .service-description {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #374151;
-            margin-bottom: 24px; /* Reduced margin */
-        }
-        
-        .service-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px; /* Reduced gap */
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            font-size: 14px; /* Reduced font size */
-            color: #374151;
-            font-weight: 500;
-        }
-        
-        .feature-item::before {
-            content: '✓';
-            color: #10b981;
-            font-weight: bold;
-            margin-right: 8px;
-            font-size: 16px;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            padding: 60px 0;
-            background: #f8fafc;
-        }
-        
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-        }
-        
-        .faq-item {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-        }
-        
-        .faq-question {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1a1a2e;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            padding: 12px 0;
-            border-bottom: 2px solid #f093fb;
-        }
-        
-        .faq-question:hover {
-            color: #f093fb;
-        }
-        
-        .faq-icon {
-            font-size: 20px;
-            color: #f093fb;
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-icon.rotated {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #374151;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            opacity: 0;
-        }
-        
-        .faq-answer.open {
-            max-height: 500px;
-            opacity: 1;
-            padding-top: 16px;
-        }
-        
-        /* Footer - Simplified */
-        footer {
-            background: #1a1a2e;
-            color: #ffffff;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-layout {
-                flex-direction: column;
-                gap: 40px;
-            }
-            
-            .reading-images {
-                width: 100%;
-                max-width: 500px;
-            }
-            
-            .posts-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .quiz-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .service-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .services-container {
-                flex-direction: column;
-            }
-            
-            .services-menu {
-                width: 100%;
-                border-right: none;
-                border-bottom: 2px solid #e2e8f0;
-                padding-right: 0;
-                padding-bottom: 20px;
-                margin-bottom: 20px;
-                display: flex;
-                overflow-x: auto;
-                gap: 8px;
-            }
-            
-            .service-tab {
-                margin-right: 0;
-                margin-bottom: 0;
-                border-left: none;
-                border-bottom: 3px solid transparent;
-                white-space: nowrap;
-                border-radius: 12px 12px 0 0;
-            }
-            
-            .service-tab.active {
-                border-left: none;
-                border-bottom: 3px solid #f093fb;
-            }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 48px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .animated-circle {
-                width: 300px;
-                height: 300px;
-                /* Keep the circle visible on mobile */
-                display: block;
-            }
-            
-            .reading-images {
-                padding: 0 20px;
-            }
-            
-            .posts-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .quiz-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .subscribe-form {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .service-panel {
-                padding: 24px 16px;
-            }
-            
-            .service-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .service-icon {
-                margin-right: 0;
-                margin-bottom: 12px;
-            }
-            
-            .flying-book {
-                display: none;
-            }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .animated-circle {
-                width: 200px;
-                height: 200px;
-                /* Keep the circle visible on mobile */
-                display: block;
-                right: -100px;
-                bottom: -100px;
-            }
-            
-            .section-title {
-                font-size: 24px;
-            }
-            
-            .service-title {
-                font-size: 20px;
-            }
-            
-            .service-description {
-                font-size: 14px;
-            }
-            
-            .modern-shape {
-                display: none;
-            }
-            
-            .letter {
-                font-size: 16px;
-            }
-            
-            .reading-image {
-                height: 150px;
-            }
-            
-            .faq-question {
-                font-size: 16px;
-            }
-            
-            .faq-answer {
-                font-size: 14px;
-            }
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          background-color: var(--muted);
+          color: var(--foreground);
+          line-height: 1.6;
+        }
+        
+        .card {
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .primary-color { color: var(--primary); }
+        .muted-color { color: var(--muted-foreground); }
+        .bg-primary { background-color: var(--primary); color: var(--primary-foreground); }
+        .bg-secondary { background-color: var(--secondary); color: var(--secondary-foreground); }
+        .bg-muted { background-color: var(--muted); }
+        
+        .avatar {
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--muted);
+        }
+        
+        .badge {
+          display: inline-flex;
+          align-items: center;
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: 500;
+          background: var(--primary);
+          color: var(--primary-foreground);
+        }
+        
+        .badge-outline {
+          background: transparent;
+          border: 1px solid var(--border);
+          color: var(--foreground);
+        }
+        
+        .badge-secondary {
+          background: var(--muted);
+          color: var(--foreground);
+        }
+        
+        .button {
+          display: inline-flex;
+          align-items: center;
+          padding: 8px 16px;
+          border-radius: var(--radius);
+          font-size: 14px;
+          font-weight: 500;
+          border: none;
+          cursor: pointer;
+          background: var(--primary);
+          color: var(--primary-foreground);
+        }
+        
+        .button-outline {
+          background: transparent;
+          border: 1px solid var(--border);
+          color: var(--foreground);
+        }
+        
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: 8px; }
+        .gap-3 { gap: 12px; }
+        .gap-4 { gap: 16px; }
+        .gap-6 { gap: 24px; }
+        .mb-2 { margin-bottom: 8px; }
+        .mb-3 { margin-bottom: 12px; }
+        .mb-4 { margin-bottom: 16px; }
+        .p-6 { padding: 24px; }
+        .p-8 { padding: 32px; }
+        .pl-4 { padding-left: 16px; }
+        .ml-16 { margin-left: 64px; }
+        .text-sm { font-size: 14px; }
+        .text-lg { font-size: 18px; }
+        .text-xl { font-size: 20px; }
+        .text-2xl { font-size: 24px; }
+        .text-3xl { font-size: 30px; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        .border-l-2 { border-left: 2px solid; }
+        .border-primary { border-color: var(--primary); }
+        .border-muted { border-color: var(--border); }
+        .space-y-3 > * + * { margin-top: 12px; }
+        .space-y-4 > * + * { margin-top: 16px; }
+        .space-y-6 > * + * { margin-top: 24px; }
+        .space-y-12 > * + * { margin-top: 48px; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-shrink-0 { flex-shrink: 0; }
+        .flex-1 { flex: 1; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .opacity-20 { opacity: 0.2; }
+        .bg-cover { background-size: cover; }
+        .bg-center { background-position: center; }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .border-t { border-top: 1px solid var(--border); }
+        .leading-relaxed { line-height: 1.625; }
+        
+        @media (min-width: 768px) {
+          .md-flex-row { flex-direction: row; }
+          .md-items-start { align-items: flex-start; }
+          .md-justify-between { justify-content: space-between; }
         }
     </style>
 </head>
 <body>
-    <!-- Modern Hero Section with 3D Reading Images -->
-    <section class="hero">
-        <!-- Modern Animated Circle -->
-        <div class="animated-circle"></div>
-        
-        <!-- Modern Floating Elements -->
-        <div class="floating-elements">
-            <div class="modern-shape"></div>
-            <div class="modern-shape"></div>
-            <div class="modern-shape"></div>
-            <div class="modern-shape"></div>
-        </div>
-        
-        <!-- Particle System -->
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        
-        <div class="container">
-            <div class="hero-layout">
-                <!-- Left Side: Hero Content -->
-                <div class="hero-content">
-                    <h1>Stay Ahead with the Latest Digital Marketing Updates</h1>
-                    <p>Your comprehensive resource for the latest digital marketing tips, insights, and strategies</p>
-                    <a href="#latest-updates" class="hero-button">Explore Resources</a>
-                </div>
-                
-                <!-- Right Side: 3D Reading Images -->
-                <div class="reading-images">
-                    <!-- Reading Image 1 -->
-                    <div class="reading-image">
-                        <div class="reading-image-content">
-                            <div class="reading-image-icon">📚</div>
-                            <div class="reading-image-title">Digital Marketing Guides</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Reading Image 2 -->
-                    <div class="reading-image">
-                        <div class="reading-image-content">
-                            <div class="reading-image-icon">📊</div>
-                            <div class="reading-image-title">Analytics & Insights</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Reading Image 3 -->
-                    <div class="reading-image">
-                        <div class="reading-image-content">
-                            <div class="reading-image-icon">🚀</div>
-                            <div class="reading-image-title">Growth Strategies</div>
-                        </div>
-                    </div>
-                </div>
+    <div style="min-height: 100vh; background-color: var(--muted);">
+        <!-- Header Section - LinkedIn Style -->
+        <div class="relative">
+            <!-- Cover Photo -->
+            <div style="height: 192px; background: linear-gradient(to right, rgba(0, 119, 181, 0.2), rgba(0, 119, 181, 0.1)); position: relative;">
+                <div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); opacity: 0.2;"></div>
             </div>
-        </div>
-    </section>  
-    <!-- Latest Updates Section -->
-    <section id="latest-updates" class="posts-section">
-        <div class="container">
-            <h2 class="section-title">Latest Digital Marketing Algorithm Updates</h2>
-            <div class="posts-grid">
-                <!-- Post 1 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Analytics+Update');"></div>
-                        <div class="post-title">CoGoogle Analytics 4 New Features</div>
-                    </a>
-                </div>
-                
-                <!-- Post 2 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Instagram+Algorithm');"></div>
-                        <div class="post-title">Instagram Algorithm Update</div>
-                    </a>
-                </div>
-                
-                <!-- Post 3 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Search+Console');"></div>
-                        <div class="post-title">Google Search Console Changes</div>
-                    </a>
-                </div>
-                
-                <!-- Post 4 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Facebook+Targeting');"></div>
-                        <div class="post-title">Facebook Ads New Targeting Options</div>
-                    </a>
-                </div>
-                
-                <!-- Post 5 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=LinkedIn+Features');"></div>
-                        <div class="post-title">LinkedIn Marketing Features</div>
-                    </a>
-                </div>
-                
-                <!-- Post 6 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Smart+Bidding');"></div>
-                        <div class="post-title">Google Ads Smart Bidding Update</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-      <!-- General Blogs Section -->
-    <section class="posts-section">
-        <div class="container">
-            <h2 class="section-title">Learn Digital Marketing: Tips & Insights</h2>
-            <div class="posts-grid">
-                <!-- Blog 1 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=SEO+Best+Practices');"></div>
-                        <div class="post-title">SEO Best Practices Guide</div>
-                    </a>
-                </div>
-                
-                <!-- Blog 2 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Content+Marketing');"></div>
-                        <div class="post-title">Content Marketing Strategy</div>
-                    </a>
-                </div>
-                
-                <!-- Blog 3 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Social+Media+Tips');"></div>
-                        <div class="post-title">Social Media Marketing Tips</div>
-                    </a>
-                </div>
-                
-                <!-- Blog 4 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Email+Automation');"></div>
-                        <div class="post-title">Email Marketing Automation</div>
-                    </a>
-                </div>
-                
-                <!-- Blog 5 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Google+Ads+Setup');"></div>
-                        <div class="post-title">Google Ads Campaign Setup</div>
-                    </a>
-                </div>
-                
-                <!-- Blog 6 -->
-                <div class="post-card">
-                    <a href="#" class="post-link">
-                        <div class="post-image" style="background-image: url('/placeholder.svg?height=150&width=200&text=Analytics+Guide');"></div>
-                        <div class="post-title">Analytics & Reporting Guide</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Quiz Section -->
-    <section class="quiz-section">
-        <div class="container">
-            <h2 class="section-title">Digital Marketing Question Polls</h2>
-            <div class="quiz-grid">
-                <!-- Quiz 1 -->
-                <div class="quiz-card">
-                    <div class="quiz-question">Which social platform gives you the best ROI?</div>
-                    <div class="quiz-options" data-poll-id="0" data-correct="0">
-                        <div class="quiz-option" onclick="updatePoll(this, 0, 0)">
-                            <span class="option-text">Facebook</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 0, 1)">
-                            <span class="option-text">Instagram</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 0, 2)">
-                            <span class="option-text">LinkedIn</span>
-                            <span class="option-status"></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Quiz 2 -->
-                <div class="quiz-card">
-                    <div class="quiz-question">How often should you update your website content?</div>
-                    <div class="quiz-options" data-poll-id="1" data-correct="1">
-                        <div class="quiz-option" onclick="updatePoll(this, 1, 0)">
-                            <span class="option-text">Weekly</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 1, 1)">
-                            <span class="option-text">Monthly</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 1, 2)">
-                            <span class="option-text">Quarterly</span>
-                            <span class="option-status"></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Quiz 3 -->
-                <div class="quiz-card">
-                    <div class="quiz-question">What's the most important SEO factor?</div>
-                    <div class="quiz-options" data-poll-id="2" data-correct="0">
-                        <div class="quiz-option" onclick="updatePoll(this, 2, 0)">
-                            <span class="option-text">Quality Content</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 2, 1)">
-                            <span class="option-text">Link Building</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 2, 2)">
-                            <span class="option-text">Technical SEO</span>
-                            <span class="option-status"></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Quiz 4 -->
-                <div class="quiz-card">
-                    <div class="quiz-question">Which ad platform has the highest conversion rate?</div>
-                    <div class="quiz-options" data-poll-id="3" data-correct="0">
-                        <div class="quiz-option" onclick="updatePoll(this, 3, 0)">
-                            <span class="option-text">Google Ads</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 3, 1)">
-                            <span class="option-text">Facebook Ads</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 3, 2)">
-                            <span class="option-text">LinkedIn Ads</span>
-                            <span class="option-status"></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Quiz 5 -->
-                <div class="quiz-card">
-                    <div class="quiz-question">What's the ideal email open rate?</div>
-                    <div class="quiz-options" data-poll-id="4" data-correct="1">
-                        <div class="quiz-option" onclick="updatePoll(this, 4, 0)">
-                            <span class="option-text">10-15%</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 4, 1)">
-                            <span class="option-text">20-25%</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 4, 2)">
-                            <span class="option-text">30-35%</span>
-                            <span class="option-status"></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Quiz 6 -->
-                <div class="quiz-card">
-                    <div class="quiz-question">What content type gets the most engagement?</div>
-                    <div class="quiz-options" data-poll-id="5" data-correct="1">
-                        <div class="quiz-option" onclick="updatePoll(this, 5, 0)">
-                            <span class="option-text">Blog Posts</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 5, 1)">
-                            <span class="option-text">Videos</span>
-                            <span class="option-status"></span>
-                        </div>
-                        <div class="quiz-option" onclick="updatePoll(this, 5, 2)">
-                            <span class="option-text">Infographics</span>
-                            <span class="option-status"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Compact Services Section with Left Menu -->
-    <section class="services-section">
-        <div class="container">
-            <h2 class="section-title">Our Digital Marketing Services</h2>
-            
-            <div class="services-container">
-                <!-- Left Side Menu -->
-                <div class="services-menu">
-                    <div class="service-tab active" onclick="showService(0)">SEO Services</div>
-                    <div class="service-tab" onclick="showService(1)">Google Ads</div>
-                    <div class="service-tab" onclick="showService(2)">Social Media</div>
-                    <div class="service-tab" onclick="showService(3)">Website Design</div>
-                </div>
-                
-                <!-- Right Side Content -->
-                <div class="service-content">
-                    <!-- SEO Services Panel -->
-                    <div class="service-panel active" id="service-0">
-                        <div class="service-header">
-                            <div class="service-icon">🔍</div>
-                            <div>
-                                <h3 class="service-title">Complete SEO</h3>
-                                <p class="service-subtitle">Boost website rankings and drive organic traffic</p>
+
+            <!-- Profile Section -->
+            <div style="max-width: 1024px; margin: 0 auto; padding: 0 24px; position: relative;">
+                <div class="card" style="position: relative; margin-top: -64px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                    <div class="p-8">
+                        <div class="flex gap-6" style="flex-direction: row;">
+                            <!-- Profile Picture -->
+                            <div class="flex-shrink-0">
+                                <div class="avatar" style="width: 128px; height: 128px; border: 4px solid var(--background); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <span style="color: white; font-size: 48px; font-weight: bold;">JD</span>
+                                </div>
+                            </div>
+
+                            <!-- Profile Info -->
+                            <div class="flex-1">
+                                <div class="flex gap-4" style="flex-direction: row; justify-content: space-between;">
+                                    <div>
+                                        <h1 class="text-3xl font-bold mb-2">John Doe</h1>
+                                        <h2 class="text-xl primary-color font-semibold mb-3">Senior Software Engineer | Full Stack Developer</h2>
+                                        <div class="flex flex-wrap gap-4 text-sm muted-color mb-4">
+                                            <div class="flex items-center gap-2">
+                                                <span>📍</span> Mumbai, India
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <span>🏢</span> Digital Training India
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <span>👥</span> 500+ connections
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-wrap gap-2">
+                                            <button class="button">💬 Message</button>
+                                            <button class="button button-outline">👥 Connect</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Contact Info -->
+                                    <div class="flex flex-col gap-2 text-sm">
+                                        <div class="flex items-center gap-2 muted-color">
+                                            <span>✉️</span> john.doe@email.com
+                                        </div>
+                                        <div class="flex items-center gap-2 muted-color">
+                                            <span>📞</span> +91 (555) 123-4567
+                                        </div>
+                                        <div class="flex items-center gap-2 primary-color">
+                                            <span>💼</span> linkedin.com/in/johndoe
+                                        </div>
+                                        <div class="flex items-center gap-2 muted-color">
+                                            <span>🔗</span> github.com/johndoe
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <p class="service-description">
-                            Our comprehensive SEO services help your web-pages to rank higher in every search engines, driving more organic traffic to your business. We use proven strategies and the latest techniques to improve your online visibility.
-                        </p>
-                        
-                        <div class="service-features">
-                            <div class="feature-item">Keyword Research</div>
-                            <div class="feature-item">On-Page SEO</div>
-                            <div class="feature-item">Link Building</div>
-                            <div class="feature-item">Technical SEO</div>
-                            <div class="feature-item">Local SEO</div>
-                            <div class="feature-item">E-commerce</div>
-                        </div>
                     </div>
-                    
-                    <!-- Google Ads Panel -->
-                    <div class="service-panel" id="service-1">
-                        <div class="service-header">
-                            <div class="service-icon">🎯</div>
-                            <div>
-                                <h3 class="service-title">Google Ads</h3>
-                                <p class="service-subtitle">Drive quality traffic and maximize ROI</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div style="max-width: 1024px; margin: 0 auto; padding: 24px;" class="space-y-6">
+            <!-- About Section -->
+            <div class="card">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-4">About</h3>
+                    <p class="leading-relaxed">
+                        Passionate Full Stack Developer with 5+ years of experience building scalable web applications.
+                        Expertise in React, Node.js, and cloud technologies. Proven track record of leading cross-functional
+                        teams and delivering high-quality software solutions that drive business growth. Always eager to learn
+                        new technologies and tackle challenging problems.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="card">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-6">Experience</h3>
+                    <div class="space-y-12">
+                        <!-- Company 1 - Digital Training India -->
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="avatar bg-primary" style="width: 48px; height: 48px;">
+                                    <span style="color: white; font-weight: bold;">DT</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold primary-color text-lg">Senior Software Engineer</h4>
+                                    <p class="font-medium">Digital Training India</p>
+                                    <div class="flex items-center gap-2 text-sm muted-color mb-2">
+                                        <span>📅</span> Jan 2022 - Present · 2 yrs 8 mos
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm muted-color mb-3">
+                                        <span>📍</span> Mumbai, India · Remote
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Projects for Digital Training India -->
+                            <div class="ml-16 space-y-4">
+                                <div class="border-l-2 pl-4" style="border-color: rgba(0, 119, 181, 0.2);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar bg-primary" style="width: 32px; height: 32px;">
+                                            <span style="color: white; font-size: 12px; font-weight: bold;">DT</span>
+                                        </div>
+                                        <h5 class="font-medium">Digital Training India - Main Platform</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Led development of comprehensive digital training platform serving 10,000+ students. Built
+                                        interactive course modules and assessment systems.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge">React</span>
+                                        <span class="badge">Node.js</span>
+                                        <span class="badge">MongoDB</span>
+                                    </div>
+                                </div>
+
+                                <div class="border-l-2 pl-4" style="border-color: rgba(0, 119, 181, 0.2);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar" style="width: 32px; height: 32px; background-color: #f97316; color: white;">
+                                            <span style="font-size: 12px; font-weight: bold;">VI</span>
+                                        </div>
+                                        <h5 class="font-medium">Varindia Project</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Developed content management system for Varindia magazine. Implemented automated publishing
+                                        workflows and subscription management.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge">WordPress</span>
+                                        <span class="badge">PHP</span>
+                                        <span class="badge">MySQL</span>
+                                    </div>
+                                </div>
+
+                                <div class="border-l-2 pl-4" style="border-color: rgba(0, 119, 181, 0.2);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar" style="width: 32px; height: 32px; background-color: #10b981; color: white;">
+                                            <span style="font-size: 12px;">📱</span>
+                                        </div>
+                                        <h5 class="font-medium">E-Learning Mobile App</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Built cross-platform mobile application for offline learning. Achieved 50,000+ downloads with
+                                        4.5-star rating.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge">React Native</span>
+                                        <span class="badge">Firebase</span>
+                                        <span class="badge">Redux</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <p class="service-description">
-                            Our Google Ads services help you reach potential customers only at the exact moment they're searching for your products or services. We create and manage campaigns that drive targeted traffic at lowest cost and maximize your return on investment.
-                        </p>
-                        
-                        <div class="service-features">
-                            <div class="feature-item">Campaign Setup</div>
-                            <div class="feature-item">Keyword Research</div>
-                            <div class="feature-item">Ad Copywriting</div>
-                            <div class="feature-item">Performance Tracking</div>
-                            <div class="feature-item">Conversion Optimization</div>
-                            <div class="feature-item">ROI Maximization</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Social Media Panel -->
-                    <div class="service-panel" id="service-2">
-                        <div class="service-header">
-                            <div class="service-icon">📱</div>
-                            <div>
-                                <h3 class="service-title">Social Media Marketing</h3>
-                                <p class="service-subtitle">Engage your audience and boost sales</p>
+
+                        <div class="border-t"></div>
+
+                        <!-- Company 2 - Tech Solutions Corp -->
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="avatar bg-secondary" style="width: 48px; height: 48px;">
+                                    <span style="color: white; font-weight: bold;">TC</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold primary-color text-lg">Full Stack Developer</h4>
+                                    <p class="font-medium">Tech Solutions Corp</p>
+                                    <div class="flex items-center gap-2 text-sm muted-color mb-2">
+                                        <span>📅</span> Jun 2020 - Dec 2021 · 1 yr 7 mos
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm muted-color mb-3">
+                                        <span>📍</span> Bangalore, India · On-site
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Projects for Tech Solutions Corp -->
+                            <div class="ml-16 space-y-4">
+                                <div class="border-l-2 pl-4" style="border-color: rgba(0, 88, 133, 0.3);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar" style="width: 32px; height: 32px; background-color: #3b82f6; color: white;">
+                                            <span style="font-size: 12px;">🛒</span>
+                                        </div>
+                                        <h5 class="font-medium">E-commerce Platform</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Built complete e-commerce solution with payment gateway integration. Handled 1000+ daily
+                                        transactions with 99.9% uptime.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge badge-outline">Laravel</span>
+                                        <span class="badge badge-outline">Vue.js</span>
+                                        <span class="badge badge-outline">PostgreSQL</span>
+                                    </div>
+                                </div>
+
+                                <div class="border-l-2 pl-4" style="border-color: rgba(0, 88, 133, 0.3);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar" style="width: 32px; height: 32px; background-color: #8b5cf6; color: white;">
+                                            <span style="font-size: 12px;">📦</span>
+                                        </div>
+                                        <h5 class="font-medium">Inventory Management System</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Developed real-time inventory tracking system for multiple warehouses. Reduced stock
+                                        discrepancies by 85%.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge badge-outline">Python</span>
+                                        <span class="badge badge-outline">Django</span>
+                                        <span class="badge badge-outline">Redis</span>
+                                    </div>
+                                </div>
+
+                                <div class="border-l-2 pl-4" style="border-color: rgba(0, 88, 133, 0.3);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar" style="width: 32px; height: 32px; background-color: #14b8a6; color: white;">
+                                            <span style="font-size: 12px;">💬</span>
+                                        </div>
+                                        <h5 class="font-medium">Customer Support Portal</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Created comprehensive support ticket system with live chat integration. Improved customer
+                                        satisfaction by 40%.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge badge-outline">Angular</span>
+                                        <span class="badge badge-outline">Socket.io</span>
+                                        <span class="badge badge-outline">Express.js</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <p class="service-description">
-                            Our social media marketing services help you connect with your customers on the platforms they use most. We create engaging content and manage your social presence to build brand awareness and drive engagement.
-                        </p>
-                        
-                        <div class="service-features">
-                            <div class="feature-item">Content Creation</div>
-                            <div class="feature-item">Community Management</div>
-                            <div class="feature-item">Paid Campaigns</div>
-                            <div class="feature-item">Analytics & Insights</div>
-                            <div class="feature-item">Influencer Marketing</div>
-                            <div class="feature-item">Platform Strategy</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Website Design Panel -->
-                    <div class="service-panel" id="service-3">
-                        <div class="service-header">
-                            <div class="service-icon">🌐</div>
-                            <div>
-                                <h3 class="service-title">Website Designing</h3>
-                                <p class="service-subtitle">Custom, responsive SEO friendly websites</p>
+
+                        <div class="border-t"></div>
+
+                        <!-- Company 3 - Web Solutions India -->
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="avatar bg-muted" style="width: 48px; height: 48px; color: var(--muted-foreground);">
+                                    <span style="font-weight: bold;">WS</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold primary-color text-lg">Junior Developer</h4>
+                                    <p class="font-medium">Web Solutions India</p>
+                                    <div class="flex items-center gap-2 text-sm muted-color mb-2">
+                                        <span>📅</span> Jan 2019 - May 2020 · 1 yr 5 mos
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm muted-color mb-3">
+                                        <span>📍</span> Delhi, India · Hybrid
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Projects for Web Solutions India -->
+                            <div class="ml-16 space-y-4">
+                                <div class="border-l-2 pl-4" style="border-color: rgba(107, 114, 128, 0.5);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar" style="width: 32px; height: 32px; background-color: #6366f1; color: white;">
+                                            <span style="font-size: 12px;">🌐</span>
+                                        </div>
+                                        <h5 class="font-medium">Corporate Website Development</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Developed responsive corporate websites for 20+ clients. Improved page load speeds by 60%
+                                        through optimization.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge badge-secondary">HTML5</span>
+                                        <span class="badge badge-secondary">CSS3</span>
+                                        <span class="badge badge-secondary">JavaScript</span>
+                                    </div>
+                                </div>
+
+                                <div class="border-l-2 pl-4" style="border-color: rgba(107, 114, 128, 0.5);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar" style="width: 32px; height: 32px; background-color: #f59e0b; color: white;">
+                                            <span style="font-size: 12px;">⚙️</span>
+                                        </div>
+                                        <h5 class="font-medium">Content Management System</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Built custom CMS for small businesses. Enabled non-technical users to manage content
+                                        independently.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge badge-secondary">PHP</span>
+                                        <span class="badge badge-secondary">MySQL</span>
+                                        <span class="badge badge-secondary">Bootstrap</span>
+                                    </div>
+                                </div>
+
+                                <div class="border-l-2 pl-4" style="border-color: rgba(107, 114, 128, 0.5);">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="avatar" style="width: 32px; height: 32px; background-color: #ef4444; color: white;">
+                                            <span style="font-size: 12px;">📈</span>
+                                        </div>
+                                        <h5 class="font-medium">SEO Optimization Tools</h5>
+                                    </div>
+                                    <p class="text-sm muted-color mb-2">
+                                        Developed internal SEO analysis tools. Helped clients achieve 200% increase in organic traffic.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge badge-secondary">Python</span>
+                                        <span class="badge badge-secondary">BeautifulSoup</span>
+                                        <span class="badge badge-secondary">Flask</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <p class="service-description">
-                            Our website designing services focus on creative UI & logical UX which delivers great conversion. We analye user experience to ensure your site stands out from the competition.
-                        </p>
-                        
-                        <div class="service-features">
-                            <div class="feature-item">Responsive Design</div>
-                            <div class="feature-item">SEO Optimized</div>
-                            <div class="feature-item">Fast Loading</div>
-                            <div class="feature-item">Modern UI/UX</div>
-                            <div class="feature-item">Mobile Friendly</div>
-                            <div class="feature-item">Conversion Focused</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="card">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-4">Education</h3>
+                    <div class="flex gap-4">
+                        <div class="avatar bg-primary" style="width: 48px; height: 48px;">
+                            <span style="color: white; font-size: 20px;">🎓</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold primary-color text-lg">Bachelor of Science in Computer Science</h4>
+                            <p class="font-medium">University of California, Berkeley</p>
+                            <div class="flex items-center gap-2 text-sm muted-color mb-2">
+                                <span>📅</span> 2016 - 2020
+                            </div>
+                            <p>Graduated Magna Cum Laude · GPA: 3.8/4.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="card">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-4">Skills</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium mb-2">Programming Languages</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge">JavaScript</span>
+                                <span class="badge">TypeScript</span>
+                                <span class="badge">Python</span>
+                                <span class="badge">Java</span>
+                                <span class="badge">Go</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium mb-2">Frontend Technologies</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-outline">React</span>
+                                <span class="badge badge-outline">Next.js</span>
+                                <span class="badge badge-outline">Vue.js</span>
+                                <span class="badge badge-outline">HTML5</span>
+                                <span class="badge badge-outline">CSS3</span>
+                                <span class="badge badge-outline">Tailwind CSS</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium mb-2">Backend & Cloud</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-secondary">Node.js</span>
+                                <span class="badge badge-secondary">Express.js</span>
+                                <span class="badge badge-secondary">AWS</span>
+                                <span class="badge badge-secondary">Docker</span>
+                                <span class="badge badge-secondary">Kubernetes</span>
+                                <span class="badge badge-secondary">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="card">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-4">Licenses & Certifications</h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <span style="color: var(--primary); font-size: 24px;">🏆</span>
+                            <div>
+                                <h4 class="font-semibold primary-color">AWS Certified Solutions Architect</h4>
+                                <p class="muted-color text-sm">Amazon Web Services · Issued Dec 2022</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span style="color: var(--primary); font-size: 24px;">🏆</span>
+                            <div>
+                                <h4 class="font-semibold primary-color">Google Cloud Professional Developer</h4>
+                                <p class="muted-color text-sm">Google Cloud · Issued Aug 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages Section -->
+            <div class="card">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-4">Languages</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between" style="padding-top: 8px; padding-bottom: 8px;">
+                            <div>
+                                <h4 class="font-medium">English</h4>
+                                <p class="text-sm muted-color">Native or bilingual proficiency</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between" style="padding-top: 8px; padding-bottom: 8px;">
+                            <div>
+                                <h4 class="font-medium">Hindi</h4>
+                                <p class="text-sm muted-color">Native or bilingual proficiency</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between" style="padding-top: 8px; padding-bottom: 8px;">
+                            <div>
+                                <h4 class="font-medium">Spanish</h4>
+                                <p class="text-sm muted-color">Professional working proficiency</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between" style="padding-top: 8px; padding-bottom: 8px;">
+                            <div>
+                                <h4 class="font-medium">French</h4>
+                                <p class="text-sm muted-color">Limited working proficiency</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-grid">
-                <!-- FAQ 1 -->
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>What is Best Digital Marketer?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Best Digital Marketer is the open platform for Digital Marketers, business owners, learners, faculties and all who want to be ahead with Digital Marketing Updates or changes and want to learn tricks for fast online presence with correct efforts.
-                    </div>
-                </div>
-                
-                <!-- FAQ 2 -->
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Does Best Digital Marketer offers Digital Marketing Services & classes as well?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Yes! we offers quality Digital Marketing services for Business, start-up,services and products. Also offering offline classes in Delhi.
-                    </div>
-                </div>
-                
-                <!-- FAQ 3 -->
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Can I use content from Best Digital Marketer on my own website?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        We have no issue with you sharing our content, but please use it by adding a canonical tag pointing to the original URL on our website. This helps preserve SEO value and avoids content duplication penalties.
-                    </div>
-                </div>
-                
-                <!-- FAQ 4 -->
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Do I need a mobile-responsive website?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Yes, absolutely! It's a must because most of the traffic comes from mobile phones, and people expect mobile-friendly websites - otherwise, you’ll miss business opportunities.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer - Simplified -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Best Digital Marketer. All Rights Reserved.</p>
-        </div>
-    </footer>
-    
-    <!-- JavaScript -->
-    <script>
-        // Function to handle poll voting with correct/wrong answers
-        function updatePoll(element, questionIndex, optionIndex) {
-            // Get the parent options container
-            const optionsContainer = element.parentElement;
-            const options = optionsContainer.children;
-            const correctAnswer = parseInt(optionsContainer.getAttribute('data-correct'));
-            
-            // Check if user has already voted on this poll
-            const pollKey = `poll_${questionIndex}`;
-            if (localStorage.getItem(pollKey)) {
-                return; // Already voted
-            }
-            
-            // Remove selected class from all options in this poll
-            for (let i = 0; i < options.length; i++) {
-                options[i].classList.remove('selected');
-            }
-            
-            // Add selected class to clicked option
-            element.classList.add('selected');
-            
-            // Show correct/wrong answers
-            for (let i = 0; i < options.length; i++) {
-                const option = options[i];
-                const statusSpan = option.querySelector('.option-status');
-                
-                if (i === correctAnswer) {
-                    option.classList.add('correct');
-                    statusSpan.textContent = 'Correct';
-                } else {
-                    option.classList.add('wrong');
-                    statusSpan.textContent = 'Wrong';
-                }
-            }
-            
-            // Save the vote
-            localStorage.setItem(pollKey, optionIndex.toString());
-        }
-        
-        function showService(index) {
-            const panels = document.querySelectorAll('.service-panel');
-            panels.forEach(panel => {
-                panel.classList.remove('active');
-            });
-            
-            document.getElementById(`service-${index}`).classList.add('active');
-            
-            const tabs = document.querySelectorAll('.service-tab');
-            tabs.forEach((tab, i) => {
-                if (i === index) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-        }
-        
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const icon = element.querySelector('.faq-icon');
-            
-            // Toggle the answer visibility
-            if (answer.classList.contains('open')) {
-                answer.classList.remove('open');
-                icon.classList.remove('rotated');
-            } else {
-                answer.classList.add('open');
-                icon.classList.add('rotated');
-            }
-        }
-        
-        // Modern animated circle that moves on scroll
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            const circle = document.querySelector('.animated-circle');
-            
-            if (scrollPosition <= window.innerHeight) {
-                const translateX = -scrollPosition * 0.6;
-                const translateY = scrollPosition * 0.3;
-                const scale = 1 - (scrollPosition / window.innerHeight) * 0.2;
-                
-                circle.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-            }
-        });
-        
-        // Check for existing votes on page load and mark them as selected
-        document.addEventListener('DOMContentLoaded', function() {
-            for (let i = 0; i < 6; i++) {
-                const pollKey = `poll_${i}`;
-                const savedVote = localStorage.getItem(pollKey);
-                
-                if (savedVote !== null) {
-                    const quizCard = document.querySelectorAll('.quiz-card')[i];
-                    if (quizCard) {
-                        const optionsContainer = quizCard.querySelector('.quiz-options');
-                        const options = optionsContainer.querySelectorAll('.quiz-option');
-                        const correctAnswer = parseInt(optionsContainer.getAttribute('data-correct'));
-                        const selectedOption = options[parseInt(savedVote)];
-                        
-                        if (selectedOption) {
-                            selectedOption.classList.add('selected');
-                            
-                            // Show correct/wrong answers for already voted polls
-                            for (let j = 0; j < options.length; j++) {
-                                const option = options[j];
-                                const statusSpan = option.querySelector('.option-status');
-                                
-                                if (j === correctAnswer) {
-                                    option.classList.add('correct');
-                                    statusSpan.textContent = 'Correct';
-                                } else {
-                                    option.classList.add('wrong');
-                                    statusSpan.textContent = 'Wrong';
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+    </div>
 </body>
 </html>
