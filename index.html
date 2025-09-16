@@ -147,6 +147,21 @@
           .md-items-start { align-items: flex-start; }
           .md-justify-between { justify-content: space-between; }
         }
+        
+        /* Added mobile responsive styles for hero area */
+        @media (max-width: 767px) {
+          .mobile-flex-col { flex-direction: column; }
+          .mobile-text-center { text-align: center; }
+          .mobile-items-center { align-items: center; }
+          .mobile-gap-4 { gap: 16px; }
+          .mobile-p-4 { padding: 16px; }
+          .mobile-mb-4 { margin-bottom: 16px; }
+          .mobile-text-sm { font-size: 14px; }
+          .mobile-text-lg { font-size: 18px; }
+          .mobile-hidden { display: none; }
+          .mobile-w-full { width: 100%; }
+          .mobile-justify-center { justify-content: center; }
+        }
     </style>
 </head>
 <body>
@@ -159,10 +174,12 @@
             </div>
 
             <!-- Profile Section -->
-            <div style="max-width: 1024px; margin: 0 auto; padding: 0 24px; position: relative;">
+            <!-- Made container responsive with mobile padding -->
+            <div style="max-width: 1024px; margin: 0 auto; padding: 0 16px; position: relative;">
                 <div class="card" style="position: relative; margin-top: -64px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
-                    <div class="p-8">
-                        <div class="flex gap-6" style="flex-direction: row;">
+                    <!-- Made profile section responsive -->
+                    <div class="p-8 mobile-p-4">
+                        <div class="flex gap-6 mobile-flex-col mobile-items-center mobile-gap-4" style="flex-direction: row;">
                             <!-- Profile Picture -->
                             <div class="flex-shrink-0">
                                 <div class="avatar" style="width: 128px; height: 128px; border: 4px solid var(--background); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -171,12 +188,13 @@
                             </div>
 
                             <!-- Profile Info -->
-                            <div class="flex-1">
-                                <div class="flex gap-4" style="flex-direction: row; justify-content: space-between;">
-                                    <div>
-                                        <h1 class="text-3xl font-bold mb-2">John Doe</h1>
-                                        <h2 class="text-xl primary-color font-semibold mb-3">Senior Software Engineer | Full Stack Developer</h2>
-                                        <div class="flex flex-wrap gap-4 text-sm muted-color mb-4">
+                            <div class="flex-1 mobile-w-full">
+                                <!-- Made profile info responsive with mobile layout -->
+                                <div class="flex gap-4 mobile-flex-col mobile-gap-4" style="flex-direction: row; justify-content: space-between;">
+                                    <div class="mobile-text-center">
+                                        <h1 class="text-3xl font-bold mb-2 mobile-text-lg mobile-mb-4">John Doe</h1>
+                                        <h2 class="text-xl primary-color font-semibold mb-3 mobile-text-sm mobile-mb-4">Senior Software Engineer | Full Stack Developer</h2>
+                                        <div class="flex flex-wrap gap-4 text-sm muted-color mb-4 mobile-justify-center mobile-gap-4 mobile-mb-4">
                                             <div class="flex items-center gap-2">
                                                 <span>📍</span> Mumbai, India
                                             </div>
@@ -187,14 +205,15 @@
                                                 <span>👥</span> 500+ connections
                                             </div>
                                         </div>
-                                        <div class="flex flex-wrap gap-2">
+                                        <div class="flex flex-wrap gap-2 mobile-justify-center">
                                             <button class="button">💬 Message</button>
                                             <button class="button button-outline">👥 Connect</button>
                                         </div>
                                     </div>
 
                                     <!-- Contact Info -->
-                                    <div class="flex flex-col gap-2 text-sm">
+                                    <!-- Made contact info responsive and centered on mobile -->
+                                    <div class="flex flex-col gap-2 text-sm mobile-items-center mobile-gap-4">
                                         <div class="flex items-center gap-2 muted-color">
                                             <span>✉️</span> john.doe@email.com
                                         </div>
@@ -217,7 +236,8 @@
         </div>
 
         <!-- Main Content -->
-        <div style="max-width: 1024px; margin: 0 auto; padding: 24px;" class="space-y-6">
+        <!-- Made main content responsive with mobile padding -->
+        <div style="max-width: 1024px; margin: 0 auto; padding: 24px 16px;" class="space-y-6">
             <!-- About Section -->
             <div class="card">
                 <div class="p-6">
